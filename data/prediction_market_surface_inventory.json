@@ -4,9 +4,9 @@
     {
       "venue": "polymarket",
       "family": "crypto_terminal_ladders",
-      "target": "BTC / ETH terminal prices",
-      "relevance": "Direct threshold / range markets over public crypto prices.",
-      "matched_markets": 365,
+      "target": "BTC / ETH direct close-threshold markets",
+      "relevance": "Direct close-threshold markets over public crypto prices. The refreshed entity pool is in polymarket_crypto_entity_pool.json.",
+      "matched_markets": 542,
       "share_of_venue": 0.005649542619220828,
       "sample": [
         {

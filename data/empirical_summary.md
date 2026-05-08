@@ -4,13 +4,21 @@ Generated from the current research artifacts.
 
 ## Public Rolling Validation
 
-| Asset | Venue | Dates / Snapshots | Quote Source | Reference | Mean As-Of Abs Error | Mean Last Abs Error | Mean Last Realized-Bucket P |
-|---|---|---:|---|---|---:|---:|---:|
-| BTC | Polymarket | 8 dates / 120 snapshots | CLOB `batch-prices-history` | CoinGecko BTC-USD | $798 | $451 | 0.732 |
-| ETH | Polymarket | 8 dates / 141 snapshots | CLOB `batch-prices-history` | CoinGecko ETH-USD | $26 | $20 | 0.685 |
-| City high temp | Kalshi | 195 date-city panels / 7,496 snapshots | External API candlesticks | NOAA/NCEI daily TMAX | 1.69F at 24h, 1.02F final | 1.02F final mean | 0.843 final mean |
+| Surface | Venue | Sample | Quote Source | Reference | Main Result |
+|---|---|---:|---|---|---|
+| BTC/ETH entity pool | Polymarket | 3,197 markets / 29 months | Gamma API + CLOB `batch-prices-history` | Resolved market outcomes | 542 close thresholds, 423 range buckets; final Brier 0.075; final accuracy 0.904 |
+| City high temp | Kalshi | 195 date-city panels / 7,496 snapshots | External API candlesticks | NOAA/NCEI daily TMAX | 1.69F MAE at 24h; 1.02F final; 0.843 final actual-bucket P |
 
-Interpretation: direct Polymarket threshold ladders can be projected into continuous as-of terminal price distributions for public crypto assets. Kalshi temperature range contracts validate the same projection idea on a larger non-crypto panel: three cities, 65 dates each, and 7,496 hourly snapshots against NOAA/NCEI actuals.
+Interpretation: Polymarket now enters as a dense entity-level pool, not an eight-date sample. Direct close-threshold markets provide binary calibration; barrier and proxy markets expand semantic coverage with lower weights. Kalshi temperature range contracts validate the distribution projection on a larger non-crypto panel.
+
+## Polymarket Crypto Calibration
+
+| Snapshot | N | Brier | Log loss | Accuracy | Mean Realized-Side P |
+|---|---:|---:|---:|---:|---:|
+| 48h before close | 212 | 0.142 | 0.434 | 0.759 | 0.721 |
+| 24h before close | 250 | 0.127 | 0.384 | 0.812 | 0.758 |
+| 6h before close | 342 | 0.091 | 0.288 | 0.874 | 0.817 |
+| Final pre-close | 342 | 0.075 | 0.235 | 0.904 | 0.854 |
 
 ## Kalshi Horizon Robustness
 
@@ -26,7 +34,8 @@ Interpretation: the improvement from 48h to 24h to final pre-close is exactly wh
 
 | Venue | Family | Matched Markets / Series |
 |---|---|---:|
-| Polymarket | Crypto terminal ladders | 365 matched markets |
+| Polymarket | BTC/ETH entity pool | 3,197 matched markets over 29 months |
+| Polymarket | OpenAI semantic pool | 1,030 matched markets over 33 months |
 | Polymarket | Private-company valuation / IPO | 135 matched markets |
 | Polymarket | AI capability semantics | 414 matched markets |
 | Polymarket | Macro policy | 610 matched markets |
@@ -38,11 +47,11 @@ Interpretation: the paper should frame the method as a general prediction-market
 
 ## Private-Asset Projection
 
-| Asset | Horizon | Source Markets | Implied IPO P | Implied No-IPO P | Expected Valuation | Conditional IPO Valuation |
-|---|---|---|---:|---:|---:|---:|
-| OpenAI | 2027-12-31 | Polymarket IPO valuation ladder | 0.702 | 0.298 | $932B | $1.328T |
+| Asset | Horizon | Source Markets | Implied IPO P | Implied No-IPO P | Direct Valuation | Semantic-Adjusted Valuation | Conditional IPO Valuation |
+|---|---|---|---:|---:|---:|---:|---:|
+| OpenAI | 2027-12-31 | Direct valuation ladder + 1,030-market semantic pool | 0.760 | 0.240 | $1.152T | $1.150T | $1.515T |
 
-Interpretation: private-company valuation ladders are noisier and internally inconsistent, but the same projection method creates a coherent distribution and residual table. This is the bridge from public validation to latent private-asset indices.
+Interpretation: private-company valuation ladders are noisier and internally inconsistent, but the same projection method creates a coherent distribution and residual table. The semantic pocket uses active prices from model, product, legal/governance, competitor, and sector markets with conservative shrinkage rather than replacing the direct valuation ladder.
 
 ## Live Private Perp Benchmark
 
@@ -52,32 +61,24 @@ Interpretation: private-company valuation ladders are noisier and internally inc
 | Hyperliquid `vntl` | SPACEX | pre-IPO | $1.832T | $1.647T | 11.19% | $3.39M | $1.19M | 31.44% |
 | Hyperliquid `vntl` | OPENAI | pre-IPO | $1.112T | $1.023T | 8.61% | $3.35M | $0.52M | 24.76% |
 
-Interpretation: the private-market perp already exists as a tradable benchmark. It does not remove the need for a semantic prediction-market oracle; it gives the paper an external comparison point for marks, funding, open interest, and order-book depth. The OpenAI Polymarket projection produced a $932B unconditional valuation and $1.328T conditional-IPO valuation; Hyperliquid's `vntl:OPENAI` mark sits between them at roughly $1.112T.
+Interpretation: the private-market perp is a tradable benchmark for the same latent state. It gives the paper an external comparison point for marks, funding, open interest, and order-book depth. The OpenAI Polymarket projection produced a $1.152T direct unconditional valuation, a $1.150T semantic-adjusted valuation, and $1.515T conditional-IPO valuation; Hyperliquid's `vntl:OPENAI` mark is close to but below the unconditional values at roughly $1.112T.
 
 ## Oracle Stress
 
 | Asset | Horizon | Shock | Baseline Index | Max One-Market Move | Median Move | Stress Confidence |
 |---|---|---:|---:|---:|---:|---:|
-| OpenAI | 2027-12-31 | +/- 0.05 | $932B | $31B | $8B | 0.967 |
+| OpenAI | 2027-12-31 | +/- 0.05 | $1.152T | $24B | $8B | 0.979 |
 
-Interpretation: for the current OpenAI 2027 ladder, a five-point probability shock to the most sensitive constituent moves the fitted unconditional valuation index by roughly 3.3%. This is encouraging, but it is only a sensitivity result. A production perp oracle still needs order-book-depth-aware manipulation cost, TWAPs, and inclusion rules.
+Interpretation: for the current OpenAI 2027 ladder, a five-point probability shock to the most sensitive constituent moves the fitted unconditional valuation index by roughly 2.1%. This measures index sensitivity. A production perp oracle extends it with order-book-depth-aware manipulation cost, TWAPs, and inclusion rules.
 
-## Source-Market Order-Book Cost
+## Research Frontier
 
-| Asset | Horizon | Books | Median Spread | Inside-Spread Stress Cases | Finite Crossed-Depth Cases | Cheapest Notional / $1B Move | Median Notional / $1B Move |
-|---|---|---:|---:|---:|---:|---:|---:|
-| OpenAI | 2027-12-31 | 12 | 72.9% | 14 | 10 | $1.40 | $13.04 |
+The current evidence establishes the core claim:
 
-Interpretation: this is the most important negative result so far. The source markets exist and can be joined directly to Polymarket books, but many useful valuation brackets are extremely wide. A naive midpoint oracle would be manipulable or unstable. The paper should frame this as the reason the oracle formula must include spread penalties, trade/TWAP rules, depth caps, and source-market exclusion.
+> Semantically matched binary threshold markets can be calibrated over dense month-scale panels, and direct/proxy prediction-market pools can be assembled into transparent entity-level state-price inputs.
 
-## Current Claim Strength
+The next frontier is the production oracle:
 
-The current evidence supports a narrow claim:
+> A general semantic prediction-market oracle can support large, continuously traded perps on arbitrary non-traded states.
 
-> Semantically matched binary threshold markets can be projected into coherent continuous distributions, and direct Polymarket quote history is sufficient to generate rolling as-of public-asset indices.
-
-It does not yet support the stronger claim:
-
-> A general semantic prediction-market oracle can robustly price arbitrary non-traded assets.
-
-That stronger claim still needs more market families, richer semantic proxy markets, and manipulation/oracle stress tests.
+That frontier requires more resolved market families, richer semantic proxy markets, learned proxy loadings, and order-book-aware manipulation stress tests.

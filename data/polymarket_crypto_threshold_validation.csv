@@ -1,0 +1,358 @@
+target,question,end_date,threshold,threshold_side,settled_yes,history_points,p_7d,p_72h,p_48h,p_24h,p_6h,p_final,market_id,slug
+ETH,"ETH above $3,500 on Mar 29?",2024-03-29T12:00:00Z,3500.0,above,0,162,,0.765,0.695,0.735,0.785,0.775,500404,eth-above-3500-on-mar-29
+BTC,"Bitcoin above $70,000 on April 5?",2024-04-05T12:00:00Z,70000.0,above,0,161,,0.245,0.145,0.05,0.075,0.045,500561,bitcoin-above-70000-on-april-5
+BTC,"Bitcoin above $70,000 on April 12?",2024-04-12T12:00:00Z,70000.0,above,0,158,,0.57,0.41,0.64,0.835,0.84,500763,bitcoin-above-70000-on-april-12
+ETH,"Ethereum above $3,500 on April 12?",2024-04-12T12:00:00Z,3500.0,above,0,158,,0.7,0.555,0.725,0.76,0.61,500764,ethereum-above-3500-on-april-12
+BTC,"Bitcoin above $60,000 on April 19?",2024-04-19T12:00:00Z,60000.0,above,1,135,,0.74,0.85,0.76,0.895,0.9665,500941,bitcoin-above-60000-on-april-19
+ETH,"Ethereum above $3,000 on April 19?",2024-04-19T12:00:00Z,3000.0,above,1,135,,0.635,0.69,0.6,0.575,0.855,500942,ethereum-above-3000-on-april-19
+BTC,"Bitcoin above $60,000 on April 30?",2024-04-30T12:00:00Z,60000.0,above,1,240,0.87,0.86,0.935,0.93,0.983,0.985,501020,bitcoin-above-60000-on-april-30
+ETH,"Ethereum above $3,000 on April 30?",2024-04-30T12:00:00Z,3000.0,above,0,240,0.75,0.8,0.935,0.855,0.985,0.86,501021,ethereum-above-3000-on-april-30
+BTC,"Bitcoin above $60,000 on May 10?",2024-05-10T12:00:00Z,60000.0,above,1,232,0.485,0.895,0.875,0.735,0.97,0.985,501264,bitcoin-above-60000-on-may-10
+ETH,"Ethereum above $3,000 on May 10?",2024-05-10T12:00:00Z,3000.0,above,0,232,0.48,0.755,0.54,0.425,0.78,0.835,501266,ethereum-above-3000-on-may-10
+BTC,"Bitcoin above $60,000 on May 17?",2024-05-17T12:00:00Z,60000.0,above,1,161,,0.75,0.825,0.96,0.978,0.98,501530,bitcoin-above-60000-on-may-17
+ETH,"Ethereum above $3,000 on May 17?",2024-05-17T12:00:00Z,3000.0,above,1,162,,0.26,0.295,0.5,0.15,0.74,501529,ethereum-above-3000-on-may-17
+BTC,"Bitcoin above $65,000 on May 24?",2024-05-24T12:00:00Z,65000.0,above,1,162,,0.915,0.91,0.925,0.93,0.945,501657,bitcoin-above-65000-on-may-24
+ETH,"Ethereum above $3,000 on May 24?",2024-05-24T12:00:00Z,3000.0,above,1,162,,0.965,0.9695,0.9895,0.9925,0.997,501658,ethereum-above-3000-on-may-24
+BTC,"Bitcoin above $68,000 on May 31?",2024-05-31T12:00:00Z,68000.0,above,0,164,,0.58,0.51,0.51,0.7,0.485,501807,bitcoin-above-68000-on-may-31
+ETH,"Ethereum above $3,700 on May 31?",2024-05-31T12:00:00Z,3700.0,above,1,164,,0.82,0.775,0.62,0.82,0.77,501806,ethereum-above-3700-on-may-31
+BTC,"Bitcoin above $69,000 on June 7?",2024-06-07T12:00:00Z,69000.0,above,1,163,,0.49,0.765,0.885,0.977,0.9915,501918,bitcoin-above-69000-on-june-7
+ETH,"Ethereum above $3,800 on June 7?",2024-06-07T12:00:00Z,3800.0,above,0,163,,0.48,0.525,0.68,0.625,0.6,501916,ethereum-above-3800-on-june-7
+BTC,"Bitcoin above $71,000 on June 14?",2024-06-14T12:00:00Z,71000.0,above,0,163,,0.125,0.16,0.085,0.0095,0.004,502216,bitcoin-above-71000-on-june-14
+ETH,"Ethereum above $3,800 on June 14?",2024-06-14T12:00:00Z,3800.0,above,0,163,,0.18,0.12,0.045,0.023,0.01,502217,ethereum-above-3800-on-june-14
+BTC,"Bitcoin above $65,000 on June 21?",2024-06-21T12:00:00Z,65000.0,above,0,163,,0.62,0.58,0.78,0.385,0.18,502460,bitcoin-above-65000-on-june-21
+BTC,"Bitcoin above $65,000 on June 28?",2024-06-28T12:00:00Z,65000.0,above,0,162,,0.125,0.09,0.0475,0.029,0.015,502743,bitcoin-above-65000-on-june-28
+ETH,"Ethereum above $3,500 on June 28?",2024-06-28T12:00:00Z,3500.0,above,0,162,,0.375,0.255,0.265,0.325,0.125,502744,ethereum-above-3500-on-june-28
+BTC,"Bitcoin above $61,000 on July 5?",2024-07-05T12:00:00Z,61000.0,above,0,163,,0.775,0.365,0.06,0.004,0.0205,502963,bitcoin-above-61000-on-july-5
+ETH,"Ethereum above $3,500 on July 5?",2024-07-05T12:00:00Z,3500.0,above,0,163,,0.375,0.065,0.0135,0.0105,0.0105,502961,ethereum-above-3500-on-july-5
+BTC,"Bitcoin above $57,000 on July 12?",2024-07-12T12:00:00Z,57000.0,above,1,161,,0.575,0.765,0.79,0.485,0.45,503224,bitcoin-above-57000-on-july-12
+ETH,"Ethereum above $3,000 on July 12?",2024-07-12T12:00:00Z,3000.0,above,1,161,,0.68,0.755,0.92,0.895,0.88,503223,ethereum-above-3000-on-july-12
+BTC,"Bitcoin above $58,000 on July 19?",2024-07-19T12:00:00Z,58000.0,above,1,162,,0.935,0.9885,0.99,0.999,0.9985,503416,bitcoin-above-58000-on-july-19
+ETH,"Ethereum above $3,100 on July 19?",2024-07-19T12:00:00Z,3100.0,above,1,162,,0.95,0.985,0.9815,0.9985,0.9985,503417,ethereum-above-3100-on-july-19
+BTC,"Bitcoin above $65,000 on July 26?",2024-07-26T12:00:00Z,65000.0,above,1,162,,0.755,0.76,0.4,0.93,0.975,503863,bitcoin-above-65000-on-july-26
+ETH,"Ethereum above $3,500 on July 26?",2024-07-26T12:00:00Z,3500.0,above,0,162,,0.61,0.505,0.035,0.0215,0.0195,503865,ethereum-above-3500-on-july-26
+BTC,"Bitcoin above $68,000 on August 2?",2024-08-02T12:00:00Z,68000.0,above,0,163,,0.425,0.33,0.065,0.013,0.023,504209,bitcoin-above-68000-on-august-2
+ETH,"Ethereum above $3,300 on August 2?",2024-08-02T12:00:00Z,3300.0,above,0,163,,0.585,0.555,0.175,0.048,0.024,504210,ethereum-above-3300-on-august-2
+BTC,"Bitcoin above $65,000 on August 9?",2024-08-09T12:00:00Z,65000.0,above,0,163,,0.0575,0.0415,0.005,0.0475,0.012,504477,bitcoin-above-65000-on-august-9
+ETH,"Ethereum above $3,000 on August 9?",2024-08-09T12:00:00Z,3000.0,above,0,163,,0.0725,0.047,0.0065,0.016,0.013,504476,ethereum-above-3000-on-august-9
+BTC,"Bitcoin above $60,000 on August 16?",2024-08-16T12:00:00Z,60000.0,above,0,163,,0.415,0.69,0.24,0.12,0.08,504801,bitcoin-above-60000-on-august-16
+ETH,"Ethereum above $2,500 on August 16?",2024-08-16T12:00:00Z,2500.0,above,1,164,,0.725,0.92,0.86,0.9045,0.977,504800,ethereum-above-2500-on-august-16
+BTC,"Bitcoin above $60,000 on August 23?",2024-08-23T12:00:00Z,60000.0,above,1,162,,0.63,0.455,0.745,0.76,0.9,505205,bitcoin-above-60000-on-august-23
+ETH,"Ethereum above $2,500 on August 23?",2024-08-23T12:00:00Z,2500.0,above,1,162,,0.845,0.78,0.935,0.9795,0.998,505206,ethereum-above-2500-on-august-23
+BTC,"Bitcoin above $60,000 on August 30?",2024-08-30T12:00:00Z,60000.0,above,0,164,,0.845,0.515,0.47,0.21,0.32,505716,bitcoin-above-60000-on-august-30
+ETH,"Ethereum above $2,500 on August 30?",2024-08-30T12:00:00Z,2500.0,above,0,164,,0.825,0.585,0.71,0.66,0.75,505718,ethereum-above-2500-on-august-30
+BTC,"Bitcoin above $60,000 on September 6?",2024-09-06T12:00:00Z,60000.0,above,0,161,,0.37,0.135,0.075,0.0245,0.007,506137,bitcoin-above-60000-on-september-6
+ETH,"Ethereum above $2,500 on September 6?",2024-09-06T12:00:00Z,2500.0,above,0,161,,0.53,0.22,0.13,0.0335,0.0115,506138,ethereum-above-2500-on-september-6
+BTC,"Bitcoin above $55,000 on September 13?",2024-09-13T12:00:00Z,55000.0,above,1,163,,0.745,0.71,0.94,0.986,0.992,506492,bitcoin-above-55000-on-september-13
+ETH,"Ethereum above $2,400 on September 13?",2024-09-13T12:00:00Z,2400.0,above,1,163,,0.395,0.25,0.32,0.145,0.095,506494,ethereum-above-2400-on-september-13
+BTC,"Bitcoin above $60,000 on September 20?",2024-09-20T12:00:00Z,60000.0,above,1,163,,0.395,0.495,0.89,0.994,0.994,506969,bitcoin-above-60000-on-september-20
+ETH,"Ethereum above $2,400 on September 20?",2024-09-20T12:00:00Z,2400.0,above,1,163,,0.31,0.255,0.675,0.9785,0.9875,506970,ethereum-above-2400-on-september-20
+BTC,"Bitcoin above $63,000 on September 27?",2024-09-27T12:00:00Z,63000.0,above,1,163,,0.585,0.61,0.78,0.9745,0.98,507565,bitcoin-above-63000-on-september-27
+ETH,"Ethereum above $2,500 on September 27?",2024-09-27T12:00:00Z,2500.0,above,1,163,,0.835,0.865,0.94,0.972,0.9795,507564,ethereum-above-2500-on-september-27
+BTC,"Bitcoin above $60,000 on October 1?",2024-10-01T12:00:00Z,60000.0,above,1,240,0.82,0.977,0.9815,0.971,0.9905,0.997,506360,bitcoin-above-60000-on-october-1
+BTC,"Bitcoin above $65,000 on October 4?",2024-10-04T12:00:00Z,65000.0,above,0,163,,0.37,0.095,0.0115,0.007,0.0065,508302,bitcoin-above-65000-on-october-4
+ETH,"Ethereum above $2,600 on October 4?",2024-10-04T12:00:00Z,2600.0,above,0,163,,0.63,0.115,0.013,0.006,0.0075,508303,ethereum-above-2600-on-october-4
+BTC,"Bitcoin above $62,000 on October 11?",2024-10-11T12:00:00Z,62000.0,above,1,161,,0.605,0.55,0.255,0.0735,0.1195,508884,bitcoin-above-62000-on-october-11
+ETH,"Ethereum above $2,400 on October 11?",2024-10-11T12:00:00Z,2400.0,above,1,161,,0.61,0.645,0.49,0.545,0.64,508883,ethereum-above-2400-on-october-11
+BTC,"Bitcoin above $62,000 on October 18?",2024-10-18T12:00:00Z,62000.0,above,1,163,,0.88,0.96,0.9895,0.998,0.998,509603,bitcoin-above-62000-on-october-18
+ETH,"Ethereum above $2,400 on October 18?",2024-10-18T12:00:00Z,2400.0,above,1,163,,0.91,0.94,0.98,0.9965,0.999,509605,ethereum-above-2400-on-october-18
+BTC,"Bitcoin above $69,000 on October 25?",2024-10-25T12:00:00Z,69000.0,above,0,162,,0.26,0.13,0.13,0.13,0.075,510109,bitcoin-above-69000-on-october-25
+ETH,"Ethereum above $2,600 on October 25?",2024-10-25T12:00:00Z,2600.0,above,0,162,,0.61,0.435,0.23,0.08,0.0905,510110,ethereum-above-2600-on-october-25
+BTC,"Bitcoin above $68,000 on November 1?",2024-11-01T12:00:00Z,68000.0,above,1,162,,0.88,0.94,0.9715,0.8705,0.935,510922,bitcoin-above-68000-on-november-1
+ETH,"Ethereum above $2,600 on November 1?",2024-11-01T12:00:00Z,2600.0,above,0,162,,0.6,0.765,0.725,0.11,0.065,510921,ethereum-above-2600-on-november-1
+BTC,"Bitcoin above $70,000 on November 8?",2024-11-08T12:00:00Z,70000.0,above,1,161,,0.48,0.875,0.9825,0.999,0.999,511629,bitcoin-above-70000-on-november-8
+ETH,"Ethereum above $2,500 on November 8?",2024-11-08T12:00:00Z,2500.0,above,1,161,,0.41,0.84,0.9875,0.9965,0.998,511628,ethereum-above-2500-on-november-8
+BTC,"Bitcoin above $76,000 on November 15?",2024-11-15T12:00:00Z,76000.0,above,1,159,,0.935,0.9725,0.995,0.9875,0.9985,512396,bitcoin-above-76000-on-november-15
+ETH,"Ethereum above $3,000 on November 15?",2024-11-15T12:00:00Z,3000.0,above,1,159,,0.88,0.79,0.915,0.63,0.91,512397,ethereum-above-3000-on-november-15
+BTC,"Bitcoin above $90,000 on November 22?",2024-11-22T12:00:00Z,90000.0,above,1,161,,0.685,0.865,0.9815,0.9955,0.997,513136,bitcoin-above-90000-on-november-22
+ETH,"Ethereum above $3,000 on November 22?",2024-11-22T12:00:00Z,3000.0,above,1,161,,0.76,0.815,0.905,0.9955,0.999,513137,ethereum-above-3000-on-november-22
+BTC,"Bitcoin above $100,000 on November 29?",2024-11-29T12:00:00Z,100000.0,above,0,162,,0.095,0.085,0.045,0.0455,0.017,513709,bitcoin-above-100000-on-november-29
+ETH,"Ethereum above $3,300 on November 29?",2024-11-29T12:00:00Z,3300.0,above,1,162,,0.585,0.795,0.9835,0.9885,0.9915,513710,ethereum-above-3300-on-november-29
+BTC,"Bitcoin above $98,000 on December 6?",2024-12-06T12:00:00Z,98000.0,above,1,161,,0.295,0.335,0.915,0.55,0.595,514215,bitcoin-above-98000-on-december-6
+ETH,"Ethereum above $3,500 on December 6?",2024-12-06T12:00:00Z,3500.0,above,1,161,,0.73,0.925,0.984,0.995,0.995,514216,ethereum-above-3500-on-december-6
+BTC,"Bitcoin above $100,000 on December 13?",2024-12-13T12:00:00Z,100000.0,above,1,161,,0.405,0.375,0.585,0.545,0.585,514949,bitcoin-above-100000-on-december-13
+ETH,"Ethereum above $4,000 on December 13?",2024-12-13T12:00:00Z,4000.0,above,0,161,,0.235,0.135,0.385,0.25,0.12,514950,ethereum-above-4000-on-december-13
+BTC,"Bitcoin above $100,000 on December 20?",2024-12-20T12:00:00Z,100000.0,above,0,163,,0.905,0.855,0.825,0.18,0.039,515539,bitcoin-above-100000-on-december-20
+ETH,Pudgy Penguin floor price above 25 eth on Friday?,2024-12-20T12:00:00Z,25.0,above,0,83,,0.375,0.0495,0.03,0.002,0.0025,515832,pudgy-penguin-floor-price-above-25-eth-on-friday
+ETH,"Ethereum above $3,900 on December 20?",2024-12-20T12:00:00Z,3900.0,above,0,163,,0.75,0.525,0.15,0.0055,0.0025,515540,ethereum-above-3900-on-december-20
+BTC,"Bitcoin above $97,000 on December 27?",2024-12-27T12:00:00Z,97000.0,above,0,162,,0.285,0.65,0.34,0.355,0.435,516117,bitcoin-above-97000-on-december-27
+ETH,"Ethereum above $3,400 on December 27?",2024-12-27T12:00:00Z,3400.0,above,0,162,,0.505,0.705,0.45,0.4,0.635,516118,ethereum-above-3400-on-december-27
+BTC,"Bitcoin above $94,000 on January 3?",2025-01-03T12:00:00Z,94000.0,above,1,162,,0.52,0.465,0.845,0.9795,0.9785,516498,bitcoin-above-94000-on-january-3
+ETH,"Ethereum above $3,300 on January 3?",2025-01-03T12:00:00Z,3300.0,above,1,162,,0.68,0.605,0.925,0.9895,0.9935,516499,ethereum-above-3300-on-january-3
+BTC,"Bitcoin above $97,000 on January 10?",2025-01-10T12:00:00Z,97000.0,above,0,162,,0.885,0.445,0.125,0.0335,0.079,517192,bitcoin-above-97000-on-january-10
+ETH,"Ethereum above $3,500 on January 10?",2025-01-10T12:00:00Z,3500.0,above,0,162,,0.85,0.285,0.085,0.005,0.012,517193,ethereum-above-3500-on-january-10
+BTC,"Bitcoin above $95,000 on January 17?",2025-01-17T12:00:00Z,95000.0,above,1,159,,0.655,0.675,0.925,0.9955,0.994,518179,bitcoin-above-95000-on-january-17
+ETH,"Ethereum above $3,300 on January 17?",2025-01-17T12:00:00Z,3300.0,above,1,159,,0.405,0.35,0.645,0.845,0.9755,518178,ethereum-above-3300-on-january-17
+BTC,"Bitcoin above $103,000 on January 24?",2025-01-24T12:00:00Z,103000.0,above,1,161,,0.51,0.715,0.375,0.775,0.895,519027,bitcoin-above-103000-on-january-24
+ETH,"Ethereum above $3,400 on January 24?",2025-01-24T12:00:00Z,3400.0,above,0,161,,0.365,0.345,0.075,0.225,0.495,519040,ethereum-above-3300-on-january-24
+BTC,"Bitcoin above $105,000 on January 31?",2025-01-31T12:00:00Z,105000.0,above,1,163,,0.385,0.315,0.545,0.335,0.305,519870,bitcoin-above-105000-on-january-31
+ETH,"Ethereum above $3,400 on January 31?",2025-01-31T12:00:00Z,3400.0,above,1,163,,0.21,0.105,0.105,0.055,0.035,519871,ethereum-above-3400-on-january-31
+BTC,"Bitcoin above $105,000 on February 7?",2025-02-07T12:00:00Z,105000.0,above,0,162,,0.205,0.115,0.0495,0.0075,0.003,521147,bitcoin-above-105000-on-february-7
+ETH,"Ethereum above $3,400 on February 7?",2025-02-07T12:00:00Z,3400.0,above,0,162,,0.0545,0.0235,0.0095,0.001,0.001,521148,ethereum-above-3400-on-february-7
+BTC,Will Bitcoin be less than $92000 on February 14?,2025-02-14T12:00:00Z,92000.0,below,0,164,,0.069,0.1145,0.0385,0.0115,0.003,522066,will-bitcoin-be-less-than-92000-on-february-14
+BTC,"Bitcoin above $97,000 on February 14?",2025-02-14T12:00:00Z,97000.0,above,1,184,0.535,0.605,0.435,0.4,0.435,0.535,522036,bitcoin-above-97000-on-february-14
+ETH,"Ethereum above $2,700 on February 14?",2025-02-14T12:00:00Z,2700.0,above,1,184,0.575,0.505,0.305,0.435,0.495,0.575,522037,ethereum-above-2700-on-february-14
+BTC,"Bitcoin above $97,000 on February 21?",2025-02-21T12:00:00Z,97000.0,above,1,162,,0.39,0.44,0.585,0.81,0.885,523483,bitcoin-above-97000-on-february-21
+ETH,"Ethereum above $2,700 on February 21?",2025-02-21T12:00:00Z,2700.0,above,1,162,,0.505,0.585,0.705,0.83,0.935,523484,ethereum-above-2700-on-february-21
+BTC,Will the price of Bitcoin be less than $93000 on Feb 28?,2025-02-28T12:00:00Z,93000.0,below,1,162,,0.81,0.815,0.945,0.9985,0.9955,524435,will-the-price-of-bitcoin-be-less-than-93000-on-feb-28
+BTC,"Bitcoin above $99,000 on February 28?",2025-02-28T12:00:00Z,99000.0,above,0,162,,0.065,0.0315,0.006,0.001,0.001,524430,bitcoin-above-99000-on-february-28
+BTC,Will the price of Bitcoin be greater than $103000 on Feb 28?,2025-02-28T12:00:00Z,103000.0,above,0,162,,0.0095,0.008,0.001,0.001,0.001,524441,will-the-price-of-bitcoin-be-greater-than-103000-on-feb-28
+ETH,"Ethereum above $2,800 on February 28?",2025-02-28T12:00:00Z,2800.0,above,0,162,,0.055,0.05,0.0115,0.0015,0.0015,524431,ethereum-above-2800-on-february-28
+BTC,Will the price of Bitcoin be less than $78000 on Mar 7?,2025-03-07T12:00:00Z,78000.0,below,0,161,,0.15,0.027,0.0025,0.027,0.014,526088,will-the-price-of-bitcoin-be-less-than-78000-on-mar-7
+BTC,"Bitcoin above $84,000 on March 7?",2025-03-07T12:00:00Z,84000.0,above,1,163,,0.515,0.875,0.925,0.875,0.945,526067,bitcoin-above-84000-on-march-7
+BTC,Will the price of Bitcoin be greater than $88000 on Mar 7?,2025-03-07T12:00:00Z,88000.0,above,0,161,,0.265,0.65,0.79,0.45,0.655,526094,will-the-price-of-bitcoin-be-greater-than-88000-on-mar-7
+ETH,"Ethereum above $2,300 on March 7?",2025-03-07T12:00:00Z,2300.0,above,0,163,,0.18,0.345,0.495,0.075,0.105,526068,ethereum-above-2300-on-march-7
+BTC,Will the price of Bitcoin be less than $83000 on Mar 14?,2025-03-14T12:00:00Z,83000.0,below,0,162,,0.575,0.525,0.455,0.725,0.55,527173,will-the-price-of-bitcoin-be-less-than-83000-on-mar-14
+BTC,"Bitcoin above $89,000 on March 14?",2025-03-14T12:00:00Z,89000.0,above,0,162,,0.135,0.105,0.042,0.003,0.0035,527168,bitcoin-above-89000-on-march-14
+BTC,Will the price of Bitcoin be greater than $93000 on Mar 14?,2025-03-14T12:00:00Z,93000.0,above,0,162,,0.0345,0.0225,0.01,0.001,0.001,527179,will-the-price-of-bitcoin-be-greater-than-93000-on-mar-14
+ETH,"Ethereum above $2,200 on March 14?",2025-03-14T12:00:00Z,2200.0,above,0,162,,0.09,0.075,0.0155,0.0015,0.0015,527169,ethereum-above-2200-on-march-14
+BTC,Will the price of Bitcoin be less than $77000 on Mar 21?,2025-03-21T12:00:00Z,77000.0,below,0,164,,0.105,0.065,0.0085,0.0065,0.0035,528098,will-the-price-of-bitcoin-be-less-than-77000-on-mar-21
+BTC,"Bitcoin above $83,000 on March 21?",2025-03-21T12:00:00Z,83000.0,above,1,164,,0.46,0.55,0.805,0.895,0.83,528099,bitcoin-above-83000-on-march-21
+BTC,Will the price of Bitcoin be greater than $87000 on Mar 21?,2025-03-21T12:00:00Z,87000.0,above,0,164,,0.155,0.155,0.245,0.065,0.0115,528092,will-the-price-of-bitcoin-be-greater-than-87000-on-mar-21
+ETH,"Ethereum above $1,900 on March 21?",2025-03-21T12:00:00Z,1900.0,above,1,164,,0.485,0.755,0.835,0.95,0.945,528100,ethereum-above-1900-on-march-21
+BTC,Will the price of Bitcoin be less than $78000 on Mar 28?,2025-03-28T12:00:00Z,78000.0,below,0,164,,0.0165,0.005,0.006,0.001,0.002,529571,will-the-price-of-bitcoin-be-less-than-78000-on-mar-28
+BTC,"Bitcoin above $84,000 on March 28?",2025-03-28T12:00:00Z,84000.0,above,1,164,,0.81,0.925,0.915,0.925,0.8295,529560,bitcoin-above-84000-on-march-28
+BTC,Will the price of Bitcoin be greater than $88000 on Mar 28?,2025-03-28T12:00:00Z,88000.0,above,0,164,,0.38,0.505,0.345,0.09,0.012,529565,will-the-price-of-bitcoin-be-greater-than-88000-on-mar-28
+ETH,"Ethereum above $2,000 on March 28?",2025-03-28T12:00:00Z,2000.0,above,0,164,,0.735,0.785,0.66,0.085,0.017,529561,ethereum-above-2000-on-march-28
+BTC,Will the price of Bitcoin be less than $80000 on April 4?,2025-04-04T12:00:00Z,80000.0,below,0,164,,0.175,0.155,0.18,0.115,0.021,531927,will-the-price-of-bitcoin-be-less-than-80000-on-april-4
+BTC,"Bitcoin above $86,000 on April 4?",2025-04-04T12:00:00Z,86000.0,above,0,164,,0.315,0.38,0.145,0.027,0.116,531914,bitcoin-above-86000-on-april-4
+BTC,Will the price of Bitcoin be greater than $90000 on April 4?,2025-04-04T12:00:00Z,90000.0,above,0,164,,0.075,0.0465,0.012,0.0025,0.0035,531921,will-the-price-of-bitcoin-be-greater-than-90000-on-april-4
+ETH,"Ethereum above $2,000 on April 4?",2025-04-04T12:00:00Z,2000.0,above,0,159,,0.165,0.135,0.013,0.0055,0.0085,531915,ethereum-above-2000-on-april-4
+BTC,Will the price of Bitcoin be less than $78000 on Apr 11?,2025-04-11T12:00:00Z,78000.0,below,0,162,,0.395,0.555,0.09,0.05,0.0125,534184,will-the-price-of-bitcoin-be-less-than-78000-on-apr-11
+BTC,"Bitcoin above $84,000 on April 11?",2025-04-11T12:00:00Z,84000.0,above,0,162,,0.155,0.0565,0.1955,0.0615,0.14,534173,bitcoin-above-84000-on-april-11
+BTC,Will the price of Bitcoin be greater than $88000 on Apr 11?,2025-04-11T12:00:00Z,88000.0,above,0,162,,0.033,0.011,0.02,0.0015,0.0035,534178,will-the-price-of-bitcoin-be-greater-than-90000-on-apr-11
+ETH,"Ethereum above $1,900 on April 11?",2025-04-11T12:00:00Z,1900.0,above,0,162,,0.022,0.0085,0.009,0.0025,0.001,534174,ethereum-above-1900-on-april-11
+BTC,Will the price of Bitcoin be less than $76000 on Apr 18?,2025-04-18T12:00:00Z,76000.0,below,0,164,,0.0185,0.037,0.0085,0.0025,0.001,536397,will-the-price-of-bitcoin-be-less-than-76000-on-apr-18
+BTC,"Bitcoin above $82,000 on April 18?",2025-04-18T12:00:00Z,82000.0,above,1,164,,0.825,0.765,0.885,0.9815,0.9925,536386,bitcoin-above-82000-on-april-18
+BTC,Will the price of Bitcoin be greater than $86000 on Apr 18?,2025-04-18T12:00:00Z,86000.0,above,0,164,,0.435,0.22,0.185,0.055,0.022,536391,will-the-price-of-bitcoin-be-greater-than-86000-on-apr-18
+ETH,Will the price of Ethereum be less than $1300 on Apr 18?,2025-04-18T12:00:00Z,1300.0,below,0,164,,0.0075,0.0225,0.005,0.003,0.0015,536404,will-the-price-of-ethereum-be-less-than-1300-on-apr-18
+ETH,"Ethereum above $1,600 on April 18?",2025-04-18T12:00:00Z,1600.0,above,0,164,,0.605,0.42,0.45,0.27,0.28,536387,ethereum-above-1600-on-april-18
+ETH,Will the price of Ethereum be greater than $1800 on Apr 18?,2025-04-18T12:00:00Z,1800.0,above,0,164,,0.085,0.012,0.0145,0.0055,0.0025,536398,will-the-price-of-ethereum-be-greater-than-1800-on-apr-18
+BTC,Will the price of Bitcoin be less than $79000 on Apr 25?,2025-04-25T12:00:00Z,79000.0,below,0,164,,0.0175,0.007,0.004,0.001,0.001,538198,will-the-price-of-bitcoin-be-less-than-79000-on-apr-25
+BTC,"Bitcoin above $85,000 on April 25?",2025-04-25T12:00:00Z,85000.0,above,1,164,,0.835,0.951,0.975,0.997,0.998,538208,bitcoin-above-85000-on-april-25
+BTC,Will the price of Bitcoin be greater than $89000 on Apr 25?,2025-04-25T12:00:00Z,89000.0,above,1,164,,0.415,0.835,0.88,0.9745,0.9915,538192,will-the-price-of-bitcoin-be-greater-than-89000-on-apr-25
+ETH,Will the price of Ethereum be less than $1300 on Apr 25?,2025-04-25T12:00:00Z,1300.0,below,0,164,,0.0145,0.0055,0.003,0.0025,0.001,538205,will-the-price-of-ethereum-be-less-than-1300-on-apr-25
+ETH,"Ethereum above $1,600 on April 25?",2025-04-25T12:00:00Z,1600.0,above,1,164,,0.605,0.955,0.9575,0.992,0.997,538166,ethereum-above-1600-on-april-25
+ETH,Will the price of Ethereum be greater than $1800 on Apr 25?,2025-04-25T12:00:00Z,1800.0,above,1,164,,0.07,0.5,0.225,0.21,0.355,538199,will-the-price-of-ethereum-be-greater-than-1800-on-apr-25
+BTC,Will the price of Bitcoin be less than $88000 on May 2?,2025-05-02T12:00:00Z,88000.0,below,0,162,,0.065,0.036,0.006,0.001,0.001,539600,will-the-price-of-bitcoin-be-less-than-88000-on-may-2
+BTC,"Bitcoin above $94,000 on May 2?",2025-05-02T12:00:00Z,94000.0,above,1,163,,0.585,0.64,0.825,0.9775,0.9855,539589,bitcoin-above-94000-on-may-2
+BTC,Will the price of Bitcoin be greater than $98000 on May 2?,2025-05-02T12:00:00Z,98000.0,above,0,162,,0.18,0.155,0.2,0.22,0.115,539594,will-the-price-of-bitcoin-be-greater-than-98000-on-may-2
+ETH,Will the price of Ethereum be less than $1500 on May 2?,2025-05-02T12:00:00Z,1500.0,below,0,162,,0.0105,0.0085,0.003,0.001,0.001,539607,will-the-price-of-ethereum-be-less-than-1500-on-may-2
+ETH,"Ethereum above $1,800 on May 2?",2025-05-02T12:00:00Z,1800.0,above,1,163,,0.585,0.53,0.755,0.86,0.76,539590,ethereum-above-1800-on-may-2
+ETH,Will the price of Ethereum be greater than $2000 on May 2?,2025-05-02T12:00:00Z,2000.0,above,0,162,,0.085,0.029,0.036,0.0075,0.0015,539601,will-the-price-of-ethereum-be-greater-than-2000-on-may-2
+BTC,Will the price of Bitcoin be less than $93000 on May 9?,2025-05-09T12:00:00Z,93000.0,below,0,161,,0.385,0.11,0.0075,0.0015,0.0015,540857,will-the-price-of-bitcoin-be-less-than-93000-on-may-9
+BTC,"Bitcoin above $97,000 on May 9?",2025-05-09T12:00:00Z,97000.0,above,1,161,,0.195,0.495,0.895,0.9955,0.9975,540878,bitcoin-above-97000-on-may-9
+BTC,Will the price of Bitcoin be greater than $103000 on May 9?,2025-05-09T12:00:00Z,103000.0,above,0,161,,0.0085,0.043,0.0875,0.4455,0.481,540863,will-the-price-of-bitcoin-be-greater-than-103000-on-may-9
+ETH,Will the price of Ethereum be less than $1500 on May 9?,2025-05-09T12:00:00Z,1500.0,below,0,161,,0.016,0.0085,0.005,0.0055,0.001,540877,will-the-price-of-ethereum-be-less-than-1500-on-may-9-154
+ETH,"Ethereum above $1,800 on May 9?",2025-05-09T12:00:00Z,1800.0,above,1,161,,0.425,0.665,0.9765,0.995,0.998,540879,ethereum-above-1800-on-may-9
+ETH,Will the price of Ethereum be greater than $2000 on May 9?,2025-05-09T12:00:00Z,2000.0,above,1,161,,0.0165,0.05,0.2835,0.979,0.9925,540871,will-the-price-of-ethereum-be-greater-than-2000-on-may-9-483
+BTC,Will the price of Bitcoin be less than $101K on May 15 at 5 PM ET?,2025-05-15T12:00:00Z,101000.0,below,0,16,,,,,0.15,0.29,544753,will-the-price-of-bitcoin-be-less-than-101k-on-may-15-at-5-pm-et
+BTC,Will the price of Bitcoin be greater than $105K on May 15 at 5 PM ET?,2025-05-15T12:00:00Z,105000.0,above,0,16,,,,,0.11,0.021,544758,will-the-price-of-bitcoin-be-greater-than-105k-on-may-15-at-5-pm-et
+ETH,Will the price of Ethereum be less than $2400 on May 15 at 5 PM ET?,2025-05-15T12:00:00Z,2400.0,below,0,16,,,,,0.041,0.0325,544760,will-the-price-of-ethereum-be-less-than-2400-on-may-15-at-5-pm-et
+ETH,Will the price of Ethereum be greater than $2800 on May 15 at 5 PM ET?,2025-05-15T12:00:00Z,2800.0,above,0,16,,,,,0.042,0.03,544765,will-the-price-of-ethereum-be-greater-than-2800-on-may-15-at-5-pm-et
+BTC,Will the price of Bitcoin be less than $98000 on May 16?,2025-05-16T12:00:00Z,98000.0,below,0,165,,0.08,0.052,0.0735,0.0075,0.004,543119,will-the-price-of-bitcoin-be-less-than-98000-on-may-16
+BTC,Will BTC close above $98K on May 16?,2025-05-16T12:00:00Z,98000.0,above,1,162,,0.93,0.955,0.924,0.9895,0.9925,543199,will-btc-close-above-98k-on-may-16
+BTC,Will BTC close above $100K on May 16?,2025-05-16T12:00:00Z,100000.0,above,1,161,,0.84,0.885,0.8,0.9865,0.9885,543198,will-btc-close-above-100k-on-may-16
+BTC,Will the price of Bitcoin be less than $100K on May 16 at 5 PM ET?,2025-05-16T12:00:00Z,100000.0,below,0,20,,,,,0.0255,0.03,544813,will-the-price-of-bitcoin-be-less-than-100k-on-may-16-at-5-pm-et
+BTC,Will BTC close above $102K on May 16?,2025-05-16T12:00:00Z,102000.0,above,1,161,,0.67,0.725,0.485,0.91,0.945,543197,will-btc-close-above-102k-on-may-16
+BTC,Will Bitcoin close above $104K on May 16?,2025-05-16T12:00:00Z,104000.0,above,1,159,,0.45,0.475,0.18,0.47,0.42,543196,will-btc-close-above-104k-on-may-16-558
+BTC,Will the price of Bitcoin be greater than $104K on May 16 at 5 PM ET?,2025-05-16T12:00:00Z,104000.0,above,0,20,,,,,0.42,0.37,544818,will-the-price-of-bitcoin-be-greater-than-104k-on-may-16-at-5-pm-et
+BTC,Will Bitcoin close above $106K on May 16?,2025-05-16T12:00:00Z,106000.0,above,0,159,,0.28,0.24,0.06,0.07,0.012,543195,will-btc-close-above-106k-on-may-16-289
+BTC,Will the price of Bitcoin be greater than $110000 on May 16?,2025-05-16T12:00:00Z,110000.0,above,0,165,,0.07,0.06,0.0115,0.007,0.003,543112,will-the-price-of-bitcoin-be-greater-than-110000-on-may-16
+ETH,Will the price of Ethereum be less than $1900 on May 16?,2025-05-16T12:00:00Z,1900.0,below,0,165,,0.0065,0.003,0.015,0.003,0.001,543127,will-the-price-of-ethereum-be-less-than-1900-on-may-16
+ETH,Will the price of Ethereum be less than $2300 on May 16 at 5 PM ET?,2025-05-16T12:00:00Z,2300.0,below,0,20,,,,,0.0275,0.0275,544819,will-the-price-of-ethereum-be-less-than-2300-on-may-16-at-5-pm-et
+ETH,"Ethereum above $2,500 on May 16?",2025-05-16T12:00:00Z,2500.0,above,1,165,,0.445,0.73,0.655,0.88,0.9795,543129,ethereum-above-2500-on-may-16
+ETH,Will the price of Ethereum be greater than $2700 on May 16 at 5 PM ET?,2025-05-16T12:00:00Z,2700.0,above,0,20,,,,,0.0605,0.035,544824,will-the-price-of-ethereum-be-greater-than-2700-on-may-16-at-5-pm-et
+ETH,Will the price of Ethereum be greater than $2800 on May 16?,2025-05-16T12:00:00Z,2800.0,above,0,165,,0.07,0.16,0.05,0.018,0.015,543120,will-the-price-of-ethereum-be-greater-than-2800-on-may-16
+BTC,Will the price of Bitcoin be less than $101K on May 17 at 5 PM ET?,2025-05-17T12:00:00Z,101000.0,below,0,15,,,,,0.275,0.26,545293,will-the-price-of-bitcoin-be-less-than-101k-on-may-17-at-5-pm-et
+BTC,Will the price of Bitcoin be greater than $105K on May 17 at 5 PM ET?,2025-05-17T12:00:00Z,105000.0,above,0,15,,,,,0.41,0.045,545298,will-the-price-of-bitcoin-be-greater-than-105k-on-may-17-at-5-pm-et
+ETH,Will the price of Ethereum be less than $2400 on May 17 at 5 PM ET?,2025-05-17T12:00:00Z,2400.0,below,0,15,,,,,0.105,0.155,545306,will-the-price-of-ethereum-be-less-than-2400-on-may-17-at-5-pm-et
+ETH,Will the price of Ethereum be greater than $2800 on May 17 at 5 PM ET?,2025-05-17T12:00:00Z,2800.0,above,0,15,,,,,0.43,0.008,545311,will-the-price-of-ethereum-be-greater-than-2800-on-may-17-at-5-pm-et
+BTC,Will the price of Bitcoin be less than $102K on May 18 at 5 PM ET?,2025-05-18T12:00:00Z,102000.0,below,0,21,,,,,0.175,0.105,545391,will-the-price-of-bitcoin-be-less-than-102k-on-may-18-at-5-pm-et
+BTC,Will the price of Bitcoin be greater than $104K on May 18 at 5 PM ET?,2025-05-18T12:00:00Z,104000.0,above,1,21,,,,,0.47,0.615,545394,will-the-price-of-bitcoin-be-greater-than-104k-on-may-18-at-5-pm-et
+ETH,Will the price of Ethereum be less than $2300 on May 18 at 5 PM ET?,2025-05-18T12:00:00Z,2300.0,below,0,21,,,,,0.019,0.018,545395,will-the-price-of-ethereum-be-less-than-2300-on-may-18-at-5-pm-et
+ETH,Will the price of Ethereum be greater than $2500 on May 18 at 5 PM ET?,2025-05-18T12:00:00Z,2500.0,above,0,21,,,,,0.385,0.565,545398,will-the-price-of-ethereum-be-greater-than-2500-on-may-18-at-5-pm-et
+BTC,Will the price of Bitcoin be less than $103K on May 19 at 5 PM ET?,2025-05-19T12:00:00Z,103000.0,below,0,20,,,,,0.49,0.48,545447,will-the-price-of-bitcoin-be-less-than-103k-on-may-19-at-5-pm-et
+BTC,Will the price of Bitcoin be greater than $105K on May 19 at 5 PM ET?,2025-05-19T12:00:00Z,105000.0,above,1,20,,,,,0.19,0.15,545450,will-the-price-of-bitcoin-be-greater-than-105k-on-may-19-at-5-pm-et
+ETH,Will the price of Ethereum be less than $2400 on May 19 at 5 PM ET?,2025-05-19T12:00:00Z,2400.0,below,0,20,,,,,0.635,0.475,545451,will-the-price-of-ethereum-be-less-than-2400-on-may-19-at-5-pm-et
+ETH,Will the price of Ethereum be greater than $2600 on May 19 at 5 PM ET?,2025-05-19T12:00:00Z,2600.0,above,0,20,,,,,0.0355,0.0305,545454,will-the-price-of-ethereum-be-greater-than-2600-on-may-19-at-5-pm-et
+BTC,Will the price of Bitcoin be less than $104K on May 20 at 5 PM ET?,2025-05-20T12:00:00Z,104000.0,below,0,15,,,,,0.145,0.21,545858,will-the-price-of-bitcoin-be-less-than-104k-on-may-20-at-5-pm-et
+BTC,Will the price of Bitcoin be greater than $106K on May 20 at 5 PM ET?,2025-05-20T12:00:00Z,106000.0,above,1,15,,,,,0.54,0.345,545861,will-the-price-of-bitcoin-be-greater-than-106k-on-may-20-at-5-pm-et
+ETH,Will the price of Ethereum be less than $2300 on May 20 at 5 PM ET?,2025-05-20T12:00:00Z,2300.0,below,0,20,,,,,0.011,0.013,545522,will-the-price-of-ethereum-be-less-than-2300-on-may-20-at-5-pm-et
+ETH,Will the price of Ethereum be greater than $2500 on May 20 at 5 PM ET?,2025-05-20T12:00:00Z,2500.0,above,1,20,,,,,0.785,0.635,545525,will-the-price-of-ethereum-be-greater-than-2500-on-may-20-at-5-pm-et
+BTC,Will the price of Bitcoin be less than $104K on May 21 at 5 PM ET?,2025-05-21T12:00:00Z,104000.0,below,0,19,,,,,0.075,0.12,546017,will-the-price-of-bitcoin-be-less-than-104k-on-may-21-at-5-pm-et
+BTC,Will the price of Bitcoin be greater than $106K on May 21 at 5 PM ET?,2025-05-21T12:00:00Z,106000.0,above,1,19,,,,,0.72,0.525,546020,will-the-price-of-bitcoin-be-greater-than-106k-on-may-21-at-5-pm-et
+ETH,Will the price of Ethereum be less than $2300 on May 21 at 5 PM ET?,2025-05-21T12:00:00Z,2300.0,below,0,19,,,,,0.011,0.008,546039,will-the-price-of-ethereum-be-less-than-2300-on-may-21-at-5-pm-et
+ETH,Will the price of Ethereum be greater than $2500 on May 21 at 5 PM ET?,2025-05-21T12:00:00Z,2500.0,above,1,19,,,,,0.735,0.61,546042,will-the-price-of-ethereum-be-greater-than-2500-on-may-21-at-5-pm-et
+BTC,Will the price of Bitcoin be less than $108K on May 22 at 5 PM ET?,2025-05-22T12:00:00Z,108000.0,below,0,20,,,,,0.115,0.11,546396,will-the-price-of-bitcoin-be-less-than-108k-on-may-22-at-5-pm-et
+BTC,Will the price of Bitcoin be greater than $110K on May 22 at 5 PM ET?,2025-05-22T12:00:00Z,110000.0,above,1,20,,,,,0.7,0.645,546399,will-the-price-of-bitcoin-be-greater-than-110k-on-may-22-at-5-pm-et
+ETH,Will the price of Ethereum be less than $2400 on May 22 at 5 PM ET?,2025-05-22T12:00:00Z,2400.0,below,0,20,,,,,0.0255,0.0175,546400,will-the-price-of-ethereum-be-less-than-2400-on-may-22-at-5-pm-et
+ETH,Will the price of Ethereum be greater than $2600 on May 22 at 5 PM ET?,2025-05-22T12:00:00Z,2600.0,above,1,20,,,,,0.615,0.755,546403,will-the-price-of-ethereum-be-greater-than-2600-on-may-22-at-5-pm-et
+BTC,Will the price of Bitcoin be less than $100K on May 23?,2025-05-23T12:00:00Z,100000.0,below,0,164,,0.085,0.053,0.007,0.001,0.0015,545209,will-the-price-of-bitcoin-be-less-than-100k-on-may-23
+BTC,Will BTC close above $102K on May 23?,2025-05-23T12:00:00Z,102000.0,above,1,163,,0.79,0.87,0.9845,0.9945,0.996,545231,will-btc-close-above-102k-on-may-23
+BTC,Will BTC close above $104K on May 23?,2025-05-23T12:00:00Z,104000.0,above,1,163,,0.61,0.74,0.9675,0.998,0.9925,545230,will-btc-close-above-104k-on-may-23
+BTC,Will the price of Bitcoin be greater than $106K on May 23?,2025-05-23T12:00:00Z,106000.0,above,1,164,,0.415,0.545,0.92,0.982,0.9915,545216,will-the-price-of-bitcoin-be-greater-than-106k-on-may-23
+BTC,Will BTC close above $106K on May 23?,2025-05-23T12:00:00Z,106000.0,above,1,163,,0.39,0.53,0.925,0.9795,0.994,545229,will-btc-close-above-106k-on-may-23
+BTC,Will the price of Bitcoin be less than $110K on May 23 at 5 PM ET?,2025-05-23T12:00:00Z,110000.0,below,1,19,,,,,0.355,0.24,546661,will-the-price-of-bitcoin-be-less-than-110k-on-may-23-at-5-pm-et
+BTC,Will the price of Bitcoin be greater than $112K on May 23 at 5 PM ET?,2025-05-23T12:00:00Z,112000.0,above,0,19,,,,,0.31,0.36,546664,will-the-price-of-bitcoin-be-greater-than-112k-on-may-23-at-5-pm-et
+ETH,Will the price of Ethereum be less than $2400 on May 23?,2025-05-23T12:00:00Z,2400.0,below,0,164,,0.255,0.18,0.0325,0.002,0.0015,545217,will-the-price-of-ethereum-be-less-than-2400-on-may-23
+ETH,Will the price of Ethereum be less than $2500 on May 23 at 5 PM ET?,2025-05-23T12:00:00Z,2500.0,below,0,18,,,,,0.045,0.023,546707,will-the-price-of-ethereum-be-less-than-2500-on-may-23-at-5-pm-et
+ETH,"Ethereum above $2,700 on May 23?",2025-05-23T12:00:00Z,2700.0,above,0,164,,0.165,0.14,0.365,0.475,0.375,545198,ethereum-above-2700-on-may-23-847
+ETH,Will the price of Ethereum be greater than $2700 on May 23 at 5 PM ET?,2025-05-23T12:00:00Z,2700.0,above,0,18,,,,,0.485,0.4,546710,will-the-price-of-ethereum-be-greater-than-2700-on-may-23-at-5-pm-et
+ETH,Will the price of Ethereum be greater than $2800 on May 23?,2025-05-23T12:00:00Z,2800.0,above,0,164,,0.075,0.063,0.146,0.111,0.038,545222,will-the-price-of-ethereum-be-greater-than-2800-on-may-23
+BTC,Will the price of Bitcoin be less than $108K on May 24 at 5 PM ET?,2025-05-24T12:00:00Z,108000.0,below,0,20,,,,,0.355,0.435,546895,will-the-price-of-bitcoin-be-less-than-108k-on-may-24-at-5-pm-et
+BTC,Will the price of Bitcoin be greater than $110K on May 24 at 5 PM ET?,2025-05-24T12:00:00Z,110000.0,above,0,20,,,,,0.13,0.055,546898,will-the-price-of-bitcoin-be-greater-than-110k-on-may-24-at-5-pm-et
+ETH,Will the price of Ethereum be less than $2400 on May 24 at 5 PM ET?,2025-05-24T12:00:00Z,2400.0,below,0,19,,,,,0.0385,0.0125,546964,will-the-price-of-ethereum-be-less-than-2400-on-may-24-at-5-pm-et
+ETH,Will the price of Ethereum be greater than $2600 on May 24 at 5 PM ET?,2025-05-24T12:00:00Z,2600.0,above,0,19,,,,,0.225,0.145,546967,will-the-price-of-ethereum-be-greater-than-2600-on-may-24-at-5-pm-et
+BTC,Will the price of Bitcoin be less than $108K on May 25 at 5 PM ET?,2025-05-25T12:00:00Z,108000.0,below,1,18,,,,,0.42,0.765,547114,will-the-price-of-bitcoin-be-less-than-108k-on-may-25-at-5-pm-et
+BTC,Will the price of Bitcoin be greater than $110K on May 25 at 5 PM ET?,2025-05-25T12:00:00Z,110000.0,above,0,18,,,,,0.105,0.0255,547117,will-the-price-of-bitcoin-be-greater-than-110k-on-may-25-at-5-pm-et
+ETH,Will the price of Ethereum be less than $2400 on May 25 at 5 PM ET?,2025-05-25T12:00:00Z,2400.0,below,0,18,,,,,0.0355,0.036,547118,will-the-price-of-ethereum-be-less-than-2400-on-may-25-at-5-pm-et
+ETH,Will the price of Ethereum be greater than $2600 on May 25 at 5 PM ET?,2025-05-25T12:00:00Z,2600.0,above,0,18,,,,,0.045,0.0155,547121,will-the-price-of-ethereum-be-greater-than-2600-on-may-25-at-5-pm-et
+BTC,Will the price of Bitcoin be less than $106K on May 26 at 5 PM ET?,2025-05-26T12:00:00Z,106000.0,below,0,20,,,,,0.025,0.007,547185,will-the-price-of-bitcoin-be-less-than-106k-on-may-26-at-5-pm-et
+BTC,Will the price of Bitcoin be greater than $108K on May 26 at 5 PM ET?,2025-05-26T12:00:00Z,108000.0,above,1,20,,,,,0.875,0.925,547188,will-the-price-of-bitcoin-be-greater-than-108k-on-may-26-at-5-pm-et
+ETH,Will the price of Ethereum be less than $2400 on May 26 at 5 PM ET?,2025-05-26T12:00:00Z,2400.0,below,0,19,,,,,0.0225,0.025,547189,will-the-price-of-ethereum-be-less-than-2400-on-may-26-at-5-pm-et
+ETH,Will the price of Ethereum be greater than $2600 on May 26 at 5 PM ET?,2025-05-26T12:00:00Z,2600.0,above,0,19,,,,,0.215,0.2,547192,will-the-price-of-ethereum-be-greater-than-2600-on-may-26-at-5-pm-et
+BTC,Will the price of Bitcoin be less than $101K on May 27?,2025-05-27T12:00:00Z,101000.0,below,0,164,,0.0445,0.0605,0.0025,0.002,0.001,545958,will-the-price-of-bitcoin-be-less-than-101k-on-may-27
+BTC,"Bitcoin above $106,000 on May 27?",2025-05-27T12:00:00Z,106000.0,above,1,164,,0.785,0.605,0.925,0.95,0.992,545969,bitcoin-above-106000-on-may-27
+BTC,Will the price of Bitcoin be greater than $107K on May 27?,2025-05-27T12:00:00Z,107000.0,above,1,164,,0.695,0.495,0.855,0.86,0.9735,545962,will-the-price-of-bitcoin-be-greater-than-107k-on-may-27
+BTC,Will the price of Bitcoin be less than $109K on May 27 at 5 PM ET?,2025-05-27T12:00:00Z,109000.0,below,0,20,,,,,0.5,0.365,547365,will-the-price-of-bitcoin-be-less-than-109k-on-may-27-at-5-pm-et
+BTC,Will the price of Bitcoin be greater than $111K on May 27 at 5 PM ET?,2025-05-27T12:00:00Z,111000.0,above,0,20,,,,,0.255,0.305,547368,will-the-price-of-bitcoin-be-greater-than-111k-on-may-27-at-5-pm-et
+ETH,Will the price of Ethereum be less than $2300 on May 27?,2025-05-27T12:00:00Z,2300.0,below,0,164,,0.0565,0.0845,0.014,0.0065,0.001,545963,will-the-price-of-ethereum-be-less-than-2300-on-may-27
+ETH,Will the price of Ethereum be less than $2400 on May 27 at 5 PM ET?,2025-05-27T12:00:00Z,2400.0,below,0,19,,,,,0.06,0.0255,547370,will-the-price-of-ethereum-be-less-than-2400-on-may-27-at-5-pm-et
+ETH,"Ethereum above $2,500 on May 27?",2025-05-27T12:00:00Z,2500.0,above,1,164,,0.68,0.48,0.76,0.825,0.9845,545968,ethereum-above-2500-on-may-27
+ETH,Will the price of Ethereum be greater than $2600 on May 27?,2025-05-27T12:00:00Z,2600.0,above,1,164,,0.42,0.2,0.34,0.25,0.74,545967,will-the-price-of-ethereum-be-greater-than-2600-on-may-27
+ETH,Will the price of Ethereum be greater than $2600 on May 27 at 5 PM ET?,2025-05-27T12:00:00Z,2600.0,above,1,19,,,,,0.32,0.68,547373,will-the-price-of-ethereum-be-greater-than-2600-on-may-27-at-5-pm-et
+BTC,Will the price of Bitcoin be less than $109K on May 28 at 5 PM ET?,2025-05-28T12:00:00Z,109000.0,below,1,18,,,,,0.5,0.54,547616,will-the-price-of-bitcoin-be-less-than-109k-on-may-28-at-5-pm-et
+BTC,Will the price of Bitcoin be greater than $111K on May 28 at 5 PM ET?,2025-05-28T12:00:00Z,111000.0,above,0,18,,,,,0.17,0.075,547619,will-the-price-of-bitcoin-be-greater-than-111k-on-may-28-at-5-pm-et
+ETH,Will the price of Ethereum be less than $2500 on May 28 at 5 PM ET?,2025-05-28T12:00:00Z,2500.0,below,0,18,,,,,0.043,0.0395,547620,will-the-price-of-ethereum-be-less-than-2500-on-may-28-at-5-pm-et
+ETH,Will the price of Ethereum be greater than $2700 on May 28 at 5 PM ET?,2025-05-28T12:00:00Z,2700.0,above,0,18,,,,,0.245,0.115,547623,will-the-price-of-ethereum-be-greater-than-2700-on-may-28-at-5-pm-et
+BTC,Will the price of Bitcoin be less than $106K on May 29 at 5 PM ET?,2025-05-29T12:00:00Z,106000.0,below,0,20,,,,,0.215,0.055,547875,will-the-price-of-bitcoin-be-less-than-106k-on-may-29-at-5-pm-et
+BTC,Will the price of Bitcoin be greater than $108K on May 29 at 5 PM ET?,2025-05-29T12:00:00Z,108000.0,above,0,20,,,,,0.435,0.64,547878,will-the-price-of-bitcoin-be-greater-than-108k-on-may-29-at-5-pm-et
+ETH,Will the price of Ethereum be less than $2500 on May 29 at 5 PM ET?,2025-05-29T12:00:00Z,2500.0,below,0,20,,,,,0.015,0.006,547880,will-the-price-of-ethereum-be-less-than-2500-on-may-29-at-5-pm-et
+ETH,Will the price of Ethereum be greater than $2700 on May 29 at 5 PM ET?,2025-05-29T12:00:00Z,2700.0,above,0,20,,,,,0.61,0.695,547883,will-the-price-of-ethereum-be-greater-than-2700-on-may-29-at-5-pm-et
+BTC,Will the price of Bitcoin be less than $106K on May 30?,2025-05-30T12:00:00Z,106000.0,below,1,165,,0.215,0.23,0.165,0.48,0.63,546900,will-the-price-of-bitcoin-be-less-than-106k-on-may-30
+BTC,Will the price of Bitcoin be less than $106K on May 30 at 5 PM ET?,2025-05-30T12:00:00Z,106000.0,below,1,19,,,,,0.48,0.605,548190,will-the-price-of-bitcoin-be-less-than-106k-on-may-30-at-5-pm-et
+BTC,Will the price of Bitcoin be greater than $108K on May 30 at 5 PM ET?,2025-05-30T12:00:00Z,108000.0,above,0,19,,,,,0.155,0.0655,548193,will-the-price-of-bitcoin-be-greater-than-108k-on-may-30-at-5-pm-et
+BTC,"Bitcoin above $113,000 on May 30?",2025-05-30T12:00:00Z,113000.0,above,0,170,0.42,0.265,0.14,0.065,0.003,0.0025,546856,bitcoin-above-113000-on-may-30
+BTC,Will the price of Bitcoin be greater than $114K on May 30?,2025-05-30T12:00:00Z,114000.0,above,0,165,,0.195,0.07,0.025,0.003,0.001,546905,will-the-price-of-bitcoin-be-greater-than-114k-on-may-30-487
+ETH,Will the price of Ethereum be less than $2500 on May 30?,2025-05-30T12:00:00Z,2500.0,below,0,167,,0.215,0.145,0.0245,0.034,0.0285,546869,will-the-price-of-ethereum-be-less-than-2500-on-may-30
+ETH,Will the price of Ethereum be less than $2500 on May 30 at 5 PM ET?,2025-05-30T12:00:00Z,2500.0,below,0,19,,,,,0.065,0.045,548195,will-the-price-of-ethereum-be-less-than-2500-on-may-30-at-5-pm-et
+ETH,Will the price of Ethereum be greater than $2700 on May 30 at 5 PM ET?,2025-05-30T12:00:00Z,2700.0,above,0,19,,,,,0.22,0.105,548198,will-the-price-of-ethereum-be-greater-than-2700-on-may-30-at-5-pm-et
+ETH,"Ethereum above $2,800 on May 30?",2025-05-30T12:00:00Z,2800.0,above,0,170,0.325,0.19,0.135,0.265,0.022,0.0075,546857,ethereum-above-2800-on-may-30
+ETH,Will the price of Ethereum be greater than $2800 on May 30?,2025-05-30T12:00:00Z,2800.0,above,0,167,,0.195,0.13,0.27,0.0215,0.013,546873,will-the-price-of-ethereum-be-greater-than-2800-on-may-30
+BTC,Will the price of Bitcoin be less than $103K on May 31 at 5 PM ET?,2025-05-31T00:00:00Z,103000.0,below,0,7,,,,,0.23,0.115,548507,will-the-price-of-bitcoin-be-less-than-103k-on-may-31-at-5-pm-et
+BTC,Will the price of Bitcoin be greater than $105K on May 31 at 5 PM ET?,2025-05-31T00:00:00Z,105000.0,above,0,7,,,,,0.155,0.385,548510,will-the-price-of-bitcoin-be-greater-than-105k-on-may-31-at-5-pm-et
+ETH,Will the price of Ethereum be less than $2400 on May 31 at 5 PM ET?,2025-05-31T17:00:00Z,2400.0,below,0,24,,,,,0.021,0.001,548513,will-the-price-of-ethereum-be-less-than-2400-on-may-31-at-5-pm-et
+ETH,Will the price of Ethereum be greater than $2600 on May 31 at 5 PM ET?,2025-05-31T17:00:00Z,2600.0,above,0,24,,,,,0.0445,0.0265,548516,will-the-price-of-ethereum-be-greater-than-2600-on-may-31-at-5-pm-et
+BTC,Will the price of Bitcoin be less than $103K on June 2 at 5 PM ET?,2025-06-02T17:00:00Z,103000.0,below,0,26,,,,0.26,0.1305,0.133,548805,will-the-price-of-bitcoin-be-less-than-103k-on-june-2-at-5-pm-et
+BTC,Will the price of Bitcoin be greater than $105K on June 2 at 5 PM ET?,2025-06-02T17:00:00Z,105000.0,above,0,26,,,,0.455,0.39,0.23,548808,will-the-price-of-bitcoin-be-greater-than-105k-on-june-2-at-5-pm-et
+ETH,Will the price of Ethereum be less than $2400 on June 2 at 5 PM ET?,2025-06-02T17:00:00Z,2400.0,below,0,26,,,,0.095,0.1,0.0215,548809,will-the-price-of-ethereum-be-less-than-2400-on-june-2-at-5-pm-et
+ETH,Will the price of Ethereum be greater than $2600 on June 2 at 5 PM ET?,2025-06-02T17:00:00Z,2600.0,above,0,26,,,,0.19,0.03,0.0655,548812,will-the-price-of-ethereum-be-greater-than-2600-on-june-2-at-5-pm-et
+BTC,Will the price of Bitcoin be less than $107K on June 3?,2025-06-03T12:00:00Z,107000.0,below,1,162,,0.815,0.815,0.875,0.927,0.9565,547640,will-the-price-of-bitcoin-be-less-than-107k-on-june-3
+BTC,"Bitcoin above $111,000 on June 3?",2025-06-03T12:00:00Z,111000.0,above,0,163,,0.0335,0.018,0.011,0.004,0.003,547613,bitcoin-above-111000-on-june-3
+BTC,Will the price of Bitcoin be greater than $113K on June 3?,2025-06-03T12:00:00Z,113000.0,above,0,162,,0.0115,0.013,0.0025,0.003,0.0015,547644,will-the-price-of-bitcoin-be-greater-than-113k-on-june-3
+ETH,Will the price of Ethereum be less than $2500 on June 3?,2025-06-03T12:00:00Z,2500.0,below,0,162,,0.45,0.525,0.585,0.0645,0.0105,547634,will-the-price-of-ethereum-be-less-than-2500-on-june-3
+ETH,"Ethereum above $2,700 on June 3?",2025-06-03T12:00:00Z,2700.0,above,0,163,,0.115,0.06,0.022,0.041,0.037,547614,ethereum-above-2700-on-june-3
+ETH,Will the price of Ethereum be greater than $2800 on June 3?,2025-06-03T12:00:00Z,2800.0,above,0,162,,0.047,0.0105,0.0045,0.0055,0.003,547638,will-the-price-of-ethereum-be-greater-than-2800-on-june-3
+BTC,Will the price of Bitcoin be less than $103K on June 3 at 5 PM ET?,2025-06-03T17:00:00Z,103000.0,below,0,23,,,,,0.0475,0.008,549104,will-the-price-of-bitcoin-be-less-than-103k-on-june-3-at-5-pm-et
+BTC,Will the price of Bitcoin be greater than $105K on June 3 at 5 PM ET?,2025-06-03T17:00:00Z,105000.0,above,1,23,,,,,0.57,0.925,549107,will-the-price-of-bitcoin-be-greater-than-105k-on-june-3-at-5-pm-et
+ETH,Will the price of Ethereum be less than $2400 on June 3 at 5 PM ET?,2025-06-03T17:00:00Z,2400.0,below,0,23,,,,,0.011,0.0035,549160,will-the-price-of-ethereum-be-less-than-2400-on-june-3-at-5-pm-et
+ETH,Will the price of Ethereum be greater than $2600 on June 3 at 5 PM ET?,2025-06-03T17:00:00Z,2600.0,above,1,23,,,,,0.605,0.865,549163,will-the-price-of-ethereum-be-greater-than-2600-on-june-3-at-5-pm-et
+BTC,Will the price of Bitcoin be less than $105K on June 4 at 5 PM ET?,2025-06-04T00:00:00Z,105000.0,below,1,7,,,,,0.34,0.415,549500,will-the-price-of-bitcoin-be-less-than-105k-on-june-4-at-5-pm-et
+BTC,Will the price of Bitcoin be greater than $107K on June 4 at 5 PM ET?,2025-06-04T00:00:00Z,107000.0,above,0,7,,,,,0.39,0.205,549503,will-the-price-of-bitcoin-be-greater-than-107k-on-june-4-at-5-pm-et
+ETH,Will the price of Ethereum be less than $2500 on June 4 at 5 PM ET?,2025-06-04T00:00:00Z,2500.0,below,0,7,,,,,0.395,0.13,549504,will-the-price-of-ethereum-be-less-than-2500-on-june-4-at-5-pm-et
+ETH,Will the price of Ethereum be greater than $2700 on June 4 at 5 PM ET?,2025-06-04T00:00:00Z,2700.0,above,0,7,,,,,0.395,0.08,549507,will-the-price-of-ethereum-be-greater-than-2700-on-june-4-at-5-pm-et
+BTC,Will the price of Bitcoin be less than $103K on June 5 at 5 PM ET?,2025-06-05T00:00:00Z,103000.0,below,1,7,,,,,0.3,0.135,549806,will-the-price-of-bitcoin-be-less-than-103k-on-june-5-at-5-pm-et
+BTC,Will the price of Bitcoin be greater than $105K on June 5 at 5 PM ET?,2025-06-05T00:00:00Z,105000.0,above,0,7,,,,,0.395,0.49,549809,will-the-price-of-bitcoin-be-greater-than-105k-on-june-5-at-5-pm-et
+ETH,Will the price of Ethereum be less than $2500 on June 5 at 5 PM ET?,2025-06-05T00:00:00Z,2500.0,below,1,7,,,,,0.395,0.065,549810,will-the-price-of-ethereum-be-less-than-2500-on-june-5-at-5-pm-et
+ETH,Will the price of Ethereum be greater than $2700 on June 5 at 5 PM ET?,2025-06-05T00:00:00Z,2700.0,above,0,7,,,,,0.395,0.155,549813,will-the-price-of-ethereum-be-greater-than-2700-on-june-5-at-5-pm-et
+BTC,Will the price of Bitcoin be less than $103K on June 6 at 5 PM ET?,2025-06-06T00:00:00Z,103000.0,below,0,8,,,,,0.44,0.715,549985,will-the-price-of-bitcoin-be-less-than-103k-on-june-6-at-5-pm-et
+BTC,Will the price of Bitcoin be greater than $105K on June 6 at 5 PM ET?,2025-06-06T00:00:00Z,105000.0,above,0,8,,,,,0.23,0.095,549988,will-the-price-of-bitcoin-be-greater-than-105k-on-june-6-at-5-pm-et
+ETH,Will the price of Ethereum be less than $2400 on June 6 at 5 PM ET?,2025-06-06T00:00:00Z,2400.0,below,0,8,,,,,0.07,0.35,549989,will-the-price-of-ethereum-be-less-than-2400-on-june-6-at-5-pm-et
+ETH,Will the price of Ethereum be greater than $2600 on June 6 at 5 PM ET?,2025-06-06T00:00:00Z,2600.0,above,0,8,,,,,0.315,0.08,549992,will-the-price-of-ethereum-be-greater-than-2600-on-june-6-at-5-pm-et
+BTC,Will the price of Bitcoin be less than $102K on June 6?,2025-06-06T12:00:00Z,102000.0,below,0,166,,0.18,0.115,0.155,0.345,0.16,548441,will-the-price-of-bitcoin-be-less-than-102k-on-june-6
+BTC,"Bitcoin above $105,000 on June 6?",2025-06-06T12:00:00Z,105000.0,above,1,166,,0.535,0.595,0.445,0.074,0.1065,548456,bitcoin-above-105000-on-june-6
+BTC,Will the price of Bitcoin be greater than $108K on June 6?,2025-06-06T12:00:00Z,108000.0,above,0,166,,0.22,0.225,0.04,0.003,0.002,548445,will-the-price-of-bitcoin-be-greater-than-108k-on-june-6
+ETH,Will the price of Ethereum be less than $2400 on June 6?,2025-06-06T12:00:00Z,2400.0,below,0,166,,0.095,0.0355,0.025,0.1685,0.093,548446,will-the-price-of-ethereum-be-less-than-2400-on-june-6
+ETH,"Ethereum above $2,500 on June 6?",2025-06-06T12:00:00Z,2500.0,above,1,166,,0.77,0.85,0.855,0.27,0.245,548457,ethereum-above-2500-on-june-6
+ETH,Will the price of Ethereum be greater than $2700 on June 6?,2025-06-06T12:00:00Z,2700.0,above,0,166,,0.285,0.315,0.155,0.0085,0.0035,548450,will-the-price-of-ethereum-be-greater-than-2700-on-june-6
+ETH,Will the price of Ethereum be less than $2400 on June 7 at 5 PM ET?,2025-06-07T00:00:00Z,2400.0,below,0,8,,,,,0.12,0.08,550335,will-the-price-of-ethereum-be-less-than-2400-on-june-7-at-5-pm-et
+ETH,Will the price of Ethereum be greater than $2600 on June 7 at 5 PM ET?,2025-06-07T00:00:00Z,2600.0,above,0,8,,,,,0.105,0.055,550338,will-the-price-of-ethereum-be-greater-than-2600-on-june-7-at-5-pm-et
+BTC,Will the price of Bitcoin be less than $103K on June 7 at 5 PM ET?,2025-06-07T21:00:00Z,103000.0,below,0,29,,,,0.175,0.007,0.0015,550325,will-the-price-of-bitcoin-be-less-than-103k-on-june-7-at-5-pm-et
+BTC,Will the price of Bitcoin be greater than $105K on June 7 at 5 PM ET?,2025-06-07T21:00:00Z,105000.0,above,1,29,,,,0.275,0.83,0.954,550328,will-the-price-of-bitcoin-be-greater-than-105k-on-june-7-at-5-pm-et
+ETH,Will the price of Ethereum be less than $2400 on June 8 at 5 PM ET?,2025-06-08T00:00:00Z,2400.0,below,0,8,,,,,0.075,0.045,550546,will-the-price-of-ethereum-be-less-than-2400-on-june-8-at-5-pm-et
+ETH,Will the price of Ethereum be greater than $2600 on June 8 at 5 PM ET?,2025-06-08T00:00:00Z,2600.0,above,0,8,,,,,0.105,0.105,550549,will-the-price-of-ethereum-be-greater-than-2600-on-june-8-at-5-pm-et
+BTC,Will the price of Bitcoin be less than $104K on June 8 at 5 PM ET?,2025-06-08T21:00:00Z,104000.0,below,0,29,,,,0.125,0.029,0.0025,550542,will-the-price-of-bitcoin-be-less-than-104k-on-june-8-at-5-pm-et
+BTC,Will the price of Bitcoin be greater than $106K on June 8 at 5 PM ET?,2025-06-08T21:00:00Z,106000.0,above,1,29,,,,0.435,0.35,0.75,550545,will-the-price-of-bitcoin-be-greater-than-106k-on-june-8-at-5-pm-et
+BTC,Will the price of Bitcoin be less than $104K on June 9 at 5 PM ET?,2025-06-09T21:00:00Z,104000.0,below,0,30,,,,0.17,0.015,0.001,550749,will-the-price-of-bitcoin-be-less-than-104k-on-june-9-at-5-pm-et
+BTC,Will the price of Bitcoin be greater than $106K on June 9 at 5 PM ET?,2025-06-09T21:00:00Z,106000.0,above,1,30,,,,0.56,0.8,0.9955,550752,will-the-price-of-bitcoin-be-greater-than-106k-on-june-9-at-5-pm-et
+ETH,Will the price of Ethereum be less than $2400 on June 9 at 5 PM ET?,2025-06-09T21:00:00Z,2400.0,below,0,30,,,,0.06,0.01,0.001,550753,will-the-price-of-ethereum-be-less-than-2400-on-june-9-at-5-pm-et
+ETH,Will the price of Ethereum be greater than $2600 on June 9 at 5 PM ET?,2025-06-09T21:00:00Z,2600.0,above,0,29,,,,0.215,0.0515,0.2395,550756,will-the-price-of-ethereum-be-greater-than-2600-on-june-9-at-5-pm-et
+BTC,Will the price of Bitcoin be less than $103K on June 10?,2025-06-10T00:00:00Z,103000.0,below,0,151,,0.32,0.17,0.15,0.016,0.007,549513,will-the-price-of-bitcoin-be-less-than-103k-on-june-10-226
+BTC,Will the price of Bitcoin be greater than $109K on June 10?,2025-06-10T00:00:00Z,109000.0,above,1,151,,0.1,0.155,0.125,0.255,0.67,549517,will-the-price-of-bitcoin-be-greater-than-109k-on-june-10-741
+ETH,Will the price of Ethereum be less than $2400 on June 10?,2025-06-10T00:00:00Z,2400.0,below,0,151,,0.29,0.145,0.16,0.044,0.0135,549518,will-the-price-of-ethereum-be-less-than-2400-on-june-10
+ETH,Will the price of Ethereum be greater than $2700 on June 10?,2025-06-10T00:00:00Z,2700.0,above,1,151,,0.105,0.125,0.065,0.061,0.234,549522,will-the-price-of-ethereum-be-greater-than-2700-on-june-10
+BTC,"Bitcoin above $107,000 on June 10?",2025-06-10T16:00:00Z,107000.0,above,1,167,,0.33,0.34,0.605,0.9545,0.991,549450,bitcoin-above-107000-on-june-10
+ETH,"Ethereum above $2,700 on June 10?",2025-06-10T16:00:00Z,2700.0,above,1,167,,0.13,0.075,0.0475,0.279,0.868,549453,ethereum-above-2700-on-june-10
+ETH,Will the price of Ethereum be less than $2400 on June 10 at 5 PM ET?,2025-06-10T21:00:00Z,2400.0,below,0,26,,,,0.525,0.002,0.001,550998,will-the-price-of-ethereum-be-less-than-2400-on-june-10-at-5-pm-et
+ETH,Will the price of Ethereum be greater than $2600 on June 10 at 5 PM ET?,2025-06-10T21:00:00Z,2600.0,above,1,26,,,,0.55,0.964,0.9965,551001,will-the-price-of-ethereum-be-greater-than-2600-on-june-10-at-5-pm-et
+BTC,Will the price of Bitcoin be less than $108K on June 11 at 5 PM ET?,2025-06-11T21:00:00Z,108000.0,below,0,27,,,,0.265,0.105,0.096,551312,will-the-price-of-bitcoin-be-less-than-108k-on-june-11-at-5-pm-et
+BTC,Will the price of Bitcoin be greater than $110K on June 11 at 5 PM ET?,2025-06-11T21:00:00Z,110000.0,above,0,27,,,,0.42,0.405,0.0455,551315,will-the-price-of-bitcoin-be-greater-than-110k-on-june-11-at-5-pm-et
+ETH,Will the price of Ethereum be less than $2600 on June 11 at 5 PM ET?,2025-06-11T21:00:00Z,2600.0,below,0,27,,,,0.085,0.006,0.001,551316,will-the-price-of-ethereum-be-less-than-2600-on-june-11-at-5-pm-et
+ETH,Will the price of Ethereum be greater than $2800 on June 11 at 5 PM ET?,2025-06-11T21:00:00Z,2800.0,above,1,27,,,,0.415,0.475,0.725,551319,will-the-price-of-ethereum-be-greater-than-2800-on-june-11-at-5-pm-et
+BTC,Will the price of Bitcoin be less than $108K on June 12 at 5 PM ET?,2025-06-12T21:00:00Z,108000.0,below,1,28,,,,0.4,0.77,0.805,551562,will-the-price-of-bitcoin-be-less-than-108k-on-june-12-at-5-pm-et
+BTC,Will the price of Bitcoin be greater than $110K on June 12 at 5 PM ET?,2025-06-12T21:00:00Z,110000.0,above,0,28,,,,0.295,0.011,0.0025,551565,will-the-price-of-bitcoin-be-greater-than-110k-on-june-12-at-5-pm-et
+ETH,Will the price of Ethereum be less than $2700 on June 12 at 5 PM ET?,2025-06-12T21:00:00Z,2700.0,below,1,28,,,,0.15,0.225,0.09,551566,will-the-price-of-ethereum-be-less-than-2700-on-june-12-at-5-pm-et
+ETH,Will the price of Ethereum be greater than $2900 on June 12 at 5 PM ET?,2025-06-12T21:00:00Z,2900.0,above,0,28,,,,0.235,0.0295,0.0025,551569,will-the-price-of-ethereum-be-greater-than-2900-on-june-12-at-5-pm-et
+BTC,Will the price of Bitcoin be less than $100K on June 13?,2025-06-13T16:00:00Z,100000.0,below,0,167,,0.019,0.0175,0.0105,0.0165,0.007,550281,will-the-price-of-bitcoin-be-less-than-100k-on-june-13
+BTC,"Bitcoin above $103,000 on June 13?",2025-06-13T16:00:00Z,103000.0,above,1,168,0.59,0.92,0.9615,0.928,0.8395,0.9165,550277,bitcoin-above-103000-on-june-13
+BTC,Will the price of Bitcoin be greater than $106K on June 13?,2025-06-13T16:00:00Z,106000.0,above,0,167,,0.75,0.89,0.79,0.175,0.075,550285,will-the-price-of-bitcoin-be-greater-than-106k-on-june-13
+ETH,Will the price of Ethereum be less than $2300 on June 13?,2025-06-13T16:00:00Z,2300.0,below,0,167,,0.0265,0.013,0.007,0.0065,0.003,550286,will-the-price-of-ethereum-be-less-than-2300-on-june-13
+ETH,"Ethereum above $2,400 on June 13?",2025-06-13T16:00:00Z,2400.0,above,1,168,0.635,0.955,0.986,0.985,0.9355,0.9925,550278,ethereum-above-2400-on-june-13
+ETH,Will the price of Ethereum be greater than $2600 on June 13?,2025-06-13T16:00:00Z,2600.0,above,0,167,,0.76,0.925,0.915,0.11,0.085,550290,will-the-price-of-ethereum-be-greater-than-2600-on-june-13
+BTC,Will the price of Bitcoin be less than $106K on June 13 at 5 PM ET?,2025-06-13T21:00:00Z,106000.0,below,1,26,,,,0.33,0.825,0.895,551898,will-the-price-of-bitcoin-be-less-than-106k-on-june-13-at-5-pm-et
+BTC,Will the price of Bitcoin be greater than $108K on June 13 at 5 PM ET?,2025-06-13T21:00:00Z,108000.0,above,0,26,,,,0.275,0.0155,0.003,551901,will-the-price-of-bitcoin-be-greater-than-108k-on-june-13-at-5-pm-et
+ETH,Will the price of Ethereum be less than $2600 on June 13 at 5 PM ET?,2025-06-13T21:00:00Z,2600.0,below,1,26,,,,0.195,0.815,0.9845,551903,will-the-price-of-ethereum-be-less-than-2600-on-june-13-at-5-pm-et
+ETH,Will the price of Ethereum be greater than $2800 on June 13 at 5 PM ET?,2025-06-13T21:00:00Z,2800.0,above,0,26,,,,0.155,0.0055,0.0025,551906,will-the-price-of-ethereum-be-greater-than-2800-on-june-13-at-5-pm-et
+BTC,Will the price of Bitcoin be less than $104K on June 14 at 5 PM ET?,2025-06-14T21:00:00Z,104000.0,below,0,26,,,,0.315,0.095,0.065,552397,will-the-price-of-bitcoin-be-less-than-104k-on-june-14-at-5-pm-et
+BTC,Will the price of Bitcoin be greater than $106K on June 14 at 5 PM ET?,2025-06-14T21:00:00Z,106000.0,above,0,26,,,,0.335,0.065,0.0095,552400,will-the-price-of-bitcoin-be-greater-than-106k-on-june-14-at-5-pm-et
+ETH,Will the price of Ethereum be less than $2400 on June 14 at 5 PM ET?,2025-06-14T21:00:00Z,2400.0,below,0,26,,,,0.09,0.0225,0.0085,552401,will-the-price-of-ethereum-be-less-than-2400-on-june-14-at-5-pm-et
+ETH,Will the price of Ethereum be greater than $2600 on June 14 at 5 PM ET?,2025-06-14T21:00:00Z,2600.0,above,0,26,,,,0.22,0.041,0.0025,552404,will-the-price-of-ethereum-be-greater-than-2600-on-june-14-at-5-pm-et
+BTC,Will the price of Bitcoin be less than $104K on June 15 at 5 PM ET?,2025-06-15T21:00:00Z,104000.0,below,0,22,,,,,0.095,0.003,552582,will-the-price-of-bitcoin-be-less-than-104k-on-june-15-at-5-pm-et
+BTC,Will the price of Bitcoin be greater than $106K on June 15 at 5 PM ET?,2025-06-15T21:00:00Z,106000.0,above,0,22,,,,,0.295,0.155,552585,will-the-price-of-bitcoin-be-greater-than-106k-on-june-15-at-5-pm-et
+ETH,Will the price of Ethereum be less than $2400 on June 15 at 5 PM ET?,2025-06-15T21:00:00Z,2400.0,below,0,22,,,,,0.0075,0.0025,552586,will-the-price-of-ethereum-be-less-than-2400-on-june-15-at-5-pm-et
+ETH,Will the price of Ethereum be greater than $2600 on June 15 at 5 PM ET?,2025-06-15T21:00:00Z,2600.0,above,0,22,,,,,0.0665,0.019,552589,will-the-price-of-ethereum-be-greater-than-2600-on-june-15-at-5-pm-et
+BTC,Will the price of Bitcoin be less than $104K on June 16 at 5 PM ET?,2025-06-16T21:00:00Z,104000.0,below,0,30,,,,0.3035,0.018,0.001,552640,will-the-price-of-bitcoin-be-less-than-104k-on-june-16-at-5-pm-et
+BTC,Will the price of Bitcoin be greater than $106K on June 16 at 5 PM ET?,2025-06-16T21:00:00Z,106000.0,above,1,29,,,,0.38,0.82,0.9945,552643,will-the-price-of-bitcoin-be-greater-than-106k-on-june-16-at-5-pm-et
+ETH,Will the price of Ethereum be less than $2400 on June 16 at 5 PM ET?,2025-06-16T21:00:00Z,2400.0,below,0,29,,,,0.125,0.004,0.0015,552644,will-the-price-of-ethereum-be-less-than-2400-on-june-16-at-5-pm-et
+ETH,Will the price of Ethereum be greater than $2600 on June 16 at 5 PM ET?,2025-06-16T21:00:00Z,2600.0,above,1,29,,,,0.26,0.755,0.9695,552647,will-the-price-of-ethereum-be-greater-than-2600-on-june-16-at-5-pm-et
+BTC,Will the price of Bitcoin be less than $106K on June 17?,2025-06-17T16:00:00Z,106000.0,below,1,164,,0.615,0.535,0.225,0.3,0.815,551400,will-the-price-of-bitcoin-be-less-than-106k-on-june-17-225
+BTC,"Bitcoin above $110,000 on June 17?",2025-06-17T16:00:00Z,110000.0,above,0,165,,0.085,0.085,0.105,0.0235,0.0015,551260,bitcoin-above-110000-on-june-17
+BTC,Will the price of Bitcoin be greater than $112K on June 17?,2025-06-17T16:00:00Z,112000.0,above,0,164,,0.038,0.0265,0.0255,0.007,0.0015,551404,will-the-price-of-bitcoin-be-greater-than-112k-on-june-17-147
+ETH,Will the price of Ethereum be less than $2600 on June 17?,2025-06-17T16:00:00Z,2600.0,below,1,164,,0.665,0.64,0.345,0.695,0.915,551414,will-the-price-of-ethereum-be-less-than-2600-on-june-17-262
+ETH,"Ethereum above $2,800 on June 17?",2025-06-17T16:00:00Z,2800.0,above,0,165,,0.065,0.0535,0.074,0.003,0.003,551261,ethereum-above-2800-on-june-17
+ETH,Will the price of Ethereum be greater than $2900 on June 17?,2025-06-17T16:00:00Z,2900.0,above,0,164,,0.0315,0.015,0.0195,0.0025,0.001,551418,will-the-price-of-ethereum-be-greater-than-2900-on-june-17-424
+BTC,Will the price of Bitcoin be less than $106K on June 17 at 5 PM ET?,2025-06-17T21:00:00Z,106000.0,below,1,30,,,,0.115,0.705,0.992,552858,will-the-price-of-bitcoin-be-less-than-106k-on-june-17-at-5-pm-et
+BTC,Will the price of Bitcoin be greater than $108K on June 17 at 5 PM ET?,2025-06-17T21:00:00Z,108000.0,above,0,30,,,,0.63,0.0215,0.0025,552861,will-the-price-of-bitcoin-be-greater-than-108k-on-june-17-at-5-pm-et
+ETH,Will the price of Ethereum be less than $2500 on June 17 at 5 PM ET?,2025-06-17T21:00:00Z,2500.0,below,0,29,,,,0.065,0.185,0.535,552862,will-the-price-of-ethereum-be-less-than-2500-on-june-17-at-5-pm-et
+ETH,Will the price of Ethereum be greater than $2700 on June 17 at 5 PM ET?,2025-06-17T21:00:00Z,2700.0,above,0,29,,,,0.335,0.0065,0.0025,552865,will-the-price-of-ethereum-be-greater-than-2700-on-june-17-at-5-pm-et
+BTC,Will the price of Bitcoin be less than $102K on June 20?,2025-06-20T16:00:00Z,102000.0,below,0,165,,0.225,0.195,0.155,0.0195,0.011,552408,will-the-price-of-bitcoin-be-less-than-102k-on-june-20
+BTC,"Bitcoin above $103,000 on June 20?",2025-06-20T16:00:00Z,103000.0,above,1,169,0.575,0.685,0.7,0.665,0.9555,0.9485,552347,bitcoin-above-103000-on-june-20
+BTC,Will the price of Bitcoin be greater than $108K on June 20?,2025-06-20T16:00:00Z,108000.0,above,0,165,,0.205,0.145,0.04,0.0475,0.004,552412,will-the-price-of-bitcoin-be-greater-than-108k-on-june-20
+ETH,Will the price of Ethereum be less than $2300 on June 20?,2025-06-20T16:00:00Z,2300.0,below,0,165,,0.095,0.1,0.0325,0.0025,0.001,552416,will-the-price-of-ethereum-be-less-than-2300-on-june-20
+ETH,"Ethereum above $2,500 on June 20?",2025-06-20T16:00:00Z,2500.0,above,0,169,0.5,0.575,0.51,0.485,0.89,0.9045,552348,ethereum-above-2500-on-june-20
+ETH,Will the price of Ethereum be greater than $2600 on June 20?,2025-06-20T16:00:00Z,2600.0,above,0,165,,0.34,0.245,0.115,0.162,0.0225,552420,will-the-price-of-ethereum-be-greater-than-2600-on-june-20
+ETH,"Ethereum above 2,225 on April 29, 12PM ET?",2026-04-29T16:00:00Z,2225.0,above,1,1,,,,,,,2116113,ethereum-above-2225-on-april-29-2026-12pm-et
+ETH,"Ethereum above 2,240 on April 29, 12PM ET?",2026-04-29T16:00:00Z,2240.0,above,1,1,,,,,,,2116114,ethereum-above-2240-on-april-29-2026-12pm-et
+ETH,"Ethereum above 2,255 on April 29, 12PM ET?",2026-04-29T16:00:00Z,2255.0,above,1,1,,,,,,,2116115,ethereum-above-2255-on-april-29-2026-12pm-et
+ETH,"Ethereum above 2,315 on April 29, 12PM ET?",2026-04-29T16:00:00Z,2315.0,above,0,1,,,,,,,2116118,ethereum-above-2315-on-april-29-2026-12pm-et
+ETH,"Ethereum above 2,330 on April 29, 12PM ET?",2026-04-29T16:00:00Z,2330.0,above,0,1,,,,,,,2116119,ethereum-above-2330-on-april-29-2026-12pm-et
+ETH,"Ethereum above 2,345 on April 29, 12PM ET?",2026-04-29T16:00:00Z,2345.0,above,0,1,,,,,,,2116120,ethereum-above-2345-on-april-29-2026-12pm-et
+ETH,"Ethereum above 2,360 on April 29, 12PM ET?",2026-04-29T16:00:00Z,2360.0,above,0,1,,,,,,,2116121,ethereum-above-2360-on-april-29-2026-12pm-et
+ETH,"Ethereum above 2,375 on April 29, 12PM ET?",2026-04-29T16:00:00Z,2375.0,above,0,1,,,,,,,2116122,ethereum-above-2375-on-april-29-2026-12pm-et
+ETH,"Ethereum above 2,205 on April 29, 1PM ET?",2026-04-29T17:00:00Z,2205.0,above,1,1,,,,,,,2116469,ethereum-above-2205-on-april-29-2026-1pm-et
+ETH,"Ethereum above 2,220 on April 29, 1PM ET?",2026-04-29T17:00:00Z,2220.0,above,1,1,,,,,,,2116470,ethereum-above-2220-on-april-29-2026-1pm-et
+ETH,"Ethereum above 2,235 on April 29, 1PM ET?",2026-04-29T17:00:00Z,2235.0,above,1,1,,,,,,,2116471,ethereum-above-2235-on-april-29-2026-1pm-et
+ETH,"Ethereum above 2,310 on April 29, 1PM ET?",2026-04-29T17:00:00Z,2310.0,above,0,1,,,,,,,2116475,ethereum-above-2310-on-april-29-2026-1pm-et
+ETH,"Ethereum above 2,325 on April 29, 1PM ET?",2026-04-29T17:00:00Z,2325.0,above,0,1,,,,,,,2116476,ethereum-above-2325-on-april-29-2026-1pm-et
+ETH,"Ethereum above 2,340 on April 29, 1PM ET?",2026-04-29T17:00:00Z,2340.0,above,0,1,,,,,,,2116477,ethereum-above-2340-on-april-29-2026-1pm-et
+ETH,"Ethereum above 2,355 on April 29, 1PM ET?",2026-04-29T17:00:00Z,2355.0,above,0,1,,,,,,,2116478,ethereum-above-2355-on-april-29-2026-1pm-et

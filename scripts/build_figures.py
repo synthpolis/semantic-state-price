@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import csv
 import json
 from pathlib import Path
 
@@ -56,63 +55,84 @@ def save(fig, name: str):
     print(f"wrote {FIG / name}")
 
 
-def load_csv(name: str) -> list[dict[str, str]]:
-    with (DATA / name).open(newline="", encoding="utf-8") as handle:
-        return list(csv.DictReader(handle))
-
-
 def crypto_panel():
-    btc = load("btc_rolling_batch.json")["aggregate"]
-    eth = load("eth_rolling_batch.json")["aggregate"]
-    btc_rows = load_csv("btc_rolling_batch.csv")
-    eth_rows = load_csv("eth_rolling_batch.csv")
+    data = load("polymarket_crypto_entity_pool.json")
+    pool = data["pool"]
+    validation = data["direct_threshold_validation"]
 
-    labels = ["BTC", "ETH"]
-    native_errors = [btc["mean_last_abs_error_vs_terminal"], eth["mean_last_abs_error_vs_terminal"]]
-    pct_errors = [
-        sum(float(row["last_abs_error_vs_terminal"]) / float(row["realized_terminal"]) for row in btc_rows) / len(btc_rows),
-        sum(float(row["last_abs_error_vs_terminal"]) / float(row["realized_terminal"]) for row in eth_rows) / len(eth_rows),
+    type_order = [
+        "close_threshold",
+        "range_bucket",
+        "barrier_threshold",
+        "record_or_race",
+        "institutional_proxy",
+        "relative_proxy",
+        "semantic_proxy",
     ]
-    probs = [btc["mean_last_realized_bucket_probability"], eth["mean_last_realized_bucket_probability"]]
+    type_labels = {
+        "close_threshold": "Close thresholds",
+        "range_bucket": "Range buckets",
+        "barrier_threshold": "Barrier thresholds",
+        "record_or_race": "Record/race",
+        "institutional_proxy": "Institutional proxy",
+        "relative_proxy": "Relative proxy",
+        "semantic_proxy": "Semantic proxy",
+    }
+    colors = [BLUE, GREEN, ORANGE, "#7B5B9A", "#8E8E8E", "#C7C7C7", LIGHT]
 
-    fig, axes = plt.subplots(1, 2, figsize=(6.8, 2.35), gridspec_kw={"wspace": 0.32})
+    fig, axes = plt.subplots(1, 2, figsize=(7.4, 3.0), gridspec_kw={"width_ratios": [1.12, 1.0], "wspace": 0.38})
     fig.patch.set_facecolor(PAPER)
 
     ax = axes[0]
     style_axes(ax)
-    bars = ax.bar(labels, pct_errors, color=[BLUE, GREEN], width=0.52)
-    ax.yaxis.set_major_formatter(PercentFormatter(1.0))
-    ax.set_ylim(0, max(pct_errors) * 1.42)
-    ax.set_ylabel("Last pre-close error")
-    ax.set_title("(a) Mean absolute error as % of terminal")
-    for bar, pct, native in zip(bars, pct_errors, native_errors):
-        ax.text(
-            bar.get_x() + bar.get_width() / 2,
-            bar.get_height() + max(pct_errors) * 0.055,
-            f"{pct:.2%}\n(${native:,.0f})",
-            ha="center",
-            va="bottom",
-            color=INK,
-            fontsize=7.5,
-        )
+    labels = ["BTC", "ETH"]
+    x = range(len(labels))
+    bottoms = [0, 0]
+    for market_type, color in zip(type_order, colors):
+        counts = [pool["by_target_type"].get(asset, {}).get(market_type, 0) for asset in labels]
+        bars = ax.bar(x, counts, bottom=bottoms, width=0.50, color=color, edgecolor=MID, linewidth=0.3, label=type_labels[market_type])
+        bottoms = [bottom + count for bottom, count in zip(bottoms, counts)]
+        if market_type == "close_threshold":
+            for bar, count, bottom in zip(bars, counts, bottoms):
+                ax.text(
+                    bar.get_x() + bar.get_width() / 2,
+                    bottom + 45,
+                    f"{count}",
+                    ha="center",
+                    va="bottom",
+                    color=INK,
+                    fontsize=7.3,
+                )
+    ax.set_xticks(list(x), labels)
+    ax.set_ylabel("Markets")
+    ax.set_title("(a) 29-month BTC/ETH market pool")
+    ax.legend(frameon=False, loc="upper left", bbox_to_anchor=(-0.02, 1.02), handlelength=1.0)
 
     ax = axes[1]
     style_axes(ax)
-    bars = ax.bar(labels, probs, color=[BLUE, GREEN], width=0.52)
-    ax.yaxis.set_major_formatter(PercentFormatter(1.0))
-    ax.set_ylim(0, 1.0)
-    ax.set_ylabel("Probability")
-    ax.set_title("(b) Realized-bucket probability")
-    for bar, value in zip(bars, probs):
-        ax.text(
-            bar.get_x() + bar.get_width() / 2,
-            value + 0.035,
-            f"{value:.1%}",
-            ha="center",
-            va="bottom",
-            color=INK,
-            fontsize=7.5,
-        )
+    horizons = ["48h", "24h", "6h", "final"]
+    brier = [validation[h]["brier"] for h in horizons]
+    realized_prob = [validation[h]["realized_side_probability"] for h in horizons]
+    accuracy = [validation[h]["accuracy"] for h in horizons]
+    x = range(len(horizons))
+    ax.bar(x, brier, color=LIGHT, edgecolor=MID, linewidth=0.7, width=0.48, label="Brier")
+    ax.set_ylim(0, max(brier) * 1.45)
+    ax.set_xticks(list(x), horizons)
+    ax.set_ylabel("Brier score")
+    ax.set_title("(b) Binary threshold calibration")
+    for idx, value in enumerate(brier):
+        ax.text(idx, value + max(brier) * 0.05, f"{value:.2f}", ha="center", va="bottom", fontsize=7.3)
+    ax2 = ax.twinx()
+    ax2.plot(x, realized_prob, color=BLUE, marker="o", markersize=4, linewidth=1.6, label="Realized-side P")
+    ax2.plot(x, accuracy, color=GREEN, marker="s", markersize=4, linewidth=1.6, label="Accuracy")
+    ax2.set_ylim(0, 1.03)
+    ax2.tick_params(colors=INK)
+    ax2.yaxis.set_major_formatter(PercentFormatter(1.0))
+    ax2.spines["top"].set_visible(False)
+    ax2.spines["right"].set_color(DORMANT)
+    lines, labels1 = ax.get_legend_handles_labels()
+    lines2, labels2 = ax2.get_legend_handles_labels()
+    ax.legend(lines + lines2, labels1 + labels2, loc="upper left", frameon=False, handlelength=1.3)
 
     save(fig, "figure_2_polymarket_crypto.png")
 
@@ -176,28 +196,64 @@ def kalshi_panel():
 
 def openai_bridge():
     projection = load("openai_20271231_projection.json")
+    openai_pool = load("openai_semantic_market_pool.json")
     hyper = load("hyperliquid_vntl_private_perps.json")
     openai = next(row for row in hyper["rows"] if row["coin"] == "vntl:OPENAI")
+    fig, axes = plt.subplots(1, 2, figsize=(7.4, 3.0), gridspec_kw={"width_ratios": [1.0, 1.12], "wspace": 0.54})
+    fig.patch.set_facecolor(PAPER)
+
+    ax = axes[0]
+    style_axes(ax)
+    type_counts = openai_pool["pool"]["by_target_type"]["OPENAI"]
+    type_order = [
+        "valuation_or_liquidity",
+        "capability_or_product",
+        "legal_governance",
+        "competitor_capability",
+        "openai_semantic",
+        "ai_sector_proxy",
+    ]
     labels = [
-        "Polymarket unconditional",
+        "Valuation/liquidity",
+        "Capability/product",
+        "Legal/governance",
+        "Competitor models",
+        "OpenAI semantic",
+        "AI sector",
+    ]
+    values = [type_counts.get(key, 0) for key in type_order]
+    y = list(range(len(labels)))
+    ax.barh(y, values, color=[BLUE, GREEN, ORANGE, "#7B5B9A", "#777777", LIGHT], edgecolor=MID, linewidth=0.5)
+    ax.set_yticks(y, labels)
+    ax.invert_yaxis()
+    ax.set_xlabel("Markets")
+    ax.set_title("(a) OpenAI semantic pocket")
+    for idx, value in enumerate(values):
+        ax.text(value + max(values) * 0.025, idx, f"{value}", va="center", color=INK, fontsize=7.5)
+
+    ax = axes[1]
+    style_axes(ax)
+    signal = openai_pool["active_signal"]
+    labels = [
+        "Polymarket direct",
+        "Semantic-adjusted",
         "Hyperliquid oracle",
         "Hyperliquid mark",
-        "Polymarket conditional IPO",
+        "Conditional IPO",
     ]
     values = [
         projection["expected_unconditional_b"],
+        signal["semantic_adjusted_unconditional_b"],
         openai["oracle_px"],
         openai["mark_px"],
         projection["expected_conditional_b"],
     ]
-    fig, ax = plt.subplots(figsize=(6.8, 2.55))
-    fig.patch.set_facecolor(PAPER)
-    style_axes(ax)
     y = list(range(len(labels)))
-    ax.barh(y, values, color=[LIGHT, BLUE, ORANGE, GREEN], edgecolor=[MID, BLUE, ORANGE, GREEN], linewidth=0.7)
+    ax.barh(y, values, color=[LIGHT, GREEN, BLUE, ORANGE, "#7B5B9A"], edgecolor=[MID, GREEN, BLUE, ORANGE, "#7B5B9A"], linewidth=0.7)
     ax.set_yticks(y, labels)
     ax.invert_yaxis()
     ax.set_xlabel("Implied OpenAI valuation ($B)")
+    ax.set_title("(b) State price to perp bridge")
     for idx, value in enumerate(values):
         ax.text(value + 18, idx, f"${value:,.0f}B", va="center", color=INK, fontsize=8)
     ax.set_xlim(0, max(values) * 1.17)

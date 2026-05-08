@@ -36,6 +36,7 @@ def markdown_to_html(md: str) -> str:
     list_items: list[str] = []
     list_tag = "ul"
     code_lines: list[str] = []
+    code_lang = ""
     table_lines: list[str] = []
     in_code = False
 
@@ -62,14 +63,19 @@ def markdown_to_html(md: str) -> str:
         stripped = line.strip()
         if in_code:
             if stripped.startswith("```"):
-                out.append("<pre><code>" + html.escape("\n".join(code_lines)) + "</code></pre>")
+                if code_lang == "math":
+                    out.append('<div class="display-math">\\[' + html.escape("\n".join(code_lines)) + "\\]</div>")
+                else:
+                    out.append("<pre><code>" + html.escape("\n".join(code_lines)) + "</code></pre>")
                 code_lines = []
+                code_lang = ""
                 in_code = False
             else:
                 code_lines.append(line)
             continue
 
         if stripped.startswith("```"):
+            code_lang = stripped[3:].strip().lower()
             flush_paragraph()
             flush_list()
             flush_table()
@@ -146,6 +152,13 @@ def main() -> None:
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Semantic State Prices</title>
+<script>
+  window.MathJax = {{
+    tex: {{ inlineMath: [['\\\\(', '\\\\)']], displayMath: [['$$', '$$'], ['\\\\[', '\\\\]']] }},
+    chtml: {{ scale: 0.94, mtextInheritFont: true }}
+  }};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <style>
   @page {{ size: letter; margin: 0.75in 0.78in 0.78in 0.78in; }}
   html, body {{ margin: 0; padding: 0; background: #fff; color: #111; }}
@@ -162,6 +175,9 @@ def main() -> None:
   code {{ font-family: "Courier New", Courier, monospace; font-size: 8.6pt; color: #111; background: transparent; padding: 0; }}
   pre {{ break-inside: avoid; margin: 8pt 0 10pt; padding: 7pt 9pt; border: 0.6pt solid #d8d8d8; background: #fff; white-space: pre-wrap; }}
   pre code {{ background: transparent; padding: 0; font-size: 8.15pt; line-height: 1.35; }}
+  .display-math {{ break-inside: avoid; margin: 7pt 0 10pt; padding: 0; color: #111; overflow: hidden; text-align: center; }}
+  mjx-container[jax="CHTML"][display="true"] {{ margin: 0.45em 0 !important; overflow: visible; }}
+  mjx-container {{ color: #111; max-width: 100%; }}
   ul, ol {{ margin: 0 0 8pt 18pt; padding: 0; }}
   li {{ margin: 0 0 3.2pt; }}
   table {{ width: 100%; border-collapse: collapse; margin: 8pt 0 12pt; break-inside: avoid; font-size: 8.7pt; font-variant-numeric: tabular-nums; }}

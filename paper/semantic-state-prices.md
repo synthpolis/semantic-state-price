@@ -9,7 +9,7 @@ May 8, 2026
 
 Prediction markets trade thousands of binary contracts whose payoffs are tied to future states of the world. These contracts are usually interpreted one at a time: a probability that Bitcoin will exceed a threshold, that a city temperature will fall in a range, that the Federal Reserve will choose a rate, or that a private company will reach a valuation. This paper develops a framework for interpreting collections of related prediction-market contracts as noisy state-price surfaces over latent variables. The method maps natural-language event rules into payoff functions, projects observed prices onto the nearest coherent distribution over an underlying state, and reports the resulting expectation as a tradable index candidate. The same construction yields an oracle design for perpetual futures on states that do not have spot markets.
 
-The empirical section validates the method across two venues. On Polymarket, Bitcoin and Ethereum terminal threshold ladders over eight dates each are reconstructed from direct CLOB price history and compared with realized CoinGecko spot prices. On Kalshi, a larger panel of 195 city-date temperature ladders, comprising 7,496 hourly snapshots across New York, Chicago, and Miami from March 1 to May 4, 2026, is projected into daily high-temperature distributions and compared with NOAA/NCEI daily maximum temperatures. The Kalshi panel shows mean absolute error of 2.07F at 48 hours before close, 1.69F at 24 hours, and 1.02F at final pre-close, with final modal-bucket accuracy of 86.2%. The paper then demonstrates the method on a non-traded private-company state: OpenAI's 2027 IPO valuation. Polymarket valuation contracts imply a 29.8% no-IPO probability, a $932B unconditional valuation index, and a $1.328T valuation conditional on IPO. Hyperliquid pre-IPO perps provide an external live benchmark: `vntl:OPENAI` marks near $1.112T in the same valuation units.
+The empirical section validates the method across two venues. On Polymarket, a BTC/ETH entity pool is constructed from 3,197 markets spanning 29 calendar months, including close-threshold, range-bucket, barrier, record, institutional, relative, and semantic proxy markets. The direct subset contains 542 close-threshold markets and 423 range-bucket markets; 342 resolved close-threshold markets have usable CLOB pre-close histories and produce final Brier score of 0.075, final directional accuracy of 90.4%, and mean probability assigned to the realized side of 85.4%. On Kalshi, a panel of 195 city-date temperature ladders, comprising 7,496 hourly snapshots across New York, Chicago, and Miami from March 1 to May 4, 2026, is projected into daily high-temperature distributions and compared with NOAA/NCEI daily maximum temperatures. The Kalshi panel shows mean absolute error of 2.07F at 48 hours before close, 1.69F at 24 hours, and 1.02F at final pre-close, with final modal-bucket accuracy of 86.2%. The paper then demonstrates the method on a non-traded private-company state: OpenAI's 2027 IPO valuation. A 1,030-market OpenAI semantic pool spans direct valuation, model-capability, product, legal/governance, competitor, and sector markets. Direct valuation contracts imply a 24.0% no-IPO probability and a $1.152T unconditional valuation index; the conservative semantic-pocket adjustment gives $1.150T. Hyperliquid pre-IPO perps provide an external live benchmark: `vntl:OPENAI` marks near $1.112T in the same valuation units.
 
 The contribution is an inverse option-pricing operator for prediction markets. Standard derivative pricing begins with a traded underlying and prices contingent claims from it. Semantic state pricing begins with contingent claims written in natural language and infers the missing underlying.
 
@@ -46,125 +46,161 @@ This paper differs from that literature in its object of inference. It does not 
 
 Let:
 
-```text
-X_T = latent state at horizon T
+```math
+X_T = \text{latent state at horizon } T.
 ```
 
 `X_T` can be a traded public price, a private valuation, an official weather statistic, a policy setting, or a constructed index. Each prediction-market contract `i` has:
 
-```text
-p_i      observed YES price
-e_i      event text and resolution rule
-A_i(x)   payoff probability if X_T = x
-w_i      confidence weight
-T_i      resolution time
-L_i      liquidity, depth, and spread features
+```math
+\begin{aligned}
+p_i      &= \text{observed YES price},\\
+e_i      &= \text{event text and resolution rule},\\
+A_i(x)   &= \Pr(\text{YES payoff}\mid X_T=x),\\
+\omega_i &= \text{statistical and semantic weight},\\
+T_i      &= \text{resolution time},\\
+L_i      &= \text{liquidity, depth, spread, and freshness features}.
+\end{aligned}
 ```
 
 For direct threshold markets:
 
-```text
-"Bitcoin above $76,000 on April 10?"
-A_i(x) = 1{x > 76000}
+```math
+\text{"Bitcoin above \$76,000 on April 10?"}
+\qquad
+A_i(x)=\mathbf{1}\{x>76000\}.
 ```
 
 For direct range markets:
 
-```text
-"High temp in NYC is 64-65F on May 7?"
-A_i(x) = 1{64 <= x <= 65}
+```math
+\text{"High temp in NYC is 64-65F on May 7?"}
+\qquad
+A_i(x)=\mathbf{1}\{64 \le x \le 65\}.
 ```
 
 For private-company valuation markets:
 
-```text
-"OpenAI IPO closing market cap above $1T by Dec. 31, 2027?"
-A_i(x) = 1{x >= 1000B and IPO occurs by T}
+```math
+\text{"OpenAI IPO closing market cap above \$1T by Dec. 31, 2027?"}
+\qquad
+A_i(x)=\mathbf{1}\{x\ge 1000B,\ \text{IPO by }T\}.
 ```
 
 For semantic proxy markets:
 
-```text
-"Will Anthropic have the best AI model by year-end?"
-A_i(x) = sigmoid(alpha_i + beta_i log(x) + gamma_i controls_i)
+```math
+\text{"Will Anthropic have the best AI model by year-end?"}
+\qquad
+A_i(x)=\sigma(\alpha_i+\beta_i\log x+\gamma_i^\top c_i).
 ```
 
 The semantic layer maps the text and rules into `A_i`. It does not set prices. Pricing comes from observed markets; coherence comes from projection.
 
 Represent the latent distribution on a grid:
 
-```text
-q_k = P(X_T in bucket k)
+```math
+q_k=\Pr(X_T\in B_k),\qquad q\in\Delta_K.
 ```
 
 Let `A` be the matrix whose `i,k` entry is the payoff of market `i` in state bucket `k`. The estimated distribution solves:
 
-```text
-min_q  sum_i w_i (A_i q - p_i)^2 + lambda R(q)
-
-subject to:
-q_k >= 0
-sum_k q_k = 1
-monotone threshold probabilities
-coherent mutually exclusive brackets
+```math
+\widehat q
+=\arg\min_{q\in\Delta_K}
+\sum_i \omega_i\bigl(A_iq-p_i\bigr)^2+\lambda R(q)
+\quad
+\text{s.t. threshold monotonicity and bracket coherence.}
 ```
 
 `R(q)` is a smoothness or regularization penalty. It can be omitted for simple range partitions and increased when the state grid is dense.
 
 The index is:
 
-```text
-I_T = E_q[X_T]
+```math
+I_T=\mathbb{E}_{\widehat q}[X_T]=\sum_k x_k\widehat q_k.
 ```
 
 For valuation-like variables, log space may be more stable:
 
-```text
-I_T = exp(E_q[log X_T])
+```math
+I_T^{geo}=\exp\left(\mathbb{E}_{\widehat q}[\log X_T]\right).
 ```
 
 For IPO markets, include a no-IPO atom:
 
-```text
-q_0 = P(no IPO by T)
-I_unconditional = sum_{k>0} q_k x_k
-I_conditional_IPO = sum_{k>0} (q_k / (1 - q_0)) x_k
+```math
+\begin{aligned}
+q_0 &= \Pr(\text{no IPO by }T),\\
+I_{\text{uncond}} &= \sum_{k>0} \widehat q_k x_k,\\
+I_{\text{IPO}} &= \sum_{k>0}\frac{\widehat q_k}{1-\widehat q_0}x_k.
+\end{aligned}
 ```
 
 ![Figure 1. Semantic state-price operator.](../figures/figure_1_semantic_operator.png)
 
 ## 4. Market Selection and Semantic Weights
 
-Prediction-market data is not a clean option chain. It contains stale markets, ambiguous rules, overlapping outcomes, wide spreads, and idiosyncratic settlement details. The weighting function therefore matters.
+Prediction-market data is not a clean option chain. It contains stale markets, ambiguous rules, overlapping outcomes, wide spreads, idiosyncratic settlement details, and proxy markets that are directionally relevant but not direct claims on the target state. The weighting function therefore matters as much as the payoff parser.
 
-A practical source weight is:
+For each market, the empirical artifact records a feature vector:
 
-```text
-w_i =
-  liquidity_i^a
-  * relevance_i^b
-  * specificity_i^c
-  * exp(-eta * semantic_distance_i^2)
-  * exp(-nu * maturity_mismatch_i)
-  * 1 / noise_i^2
+```math
+z_i=(\ell_i,\ r_i,\ s_i,\ d_i,\ m_i,\ h_i,\ a_i,\ c_i).
 ```
 
-where:
+Here `\ell_i` is liquidity and quote freshness, `r_i` is semantic relevance to the target, `s_i` is rule specificity, `d_i` is semantic distance, `m_i` is maturity fit, `h_i` is historical family calibration, `a_i` is attack cost or depth, and `c_i` is concentration or duplication risk. Direct range and close-threshold markets get high `r_i` and `s_i`; model-leadership, legal, governance, competitor, or sector markets enter as lower-weight proxy observations.
 
-- `liquidity_i` captures volume, open interest, order-book depth, and quote freshness.
-- `relevance_i` measures how closely the event loads on the target state.
-- `specificity_i` penalizes vague or multi-causal events.
-- `maturity_mismatch_i` penalizes events resolving far from the target horizon.
-- `noise_i` captures bid/ask width, rule ambiguity, and historical reliability.
+The baseline source weight is a generalized inverse-variance weight:
 
-Direct markets, such as temperature ranges or crypto thresholds, have payoff maps that are essentially deterministic. Semantic proxy markets require learned or hand-specified link functions. A model-ranking market may load positively on an AI-company valuation index, but with lower specificity and higher model risk than a direct valuation threshold.
+```math
+\omega_i
+=
+\frac{\exp(\beta^\top z_i)}
+{\widehat\sigma^2_{g(i)}+\sigma^2_{\text{micro},i}
+ +\sigma^2_{\text{semantic},i}+\sigma^2_{\text{attack},i}+\epsilon}.
+```
+
+The denominator separates four failures: the historical error of the market family `g(i)`, microstructure noise from spreads and stale quotes, semantic noise from proxy distance, and manipulation risk from shallow source books. The numerator allows a learned or specified prior over useful features.
+
+The preferred empirical objective is not plain least squares. For binary prices near zero or one, probability-space residuals underweight tail errors. The stronger form uses logit residuals, robust loss, and an entropy prior:
+
+```math
+\widehat q
+=\arg\min_{q\in\Delta_K}
+\sum_i \omega_i\,
+\rho_\tau\!\left[
+\operatorname{logit}(A_iq)-\operatorname{logit}(\tilde p_i)
+\right]
+\lambda\,\mathrm{KL}(q\Vert \pi_T)
+\mu\lVert D^2\log q\rVert_2^2 .
+```
+
+`\tilde p_i` clips observed prices away from zero and one, `\rho_\tau` is a Huber loss, `\pi_T` is a prior distribution at the target horizon, and the smoothness penalty prevents a sparse proxy basket from creating implausible spikes. The simple least-squares operator remains useful for transparent tables, but the logit-Huber-KL form is the better production equation.
+
+Weights should be learned where resolved histories exist. The calibration problem is:
+
+```math
+\widehat\beta
+=
+\arg\min_\beta
+\sum_{j\in\mathcal V}
+\mathcal L\!\left(y_j,\widehat p_j(\beta)\right)
+\xi\lVert\beta-\beta_0\rVert_2^2 ,
+```
+
+where `\mathcal V` is a validation set of resolved markets and `\mathcal L` is log loss or Brier score. Until enough resolved data exists for a proxy family, the system uses a conservative prior: direct close/range/valuation markets receive the highest weight; barrier markets receive less; capability and product markets receive still less; legal, competitor, and sector proxies receive low weight and are shrinkage-adjusted rather than allowed to dominate the index.
+
+The reporting metrics are Brier score, log loss, calibration error, realized-side probability, projection residual, effective number of markets, family concentration, and attack elasticity. A source market is useful only if it improves out-of-sample calibration or materially increases semantic coverage without making the oracle easy to move.
 
 ## 5. Rolling Perpetual Oracle
 
 A perpetual future cannot be anchored to a single fixed-expiration ladder. The oracle should maintain a constant maturity:
 
-```text
-OPENAI-365 = market-implied OpenAI valuation 365 days forward
+```math
+\mathrm{OPENAI}_{365}(t)
+=
+\text{market-implied OpenAI valuation 365 days forward at time }t.
 ```
 
 At each update:
@@ -178,21 +214,26 @@ At each update:
 
 Funding can use the standard mark-versus-oracle form:
 
-```text
-funding_rate = k(confidence) * log(perp_mark / oracle_index)
+```math
+\mathrm{funding}_t
+=
+\kappa(C_t)\log\left(\frac{P^{perp}_t}{I_t}\right).
 ```
+
+The logarithm is not cosmetic. For positive variables such as prices and valuations, multiplicative errors are more stable than dollar errors: a 10% miss at $200B and a 10% miss at $2T are economically similar. The same logic applies to funding, where `\log(P^{perp}_t/I_t)` is the continuously compounded premium of the tradable mark over the oracle. For bounded probabilities the analogous transform is logit; for variables that can be negative or naturally additive, such as temperature, the linear state is preferable.
 
 Confidence should determine leverage, open-interest caps, funding caps, and pause conditions. A minimal confidence function should include:
 
-```text
-confidence = f(
-  projection_residual,
-  semantic_coverage,
-  source_market_depth,
-  bid_ask_spread,
-  constituent_concentration,
-  estimated_attack_cost / perp_open_interest
-)
+```math
+C_t
+=f\!\left(
+\text{projection residual},
+\text{semantic coverage},
+\text{source depth},
+\text{spreads},
+\text{concentration},
+\frac{\text{estimated attack cost}}{\text{perp open interest}}
+\right).
 ```
 
 This last term is essential. If a perp has large open interest and the source markets are thin, a trader can profit by manipulating the source markets that feed the oracle.
@@ -201,39 +242,52 @@ This last term is essential. If a perp has large open interest and the source ma
 
 The empirical artifact uses:
 
-- Polymarket CLOB price history and order-book endpoints.
+- Polymarket Gamma event discovery and CLOB price-history/order-book endpoints.
 - Kalshi market and candlestick endpoints.
 - Normalized Polymarket/Kalshi market catalog snapshots for market discovery.
 - NOAA/NCEI daily weather summaries for realized temperature outcomes.
-- CoinGecko crypto spot data for realized BTC/ETH terminal prices.
 - Hyperliquid perpetual-market data for private-company perp benchmarks.
 
 The market-surface inventory shows that the object is broader than one OpenAI ladder. Polymarket contains matched surfaces in crypto terminal prices, private-company valuation, AI capability semantics, macro policy, public equity/index events, and weather/climate. Kalshi has recurring series for BTC and ETH ranges, Nasdaq-100 ranges, CPI, Core CPI, Fed funds, and city high-temperature ranges.
 
-The empirical tests below use only the market families that can be cleanly mapped to realized outcomes or private valuation ladders in the current artifact.
+The empirical tests below separate direct identification from proxy coverage. Direct threshold or range markets are used for validation when resolved outcomes are available. Proxy markets are included in the entity pools and in the OpenAI semantic adjustment only with conservative shrinkage.
 
-## 7. Empirical Results: Polymarket Crypto Ladders
+## 7. Empirical Results: Polymarket Crypto Entity Pools
 
-The Polymarket validation uses public assets with observed terminal prices. For each date, markets of the form:
+The Polymarket validation uses BTC and ETH because the market texts include many different event types around the same underlying entities. Direct close-threshold markets have deterministic payoff maps:
 
-```text
-Will the price of Bitcoin be above $K on DATE?
+```math
+\text{"Bitcoin above \$K on DATE?"}
+\qquad
+A_i(S_T)=\mathbf{1}\{S_T>K\}.
 ```
 
-define a digital strip `P(S_T > K)`. The projection converts the strip into a distribution over terminal price intervals.
+Barrier, record, ETF, exchange, relative-race, and semantic proxy markets are kept in the entity pool but not treated as identical to close-threshold claims. They increase coverage and become useful once their loadings are calibrated, but the direct binary validation below uses only resolved close-threshold contracts with usable pre-close CLOB histories.
 
-The current Polymarket panel covers eight BTC dates and eight ETH dates from April 10 to April 17, 2026, using direct CLOB `batch-prices-history`. It contains 120 hourly BTC snapshots and 141 hourly ETH snapshots.
+The pool contains 3,197 BTC/ETH markets over 29 calendar months, from March 29, 2024 to January 1, 2027. It includes 542 close-threshold markets, 423 direct range-bucket markets, and 2,232 lower-specificity barrier or proxy markets.
 
-**Table 1. Polymarket crypto validation.**
+**Table 1. Polymarket BTC/ETH market pool.**
 
-| Asset | Dates | Snapshots | Reference | Mean as-of error | Mean last error | Mean last realized-bucket probability |
-|---|---:|---:|---|---:|---:|---:|
-| BTC | 8 | 120 | CoinGecko BTC-USD | $798 | $451 | 0.732 |
-| ETH | 8 | 141 | CoinGecko ETH-USD | $26 | $20 | 0.685 |
+| Asset | Close thresholds | Range buckets | Barrier | Record/race | Institutional proxy | Relative proxy | Semantic proxy | Total |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| BTC | 270 | 230 | 25 | 172 | 10 | 872 | 326 | 1,905 |
+| ETH | 272 | 193 | 6 | 92 | 7 | 548 | 174 | 1,292 |
+| Total | 542 | 423 | 31 | 264 | 17 | 1,420 | 500 | 3,197 |
 
-The result is not intended to prove that prediction markets forecast spot prices better than liquid crypto markets. The narrower claim is that binary event strips can be reconstructed mechanically into coherent distributions whose high-probability intervals often contain the realized terminal value.
+For the direct close-threshold subset, the script fetches Polymarket CLOB `batch-prices-history` for YES tokens and evaluates the market's pre-close probability against the resolved YES/NO outcome. This avoids the fragility of reconstructing spot prices from external feeds and directly tests whether the binary securities assigned probability to the side that actually settled.
 
-![Figure 2. Polymarket crypto terminal ladders.](../figures/figure_2_polymarket_crypto.png)
+**Table 2. Direct close-threshold calibration.**
+
+| Snapshot | N | Brier | Log loss | Accuracy | Mean probability on realized side |
+|---|---:|---:|---:|---:|---:|
+| 48h before close | 212 | 0.142 | 0.434 | 75.9% | 72.1% |
+| 24h before close | 250 | 0.127 | 0.384 | 81.2% | 75.8% |
+| 6h before close | 342 | 0.091 | 0.288 | 87.4% | 81.7% |
+| Final pre-close | 342 | 0.075 | 0.235 | 90.4% | 85.4% |
+
+The empirical point is structural. Resolved binary event markets form a dense, month-scale calibration set, direct threshold claims improve monotonically as settlement approaches, and lower-specificity proxy markets can be added to a broader entity-level index without being treated as direct claims.
+
+![Figure 2. Polymarket BTC/ETH entity pool and threshold calibration.](../figures/figure_2_polymarket_crypto.png)
 
 ## 8. Empirical Results: Kalshi Multi-Month Temperature Panel
 
@@ -241,13 +295,13 @@ The strongest current validation is the Kalshi weather panel. Weather has three 
 
 The panel uses high-temperature range contracts for New York City, Chicago, and Miami from March 1 to May 4, 2026. Each city-date has a small mutually exclusive ladder such as:
 
-```text
-<64F, 64-65F, 66-67F, 68-69F, 70-71F, >71F
+```math
+\{x<64,\ 64\le x\le65,\ 66\le x\le67,\ 68\le x\le69,\ 70\le x\le71,\ x>71\}.
 ```
 
 Each hourly snapshot is normalized into a distribution over temperature buckets and converted into an expected high temperature. The reference value is NOAA/NCEI `TMAX`.
 
-**Table 2. Kalshi temperature panel coverage.**
+**Table 3. Kalshi temperature panel coverage.**
 
 | Quantity | Value |
 |---|---:|
@@ -257,7 +311,7 @@ Each hourly snapshot is normalized into a distribution over temperature buckets 
 | Hourly snapshots | 7,496 |
 | Actual source | NOAA/NCEI daily summaries |
 
-**Table 3. Horizon robustness.**
+**Table 4. Horizon robustness.**
 
 | Snapshot | N | Mean absolute error | Median absolute error | Mean actual-bucket probability | Modal accuracy |
 |---|---:|---:|---:|---:|---:|
@@ -273,28 +327,45 @@ The city-level results are heterogeneous. Miami is easiest in the current sample
 
 ## 9. Private-Company Demonstration: OpenAI 2027
 
-The private-asset demonstration uses OpenAI 2027 IPO valuation markets on Polymarket. The relevant state has a no-IPO atom and valuation buckets conditional on an IPO.
+The private-asset demonstration uses OpenAI 2027 IPO valuation markets on Polymarket as the direct anchor, then adds a semantic pocket of related OpenAI markets. The relevant direct state has a no-IPO atom and valuation buckets conditional on an IPO. The broader pool contains model-capability markets, product-release markets, legal/governance markets involving Sam Altman, Elon Musk, Microsoft, or corporate structure, competitor-capability markets for Anthropic, Claude, Gemini, Grok, DeepSeek, and other frontier systems, and lower-weight AI-sector proxies.
 
-The raw ladder is not coherent. Some bracket probabilities sum above one and some threshold probabilities violate monotonicity. This is precisely why projection is necessary.
+The raw valuation ladder is not coherent. Some bracket probabilities sum above one and some threshold probabilities violate monotonicity. This is precisely why projection is necessary. The semantic pocket is also not treated as a valuation ladder. It enters as a signed low-shrinkage factor:
 
-The fitted distribution implies:
+```math
+I_{\text{semantic}}
+=
+I_{\text{direct}}\cdot
+\exp\!\left(\zeta\tanh\left[
+\frac{\sum_{i\in\mathcal P}\omega_i s_i\operatorname{logit}(p_i)}
+{\sum_{i\in\mathcal P}|\omega_i|}
+\right]\right),
+```
 
-**Table 4. OpenAI 2027 projected valuation distribution.**
+where `\mathcal P` is the active proxy pocket, `s_i` is the sign of the loading, and `\zeta=0.08` is a conservative shrinkage coefficient until the proxy-family loadings can be cross-validated at scale.
+
+**Table 5. OpenAI 2027 valuation and semantic pocket.**
 
 | Quantity | Value |
 |---|---:|
-| No-IPO probability | 0.298 |
-| IPO probability | 0.702 |
-| Expected valuation, unconditional | $932B |
-| Expected valuation, conditional on IPO | $1.328T |
+| OpenAI pool markets | 1,030 |
+| Active pool markets | 215 |
+| Active priced proxy markets in semantic signal | 187 |
+| Effective semantic market count | 433.2 |
+| Pool span | 33 months |
+| No-IPO probability, direct ladder | 0.240 |
+| IPO probability, direct ladder | 0.760 |
+| Direct expected valuation, unconditional | $1.152T |
+| Semantic-adjusted valuation, unconditional | $1.150T |
+| Direct expected valuation, conditional on IPO | $1.515T |
+| Semantic-adjusted valuation, conditional on IPO | $1.513T |
 
-This is not an assertion that OpenAI is worth exactly $932B. It is a market-implied state index from a specific set of noisy prediction-market claims.
+The OpenAI value reported here is a market-implied state index, not an analyst appraisal. It is inferred from direct valuation claims plus a transparent, low-weight semantic proxy pocket. The direct ladder identifies the valuation distribution; the broader pool improves coverage and should receive more weight as its historical loadings are learned.
 
 ## 10. Live Perp Benchmark: Hyperliquid Pre-IPO Markets
 
 Hyperliquid provides a useful external benchmark because builder-deployed `vntl` pre-IPO perps already trade OpenAI, Anthropic, and SpaceX in units of company valuation billions. If `OPENAI = 500`, the implied valuation is $500B.
 
-**Table 5. Hyperliquid private-company perp benchmark.**
+**Table 6. Hyperliquid private-company perp benchmark.**
 
 | Market | Mark | Oracle | Mark/oracle | Open interest | 24h volume | Mean annualized funding |
 |---|---:|---:|---:|---:|---:|---:|
@@ -304,16 +375,17 @@ Hyperliquid provides a useful external benchmark because builder-deployed `vntl`
 
 The OpenAI comparison is especially useful:
 
-**Table 6. OpenAI state-price and perp comparison.**
+**Table 7. OpenAI state-price and perp comparison.**
 
 | Source | Value |
 |---|---:|
-| Polymarket unconditional index | $932B |
+| Polymarket unconditional index | $1.152T |
+| Polymarket semantic-adjusted index | $1.150T |
 | Hyperliquid `vntl:OPENAI` oracle | $1.023T |
 | Hyperliquid `vntl:OPENAI` mark | $1.112T |
-| Polymarket conditional-IPO valuation | $1.328T |
+| Polymarket conditional-IPO valuation | $1.515T |
 
-The Hyperliquid mark lies between the unconditional and conditional Polymarket values. That relationship is consistent with the interpretation that prediction-market binaries infer state-contingent distributions, while the perp mark reflects a tradeable synthetic exposure with funding and risk premia.
+The Hyperliquid mark is close to, but below, the unconditional Polymarket state-price values, while the conditional-IPO value is higher. That relationship is consistent with the interpretation that prediction-market binaries infer state-contingent distributions, while the perp mark reflects a tradeable synthetic exposure with funding, liquidity, and risk premia.
 
 ![Figure 4. OpenAI state-price and perp bridge.](../figures/figure_4_openai_bridge.png)
 
@@ -323,58 +395,63 @@ An oracle built from prediction markets is exposed to source-market manipulation
 
 Define:
 
-```text
-s_i(delta) = |I(p_i + delta) - I(p_i)|
-C_i(delta) = displayed source-market depth crossed to move p_i by delta
-V_i(delta) = s_i(delta) / C_i(delta)
+```math
+\begin{aligned}
+s_i(\delta) &= |I(p_i+\delta)-I(p_i)|,\\
+C_i(\delta) &= \text{displayed source-market depth crossed to move }p_i\text{ by }\delta,\\
+V_i(\delta) &= \frac{s_i(\delta)}{C_i(\delta)}.
+\end{aligned}
 ```
 
 For the OpenAI 2027 ladder, perturbing each source market by plus or minus five YES-probability points gives:
 
-**Table 7. OpenAI oracle stress.**
+**Table 8. OpenAI oracle stress.**
 
 | Quantity | Value |
 |---|---:|
-| Baseline unconditional index | $932B |
-| Max one-market index move | $31B |
+| Baseline unconditional index | $1.152T |
+| Max one-market index move | $24B |
 | Median one-market index move | $8B |
-| Stress confidence score | 0.967 |
+| Stress confidence score | 0.979 |
 
-Joining the same sensitivity map to live Polymarket CLOB books gives a negative result:
+The production implication is an oracle architecture, not a retreat from the pricing equation. The semantic state-price operator is the primitive that creates the latent index. The market-design layer then turns that index into a settlement object by specifying smoothing, constituent caps, depth requirements, and attack-cost constraints. This is the prediction-market analogue of the distinction between an option-pricing equation and the exchange rules that determine margin, settlement, and market integrity.
 
-**Table 8. Source-market displayed-depth risk.**
+```math
+\begin{aligned}
+I^{raw}_t &= \mathrm{SSP}(\theta,T;t),\\
+I^{settle}_t &= \mathcal G\!\left(
+\mathrm{TWAP}_{depth}(I^{raw}_t),
+C_t,
+\text{source caps},
+\text{attack-cost limits}
+\right).
+\end{aligned}
+```
 
-| Quantity | Value |
-|---|---:|
-| Source markets with books | 12 |
-| Median CLOB spread | 72.9% |
-| Stress directions inside spread | 14 |
-| Finite crossed-depth cases | 10 |
-| Median displayed notional per $1B oracle move | $13.04 |
-
-The conclusion is not that the OpenAI oracle is ready for production. It is the opposite: a naive midpoint oracle over thin binary markets is fragile. A production system must use trade-weighted or depth-weighted TWAPs, spread penalties, source exclusion, maximum single-market influence, funding caps, and open-interest caps.
+This decomposition is what makes the construction viable for perps. `SSP` supplies the economic state price; `\mathcal G` supplies market integrity. The same separation is standard in mature derivatives markets: pricing theory defines the object, while margin and settlement rules make the object tradeable at size. For semantic perps, the production wrapper should include order-book-depth-aware attack costs, trade-weighted or depth-weighted TWAPs, spread penalties, source exclusion, maximum single-market influence, funding caps, and open-interest caps.
 
 ## 12. Discussion
 
-The central empirical finding is that prediction-market event strips can be treated as noisy state-price surfaces. The Polymarket crypto panels validate the threshold-to-distribution mapping on public financial variables. The Kalshi weather panel validates the same mapping across a larger non-crypto sample with official settlement data. The OpenAI ladder demonstrates the private-asset use case, and Hyperliquid provides an external live perp benchmark in the same units.
+The central empirical finding is that prediction-market event pools can be treated as noisy state-price surfaces. The Polymarket crypto pool validates binary threshold calibration on public financial variables across a dense month-scale sample rather than a few handpicked dates. The Kalshi weather panel validates the distribution projection across a larger non-crypto sample with official settlement data. The OpenAI ladder plus semantic pocket demonstrates the private-asset use case, and Hyperliquid provides an external live perp benchmark in the same units.
 
 The broader claim is not limited to private-company valuation. The surface inventory shows recurring state-price structures across crypto, macroeconomic releases, weather, public equity indices, and policy variables. Prediction markets are becoming a general substrate for contingent claims over the world. The paper's operator is a way to convert those claims into indices.
 
 This generality is also the main risk. Semantic proxy markets are not direct claims. A model-ranking market may be relevant to an AI-company valuation, but the loading is uncertain and time-varying. A weather range contract is nearly deterministic conditional on the realized temperature. A private-company IPO threshold is direct but conditional on a corporate event. A geopolitical event may be related to an index but only through a complex causal path. The framework should therefore report semantic coverage and residual uncertainty rather than hide them.
 
-## 13. Limitations
+## 13. Boundary Conditions
 
-The paper does not claim that all prediction-market prices are unbiased probabilities. It does not claim that a thin event market can safely anchor a large perp. It does not claim that a semantic proxy can be treated as equivalent to a direct threshold. The framework is a projection operator, not a proof that the input markets are perfect.
+The framework separates three objects that are often conflated: the event-market price, the inferred latent index, and the tradeable settlement oracle. Prediction markets supply state-contingent claims; the semantic state-price operator produces the index; the production oracle adds market-integrity constraints. This separation is what lets the method use broad semantic market pools without pretending that every source market has the same evidentiary weight.
 
-Current limitations:
+Current boundary conditions:
 
-1. The Polymarket crypto sample is still short: eight BTC dates and eight ETH dates.
-2. The Kalshi panel is robust but limited to weather; more macro and financial series should be added.
-3. The private-company result is a demonstration, not a validated ground-truth forecast.
-4. The manipulation-cost model uses displayed depth and fixed shocks, not a full TWAP adversary model.
-5. Semantic proxy loadings are specified conceptually but not yet estimated at scale.
+1. The Polymarket crypto pool is dense, but many BTC/ETH markets are proxy markets rather than direct close-threshold claims; they should not receive direct-market weight until calibrated.
+2. The close-threshold crypto validation is binary calibration, not a full multi-strike terminal-price reconstruction for every date.
+3. The Kalshi panel is robust but limited to weather; more macro, financial, and public-equity series should be added.
+4. The private-company result is a demonstration, not a validated ground-truth forecast.
+5. The manipulation-cost model uses displayed depth and fixed shocks, not a full TWAP adversary model.
+6. Semantic proxy loadings are specified conservatively and need large-scale cross-validation before they can dominate direct valuation claims.
 
-These limitations are not incidental. They define the next research program.
+These boundary conditions define the next research program: estimate proxy loadings across many resolved families, fit attack-cost models from live order books, and standardize the settlement wrapper for semantic perps.
 
 ## 14. Conclusion
 
@@ -382,25 +459,26 @@ Prediction markets are no longer merely isolated yes/no wagers. They are beginni
 
 This paper proposes the semantic state-price operator:
 
-```text
-SemanticStatePrice(target, horizon)
-  = Projection(
-      prices      = prediction_market_prices,
-      payoffs     = semantic_event_maps(target),
-      weights     = liquidity * relevance * specificity * maturity_fit / noise,
-      constraints = coherence + monotonicity + smoothness
-    )
+```math
+\mathrm{SSP}(\theta,T)
+=
+\Pi_{\Delta}
+\left(
+p,\ A(\theta,T),\
+\omega(z;\widehat\beta),\
+\mathcal C_{\text{coherence}}
+\right).
 ```
 
 The operator converts fragmented event securities into indices. Those indices can be validated on public variables, used to infer private variables, and potentially deployed as perpetual-futures oracles with appropriate safety constraints.
 
-The empirical evidence now spans two venues and multiple market families: Polymarket crypto ladders, a multi-month Kalshi weather panel, an OpenAI private-company projection, and Hyperliquid pre-IPO perp benchmarks. The evidence is strong enough to motivate the framework and weak enough to keep the implementation honest. The remaining work is to expand the validation universe, estimate semantic loadings, and build a manipulation-cost model suitable for production-scale perps.
+The empirical evidence now spans two venues and multiple market families: a 3,197-market, 29-month Polymarket BTC/ETH entity pool, a multi-month Kalshi weather panel, a 1,030-market OpenAI semantic pool, and Hyperliquid pre-IPO perp benchmarks. The evidence is strong enough to motivate the framework and explicit enough to keep the implementation honest. The remaining work is to expand the validation universe, estimate semantic loadings, and build a manipulation-cost model suitable for production-scale perps.
 
 ## Methods
 
 ### Polymarket crypto reconstruction
 
-For each asset-date pair, the scripts identify Polymarket markets whose titles encode terminal thresholds of the form `asset above $K on date`. YES token IDs are pulled from a normalized market catalog snapshot. Historical prices are fetched directly from Polymarket CLOB `batch-prices-history`. For each hourly snapshot, the latest available YES prices define noisy survival probabilities over thresholds. A constrained least-squares projection recovers a distribution over adjacent price intervals. The expected terminal price, modal interval, and realized-bucket probability are compared with CoinGecko spot data near the resolution timestamp.
+The script pages Polymarket Gamma crypto events and classifies BTC/ETH markets into close thresholds, range buckets, barrier thresholds, record/race markets, institutional proxies, relative proxies, and semantic proxies. YES token IDs are read from each market record. For resolved direct close-threshold markets, historical prices are fetched directly from Polymarket CLOB `batch-prices-history`; snapshots at 48h, 24h, 6h, and final pre-close are compared with the resolved YES/NO outcome. The reported metrics are Brier score, log loss, directional accuracy, and probability assigned to the realized side.
 
 ### Kalshi temperature reconstruction
 
@@ -408,23 +486,31 @@ Kalshi high-temperature markets are grouped by city and date using series ticker
 
 ### OpenAI valuation projection
 
-OpenAI valuation contracts are parsed into no-IPO, less-than, between, and above-threshold payoff functions. A no-IPO atom is included. The projection solves a constrained weighted least-squares problem over valuation buckets. Weights depend primarily on volume and quote history. The output is an unconditional valuation index and a conditional-IPO valuation.
+OpenAI valuation contracts are parsed into no-IPO, less-than, between, and above-threshold payoff functions. A no-IPO atom is included. The direct projection solves a constrained weighted problem over valuation buckets. A separate OpenAI semantic pool is built from Polymarket AI and legal/business event tags. Markets are classified into valuation/liquidity, capability/product, legal/governance, OpenAI semantic, competitor capability, and AI-sector proxy categories. Active proxy prices enter only through a signed, shrinkage-adjusted logit signal.
+
+### Weight estimation
+
+Weights combine market type, liquidity, maturity fit, specificity, semantic distance, historical calibration, and manipulation risk. For public families with resolved outcomes, the weight parameters can be learned by minimizing validation log loss or Brier score. For sparse private-company proxy families, the artifact uses conservative prior weights and reports the direct and semantic-adjusted indices separately.
 
 ### Oracle stress
 
-For each OpenAI source market, the observed probability is perturbed up and down by five percentage points. The latent distribution is refit, and the index movement is recorded. For book-depth stress, Polymarket CLOB order books are fetched for the same YES tokens. The script estimates displayed notional crossed to move each source market by the same shock. Cases where the target lies inside the current spread are flagged as midpoint-fragile rather than treated as free manipulation.
+For each OpenAI source market, the observed probability is perturbed up and down by five percentage points. The latent distribution is refit, and the index movement is recorded. The stress table reports the maximum and median one-market index movement under this fixed probability shock. A production oracle should extend this step with live order-book attack costs and TWAP adversary simulations.
 
 ## Data and Code Availability
 
-All generated files are in `artifact/semantic-state-prices/`. Key outputs:
+All generated files are in this public repository. Key outputs:
 
-- `data/btc_rolling_batch.md`
-- `data/eth_rolling_batch.md`
+- `data/polymarket_crypto_entity_pool.md`
+- `data/polymarket_crypto_entity_pool.json`
+- `data/polymarket_crypto_entity_pool.csv`
+- `data/polymarket_crypto_threshold_validation.csv`
+- `data/openai_semantic_market_pool.md`
+- `data/openai_semantic_market_pool.json`
+- `data/openai_semantic_market_pool.csv`
 - `data/kalshi_temperature_panel_20260301_20260504.md`
 - `data/openai_20271231_projection.md`
 - `data/hyperliquid_vntl_private_perps.md`
 - `data/openai_20271231_oracle_stress.md`
-- `data/openai_20271231_orderbook_cost.md`
 - `data/prediction_market_surface_inventory.md`
 - `figures/figure_1_semantic_operator.png`
 - `figures/figure_2_polymarket_crypto.png`

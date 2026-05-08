@@ -10,7 +10,7 @@
 
 Prediction markets trade thousands of binary contracts tied to future states of the world. This repository shows how to treat related contracts as noisy state-price observations, project them into a coherent latent distribution, and report the resulting expectation as an index candidate. The intended use is an oracle input for perpetual futures on variables that do not have native spot markets.
 
-The manuscript validates the method on Polymarket crypto ladders and a Kalshi weather panel, then applies it to OpenAI 2027 valuation markets and compares the result with Hyperliquid pre-IPO perpetuals.
+The manuscript validates the method on a 29-month Polymarket BTC/ETH entity pool and a Kalshi weather panel, then applies it to a 1,030-market OpenAI semantic pool and compares the result with Hyperliquid pre-IPO perpetuals.
 
 ## Core Operator
 
@@ -37,10 +37,9 @@ Where:
 
 | Surface | Venue | Sample | Result |
 |---|---|---:|---|
-| BTC terminal ladders | Polymarket | 8 dates, 120 snapshots | Mean final error: `$451`; realized-bucket probability: `0.732` |
-| ETH terminal ladders | Polymarket | 8 dates, 141 snapshots | Mean final error: `$20`; realized-bucket probability: `0.685` |
+| BTC/ETH entity pool | Polymarket | 3,197 markets over 29 months | 542 close thresholds, 423 range buckets; final Brier `0.075`; final accuracy `0.904` |
 | High-temperature ladders | Kalshi | 195 city-date panels, 7,496 snapshots | Final MAE: `1.02F`; modal accuracy: `0.862` |
-| OpenAI 2027 IPO valuation | Polymarket | private-company event ladder | Unconditional index: `$932B`; conditional IPO value: `$1.328T` |
+| OpenAI semantic pool | Polymarket | 1,030 markets over 33 months | Direct index: `$1.152T`; semantic-adjusted index: `$1.150T` |
 | OpenAI pre-IPO perp | Hyperliquid | live `vntl` perp benchmark | Mark: `$1.112T`; oracle: `$1.023T` |
 
 ## Figures
@@ -69,6 +68,7 @@ data/
 scripts/
   build_figures.py              Rebuilds the public figures from data outputs
   render_paper_html.py          Renders manuscript Markdown to HTML
+  polymarket_entity_pools.py    Fetches Polymarket BTC/ETH and OpenAI entity pools
   kalshi_temperature_panel.py   Fetches Kalshi/NOAA panel data
   kalshi_temperature_validation.py
   hyperliquid_private_perps.py
@@ -85,14 +85,17 @@ python scripts/build_figures.py
 python scripts/render_paper_html.py
 ```
 
-The included datasets are sufficient to regenerate the figures. Some Polymarket and OpenAI valuation artifacts are included as static research outputs because their source-market discovery used a normalized market catalog snapshot.
+The included datasets are sufficient to regenerate the figures. To refresh the live Polymarket entity pools, run:
+
+```bash
+python scripts/polymarket_entity_pools.py --crypto-pages 20 --openai-pages 16 --history-limit 500
+```
 
 ## Data Provenance
 
-- Polymarket CLOB market history and order-book data
+- Polymarket Gamma event discovery, CLOB market history, and order-book data
 - Kalshi external market and candlestick APIs
 - NOAA/NCEI daily weather summaries
-- CoinGecko and Kraken crypto reference prices
 - Hyperliquid perpetual-market info endpoint
 
 ## Disclaimer

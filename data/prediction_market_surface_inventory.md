@@ -6,7 +6,9 @@ Generated: `2026-05-08T03:54:40Z`
 
 | Family | Target | Matched Markets | Sample Evidence |
 |---|---|---:|---|
-| `crypto_terminal_ladders` | BTC / ETH terminal prices | 365 | Will the price of Bitcoin be above $76,000 on April 10? |
+| `crypto_entity_pool` | BTC / ETH direct and proxy markets | 3,197 | Bitcoin above $70,000 on April 5? |
+| `crypto_terminal_ladders` | BTC / ETH direct close thresholds | 542 | ETH above $3,500 on Mar 29? |
+| `openai_semantic_pool` | OpenAI valuation, model, product, legal, competitor, and sector proxies | 1,030 | OpenAI IPO closing market cap above $1T? |
 | `private_company_valuation` | OpenAI / Anthropic / SpaceX / Anduril valuations | 135 | Will SpaceX's public ticker be $SEX? |
 | `ai_capability_semantics` | AI model leadership / adoption | 414 | Will Perplexity AI be acquired before 2027? |
 | `macro_policy` | rates, inflation, macro prints | 610 | Will the Fed decrease interest rates by 50+ bps after the April 2026 meeting? |
