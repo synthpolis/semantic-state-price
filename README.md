@@ -14,22 +14,29 @@ The manuscript validates the method on a 29-month Polymarket BTC/ETH entity pool
 
 ## Core Operator
 
-```text
-q_hat(theta,T) = argmin_q sum_i w_i(theta,T) (A_i q - p_i)^2 + lambda ||D^2 q||_2^2
+```math
+\widehat q_{\theta,T}(t)
+=
+\arg\min_{q\in\Delta_K}
+\left[
+\sum_{i\in\mathcal M_{\theta,T}(t)}
+\omega_i(t)\rho_\tau\!\left(
+\ell(A_iq)-\ell(\widetilde p_i(t))
+\right)
++\lambda\,\mathrm{KL}(q\Vert\pi_{\theta,T})
++\mu\lVert D^2\log q\rVert_2^2
+\right]
 
-subject to:
-q_k >= 0
-sum_k q_k = 1
-
-I(theta,T) = sum_k x_k q_hat_k
-r_f = kappa(c_t) log(P_t / I(theta,T))
+I_{\theta,T}(t)=\sum_{k=1}^{K}x_k\,\widehat q_k(t),
+\qquad
+\ell(p)=\log\frac{p}{1-p}
 ```
 
 Where:
 
 - `p_i` is the observed prediction-market YES price.
 - `A_i` maps a natural-language market rule into payoffs over latent state buckets.
-- `w_i` weights relevance, liquidity, specificity, maturity fit, and noise.
+- `omega_i` weights relevance, liquidity, specificity, maturity fit, calibration, and attack cost.
 - `q_hat` is the nearest coherent distribution over the latent state.
 - `I(theta,T)` is the resulting index.
 

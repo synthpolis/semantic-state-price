@@ -36,48 +36,60 @@ plt.rcParams.update(
 
 
 def semantic_operator():
-    fig, ax = plt.subplots(figsize=(7.5, 3.0))
+    fig, ax = plt.subplots(figsize=(10.0, 4.0))
     fig.patch.set_facecolor(PAPER)
     ax.set_facecolor(PAPER)
     ax.axis("off")
-    ax.add_patch(Rectangle((0.015, 0.05), 0.97, 0.90, transform=ax.transAxes, fill=False, edgecolor=DORMANT, linewidth=0.9))
-    ax.plot([0.06, 0.94], [0.78, 0.78], color=DORMANT, linewidth=0.8, transform=ax.transAxes)
+    ax.add_patch(
+        Rectangle(
+            (0.025, 0.055),
+            0.95,
+            0.89,
+            transform=ax.transAxes,
+            fill=False,
+            edgecolor=DORMANT,
+            linewidth=1.0,
+        )
+    )
+    ax.plot([0.07, 0.93], [0.72, 0.72], color=DORMANT, linewidth=0.9, transform=ax.transAxes)
     ax.text(
-        0.06,
+        0.07,
         0.86,
         "Semantic state-price operator",
         transform=ax.transAxes,
         ha="left",
         va="center",
-        fontsize=13.5,
+        fontsize=18,
         fontweight="bold",
         color=INK,
     )
     ax.text(
-        0.94,
-        0.86,
-        "prediction-market claims -> latent index -> perp oracle",
+        0.07,
+        0.785,
+        "prediction-market claims -> latent state distribution -> index oracle",
         transform=ax.transAxes,
-        ha="right",
+        ha="left",
         va="center",
-        fontsize=8.2,
+        fontsize=10.3,
         color=MID,
     )
 
     eq1 = (
         r"$\widehat q_{\theta,T}(t)=\underset{q\in\Delta_K}{\arg\min}\ "
-        r"\left\{\sum_{i\in\mathcal{M}_{\theta,T}}\omega_i(t)\rho_\tau"
-        r"\left[\ell(A_iq)-\ell(\tilde p_i(t))\right]"
-        r"+\lambda\,\mathrm{KL}(q\Vert\pi_{\theta,T})+\mu\Vert D^2\log q\Vert_2^2\right\}$"
+        r"\mathcal{J}_{\theta,T}(q;t)$"
     )
-    eq2 = r"$I_{\theta,T}(t)=\sum_k x_k\,\widehat q_k(t),\qquad \ell(p)=\log\frac{p}{1-p}$"
+    eq2 = (
+        r"$\mathcal{J}_{\theta,T}(q;t)=\sum_{i\in\mathcal{M}_{\theta,T}(t)}"
+        r"\omega_i(t)\rho_\tau\!\left(\ell(A_iq)-\ell(\tilde p_i(t))\right)"
+        r"+\lambda\,\mathrm{KL}(q\Vert\pi_{\theta,T})+\mu\Vert D^2\log q\Vert_2^2$"
+    )
     eq3 = (
-        r"$I^{\mathrm{settle}}_{\theta,T}(t)=\mathcal{G}"
-        r"\!\left(\mathrm{TWAP}_{\mathrm{depth}}(I_{\theta,T}),\,C_t,\,\Gamma_t\right)$"
+        r"$I_{\theta,T}(t)=\sum_{k=1}^{K}x_k\,\widehat q_k(t),"
+        r"\qquad \ell(p)=\log\frac{p}{1-p}$"
     )
-    ax.text(0.5, 0.58, eq1, transform=ax.transAxes, ha="center", va="center", fontsize=10.1, color=INK)
-    ax.text(0.5, 0.36, eq2, transform=ax.transAxes, ha="center", va="center", fontsize=10.8, color=INK)
-    ax.text(0.5, 0.19, eq3, transform=ax.transAxes, ha="center", va="center", fontsize=10.6, color=INK)
+    ax.text(0.5, 0.56, eq1, transform=ax.transAxes, ha="center", va="center", fontsize=18, color=INK)
+    ax.text(0.5, 0.40, eq2, transform=ax.transAxes, ha="center", va="center", fontsize=11.2, color=INK)
+    ax.text(0.5, 0.20, eq3, transform=ax.transAxes, ha="center", va="center", fontsize=15, color=INK)
     save(fig, "figure_1_semantic_operator.png")
 
 

@@ -54,7 +54,7 @@
 <h2>1. Introduction</h2>
 <p>Modern prediction markets increasingly resemble an option market over reality. They do not merely ask who wins an election. They list thresholds, ranges, brackets, and conditional events over macroeconomic releases, crypto prices, public equities, weather, sports, geopolitics, technology adoption, and private-company outcomes. A single market says whether Bitcoin settles above a strike at a timestamp. A strip of such markets says much more: it traces a discrete survival curve over the terminal price. A market on OpenAI&#x27;s IPO valuation above $1T is not a spot price for OpenAI, but it is a state-contingent security over OpenAI&#x27;s future valuation. A collection of such securities can imply a distribution over an otherwise untraded variable.</p>
 <p>The paper formalizes that observation. Let <code>X_T</code> denote a latent future state: a price, valuation, weather outcome, policy setting, capability index, or local real-estate level. Each prediction-market contract is treated as a binary security whose payoff is a function of <code>X_T</code> and possibly auxiliary states. Natural-language market rules determine the payoff function. Observed market prices provide noisy estimates of state-contingent probabilities or risk-neutral prices. A constrained projection then recovers a coherent distribution over <code>X_T</code> from the noisy and sometimes inconsistent market observations.</p>
-<p>This is the reverse of the Black-Scholes direction. Black and Scholes price options from an observed underlying. Breeden and Litzenberger show how state prices can be recovered from option prices when the option surface is sufficiently complete. Prediction markets create a more irregular but broader object: an option surface over arbitrary real-world states, written in natural language and scattered across venues. The problem is not only financial interpolation. It is semantic extraction plus coherent projection.</p>
+<p>Classical derivative pricing maps an observed underlying process into contingent-claim prices. The inference problem studied here runs in the opposite direction: event-security prices are observed, while the underlying state index is latent. Breeden and Litzenberger show how state prices can be recovered from option prices when the option surface is sufficiently complete. Prediction markets create a more irregular but broader object: an option surface over arbitrary real-world states, written in natural language and scattered across venues. The problem is not only financial interpolation. It is semantic extraction plus coherent projection.</p>
 <p>The practical motivation is straightforward. Most economically important variables lack continuous spot markets. Private-company valuations, city-level real estate, AI capability leadership, policy severity, regulatory risk, and geopolitical intensity are priced sporadically. Prediction markets can supply fragmented contingent claims over these variables. If these fragments can be composed into a coherent index, that index can serve as the oracle for perpetual futures or structured products.</p>
 <p>The paper makes four claims:</p>
 <ol><li>Collections of binary prediction markets can be modeled as noisy state-price observations over latent variables.</li><li>Natural-language market rules can be mapped into payoff functions over those variables.</li><li>Constrained projection can convert inconsistent event prices into coherent distributions.</li><li>The resulting distribution can support a rolling oracle, provided manipulation risk is explicitly controlled.</li></ol>
@@ -65,9 +65,33 @@
 <p>Prediction markets have long been studied as information aggregation mechanisms. Wolfers and Zitzewitz (2004) survey market design and accuracy. Arrow et al. (2008) argue for prediction markets as mechanisms for aggregating dispersed information. Manski (2006) and Wolfers and Zitzewitz (2006) clarify when prices can be interpreted as probabilities and when equilibrium prices differ from simple mean beliefs. Hanson (2003) develops market scoring rules that are foundational for automated market makers in prediction markets.</p>
 <p>This paper differs from that literature in its object of inference. It does not ask whether a single prediction-market price is a calibrated probability. It asks whether many related event prices can be composed into a distribution over a latent continuous or ordinal state. In this sense the paper treats prediction markets as an irregular semantic option surface. The main technical challenge is not merely extracting probabilities. It is recovering a coherent underlying state distribution from markets that were not designed as a formal option chain.</p>
 <h2>3. Semantic State-Price Model</h2>
-<p>Let:</p>
-<div class="display-math">\[X_T = \text{latent state at horizon } T.\]</div>
-<p><code>X_T</code> can be a traded public price, a private valuation, an official weather statistic, a policy setting, or a constructed index. Each prediction-market contract <code>i</code> has:</p>
+<p>We define the semantic state-price operator as the inverse problem that maps event-security prices into a latent state distribution and its induced index:</p>
+<div class="display-math">\[\begin{aligned}
+\mathcal J_{\theta,T}(q;t)
+&amp;=
+\sum_{i\in\mathcal M_{\theta,T}(t)}
+\omega_i(t)\,
+\rho_\tau\!\left(
+\ell(A_iq)-\ell(\widetilde p_i(t))
+\right)\\
+&amp;\qquad\qquad
++\lambda\,\mathrm{KL}\!\left(q\Vert\pi_{\theta,T}\right)
++\mu\left\lVert D^2\log q\right\rVert_2^2
+\\[4pt]
+\widehat q_{\theta,T}(t)
+&amp;=
+\operatorname*{arg\,min}_{q\in\Delta_K}
+\mathcal J_{\theta,T}(q;t),
+\\[4pt]
+I_{\theta,T}(t)
+&amp;=
+\sum_{k=1}^{K}x_k\,\widehat q_k(t),
+\qquad
+\ell(p)=\log\frac{p}{1-p}.
+\end{aligned}
+\tag{1}\]</div>
+<p>This equation is the central object of the paper. \(\mathcal M_{\theta,T}(t)\) is the selected market pocket for target \(\theta\) and horizon \(T\); \(A_i\) is the semantic payoff map from market text into state buckets; \(\omega_i\) is the learned source weight; \(\rho_\tau\) is a robust loss; \(\pi_{\theta,T}\) is the prior state distribution; and \(I_{\theta,T}\) is the inferred index.</p>
+<p>Let \(X_T\) denote the latent state at horizon \(T\). It can be a traded public price, a private valuation, an official weather statistic, a policy setting, or a constructed index. Each prediction-market contract \(i\) has:</p>
 <div class="display-math">\[\begin{aligned}
 p_i      &amp;= \text{observed YES price},\\
 e_i      &amp;= \text{event text and resolution rule},\\
@@ -92,7 +116,7 @@ A_i(x)=\mathbf{1}\{x\ge 1000B,\ \text{IPO by }T\}.\]</div>
 <div class="display-math">\[\text{&quot;Will Anthropic have the best AI model by year-end?&quot;}
 \qquad
 A_i(x)=\sigma(\alpha_i+\beta_i\log x+\gamma_i^\top c_i).\]</div>
-<p>The semantic layer maps the text and rules into <code>A_i</code>. It does not set prices. Pricing comes from observed markets; coherence comes from projection.</p>
+<p>The semantic layer maps the text and rules into \(A_i\). It does not set prices. Pricing comes from observed markets; coherence comes from projection.</p>
 <p>Represent the latent distribution on a grid:</p>
 <div class="display-math">\[q_k=\Pr(X_T\in B_k),\qquad q\in\Delta_K.\]</div>
 <p>Let <code>A</code> be the matrix whose <code>i,k</code> entry is the payoff of market <code>i</code> in state bucket <code>k</code>. The estimated distribution solves:</p>
@@ -116,7 +140,7 @@ I_{\text{IPO}} &amp;= \sum_{k&gt;0}\frac{\widehat q_k}{1-\widehat q_0}x_k.
 <p>Prediction-market data is not a clean option chain. It contains stale markets, ambiguous rules, overlapping outcomes, wide spreads, idiosyncratic settlement details, and proxy markets that are directionally relevant but not direct claims on the target state. The weighting function therefore matters as much as the payoff parser.</p>
 <p>For each market, the empirical artifact records a feature vector:</p>
 <div class="display-math">\[z_i=(\ell_i,\ r_i,\ s_i,\ d_i,\ m_i,\ h_i,\ a_i,\ c_i).\]</div>
-<p>Here <code>\ell_i</code> is liquidity and quote freshness, <code>r_i</code> is semantic relevance to the target, <code>s_i</code> is rule specificity, <code>d_i</code> is semantic distance, <code>m_i</code> is maturity fit, <code>h_i</code> is historical family calibration, <code>a_i</code> is attack cost or depth, and <code>c_i</code> is concentration or duplication risk. Direct range and close-threshold markets get high <code>r_i</code> and <code>s_i</code>; model-leadership, legal, governance, competitor, or sector markets enter as lower-weight proxy observations.</p>
+<p>Here \(\ell_i\) is liquidity and quote freshness, \(r_i\) is semantic relevance to the target, \(s_i\) is rule specificity, \(d_i\) is semantic distance, \(m_i\) is maturity fit, \(h_i\) is historical family calibration, \(a_i\) is attack cost or depth, and \(c_i\) is concentration or duplication risk. Direct range and close-threshold markets get high relevance and specificity; model-leadership, legal, governance, competitor, or sector markets enter as lower-weight proxy observations.</p>
 <p>The baseline source weight is a generalized inverse-variance weight:</p>
 <div class="display-math">\[\omega_i
 =
@@ -124,16 +148,16 @@ I_{\text{IPO}} &amp;= \sum_{k&gt;0}\frac{\widehat q_k}{1-\widehat q_0}x_k.
 {\widehat\sigma^2_{g(i)}+\sigma^2_{\text{micro},i}
  +\sigma^2_{\text{semantic},i}+\sigma^2_{\text{attack},i}+\epsilon}.\]</div>
 <p>The denominator separates four failures: the historical error of the market family <code>g(i)</code>, microstructure noise from spreads and stale quotes, semantic noise from proxy distance, and manipulation risk from shallow source books. The numerator allows a learned or specified prior over useful features.</p>
-<p>The preferred empirical objective is not plain least squares. For binary prices near zero or one, probability-space residuals underweight tail errors. The stronger form uses logit residuals, robust loss, and an entropy prior:</p>
+<p>The preferred empirical objective is not plain least squares. For binary prices near zero or one, probability-space residuals underweight tail errors. The stronger form uses the logit residuals, robust loss, and entropy prior in the semantic state-price equation:</p>
 <div class="display-math">\[\widehat q
 =\arg\min_{q\in\Delta_K}
 \sum_i \omega_i\,
 \rho_\tau\!\left[
 \operatorname{logit}(A_iq)-\operatorname{logit}(\tilde p_i)
 \right]
-\lambda\,\mathrm{KL}(q\Vert \pi_T)
-\mu\lVert D^2\log q\rVert_2^2 .\]</div>
-<p><code>\tilde p_i</code> clips observed prices away from zero and one, <code>\rho_\tau</code> is a Huber loss, <code>\pi_T</code> is a prior distribution at the target horizon, and the smoothness penalty prevents a sparse proxy basket from creating implausible spikes. The simple least-squares operator remains useful for transparent tables, but the logit-Huber-KL form is the better production equation.</p>
++\lambda\,\mathrm{KL}(q\Vert \pi_T)
++\mu\lVert D^2\log q\rVert_2^2 .\]</div>
+<p>\(\tilde p_i\) clips observed prices away from zero and one, \(\rho_\tau\) is a Huber loss, \(\pi_T\) is a prior distribution at the target horizon, and the smoothness penalty prevents a sparse proxy basket from creating implausible spikes. The simple least-squares operator remains useful for transparent tables, but the logit-Huber-KL form is the better production equation.</p>
 <p>Weights should be learned where resolved histories exist. The calibration problem is:</p>
 <div class="display-math">\[\widehat\beta
 =
@@ -141,7 +165,7 @@ I_{\text{IPO}} &amp;= \sum_{k&gt;0}\frac{\widehat q_k}{1-\widehat q_0}x_k.
 \sum_{j\in\mathcal V}
 \mathcal L\!\left(y_j,\widehat p_j(\beta)\right)
 \xi\lVert\beta-\beta_0\rVert_2^2 ,\]</div>
-<p>where <code>\mathcal V</code> is a validation set of resolved markets and <code>\mathcal L</code> is log loss or Brier score. Until enough resolved data exists for a proxy family, the system uses a conservative prior: direct close/range/valuation markets receive the highest weight; barrier markets receive less; capability and product markets receive still less; legal, competitor, and sector proxies receive low weight and are shrinkage-adjusted rather than allowed to dominate the index.</p>
+<p>where \(\mathcal V\) is a validation set of resolved markets and \(\mathcal L\) is log loss or Brier score. Until enough resolved data exists for a proxy family, the system uses a conservative prior: direct close/range/valuation markets receive the highest weight; barrier markets receive less; capability and product markets receive still less; legal, competitor, and sector proxies receive low weight and are shrinkage-adjusted rather than allowed to dominate the index.</p>
 <p>The reporting metrics are Brier score, log loss, calibration error, realized-side probability, projection residual, effective number of markets, family concentration, and attack elasticity. A source market is useful only if it improves out-of-sample calibration or materially increases semantic coverage without making the oracle easy to move.</p>
 <h2>5. Rolling Perpetual Oracle</h2>
 <p>A perpetual future cannot be anchored to a single fixed-expiration ladder. The oracle should maintain a constant maturity:</p>
@@ -154,7 +178,7 @@ I_{\text{IPO}} &amp;= \sum_{k&gt;0}\frac{\widehat q_k}{1-\widehat q_0}x_k.
 <div class="display-math">\[\mathrm{funding}_t
 =
 \kappa(C_t)\log\left(\frac{P^{perp}_t}{I_t}\right).\]</div>
-<p>The logarithm is not cosmetic. For positive variables such as prices and valuations, multiplicative errors are more stable than dollar errors: a 10% miss at $200B and a 10% miss at $2T are economically similar. The same logic applies to funding, where <code>\log(P^{perp}_t/I_t)</code> is the continuously compounded premium of the tradable mark over the oracle. For bounded probabilities the analogous transform is logit; for variables that can be negative or naturally additive, such as temperature, the linear state is preferable.</p>
+<p>The logarithm is not cosmetic. For positive variables such as prices and valuations, multiplicative errors are more stable than dollar errors: a 10% miss at $200B and a 10% miss at $2T are economically similar. The same logic applies to funding, where \(\log(P^{perp}_t/I_t)\) is the continuously compounded premium of the tradable mark over the oracle. For bounded probabilities the analogous transform is logit; for variables that can be negative or naturally additive, such as temperature, the linear state is preferable.</p>
 <p>Confidence should determine leverage, open-interest caps, funding caps, and pause conditions. A minimal confidence function should include:</p>
 <div class="display-math">\[C_t
 =f\!\left(
@@ -207,7 +231,7 @@ I_{\text{direct}}\cdot
 \frac{\sum_{i\in\mathcal P}\omega_i s_i\operatorname{logit}(p_i)}
 {\sum_{i\in\mathcal P}|\omega_i|}
 \right]\right),\]</div>
-<p>where <code>\mathcal P</code> is the active proxy pocket, <code>s_i</code> is the sign of the loading, and <code>\zeta=0.08</code> is a conservative shrinkage coefficient until the proxy-family loadings can be cross-validated at scale.</p>
+<p>where \(\mathcal P\) is the active proxy pocket, \(s_i\) is the sign of the loading, and \(\zeta=0.08\) is a conservative shrinkage coefficient until the proxy-family loadings can be cross-validated at scale.</p>
 <p><strong>Table 5. OpenAI 2027 valuation and semantic pocket.</strong></p>
 <table><tr><th>Quantity</th><th>Value</th></tr><tr><td>OpenAI pool markets</td><td>1,030</td></tr><tr><td>Active pool markets</td><td>215</td></tr><tr><td>Active priced proxy markets in semantic signal</td><td>187</td></tr><tr><td>Effective semantic market count</td><td>433.2</td></tr><tr><td>Pool span</td><td>33 months</td></tr><tr><td>No-IPO probability, direct ladder</td><td>0.240</td></tr><tr><td>IPO probability, direct ladder</td><td>0.760</td></tr><tr><td>Direct expected valuation, unconditional</td><td>$1.152T</td></tr><tr><td>Semantic-adjusted valuation, unconditional</td><td>$1.150T</td></tr><tr><td>Direct expected valuation, conditional on IPO</td><td>$1.515T</td></tr><tr><td>Semantic-adjusted valuation, conditional on IPO</td><td>$1.513T</td></tr></table>
 <p>The OpenAI value reported here is a market-implied state index, not an analyst appraisal. It is inferred from direct valuation claims plus a transparent, low-weight semantic proxy pocket. The direct ladder identifies the valuation distribution; the broader pool improves coverage and should receive more weight as its historical loadings are learned.</p>
@@ -231,7 +255,7 @@ V_i(\delta) &amp;= \frac{s_i(\delta)}{C_i(\delta)}.
 <p>For the OpenAI 2027 ladder, perturbing each source market by plus or minus five YES-probability points gives:</p>
 <p><strong>Table 8. OpenAI oracle stress.</strong></p>
 <table><tr><th>Quantity</th><th>Value</th></tr><tr><td>Baseline unconditional index</td><td>$1.152T</td></tr><tr><td>Max one-market index move</td><td>$24B</td></tr><tr><td>Median one-market index move</td><td>$8B</td></tr><tr><td>Stress confidence score</td><td>0.979</td></tr></table>
-<p>The production implication is an oracle architecture, not a retreat from the pricing equation. The semantic state-price operator is the primitive that creates the latent index. The market-design layer then turns that index into a settlement object by specifying smoothing, constituent caps, depth requirements, and attack-cost constraints. This is the prediction-market analogue of the distinction between an option-pricing equation and the exchange rules that determine margin, settlement, and market integrity.</p>
+<p>The production implication is an oracle architecture. The semantic state-price operator is the primitive that creates the latent index. The market-design layer then turns that index into a settlement object by specifying smoothing, constituent caps, depth requirements, and attack-cost constraints. The distinction is the same one used in mature derivatives markets: pricing theory defines the object, while exchange rules determine margin, settlement, and market integrity.</p>
 <div class="display-math">\[\begin{aligned}
 I^{raw}_t &amp;= \mathrm{SSP}(\theta,T;t),\\
 I^{settle}_t &amp;= \mathcal G\!\left(
@@ -241,7 +265,7 @@ C_t,
 \text{attack-cost limits}
 \right).
 \end{aligned}\]</div>
-<p>This decomposition is what makes the construction viable for perps. <code>SSP</code> supplies the economic state price; <code>\mathcal G</code> supplies market integrity. The same separation is standard in mature derivatives markets: pricing theory defines the object, while margin and settlement rules make the object tradeable at size. For semantic perps, the production wrapper should include order-book-depth-aware attack costs, trade-weighted or depth-weighted TWAPs, spread penalties, source exclusion, maximum single-market influence, funding caps, and open-interest caps.</p>
+<p>This decomposition is what makes the construction viable for perps. SSP supplies the economic state price; \(\mathcal G\) supplies market integrity. The same separation is standard in mature derivatives markets: pricing theory defines the object, while margin and settlement rules make the object tradeable at size. For semantic perps, the production wrapper should include order-book-depth-aware attack costs, trade-weighted or depth-weighted TWAPs, spread penalties, source exclusion, maximum single-market influence, funding caps, and open-interest caps.</p>
 <h2>12. Discussion</h2>
 <p>The central empirical finding is that prediction-market event pools can be treated as noisy state-price surfaces. The Polymarket crypto pool validates binary threshold calibration on public financial variables across a dense month-scale sample rather than a few handpicked dates. The Kalshi weather panel validates the distribution projection across a larger non-crypto sample with official settlement data. The OpenAI ladder plus semantic pocket demonstrates the private-asset use case, and Hyperliquid provides an external live perp benchmark in the same units.</p>
 <p>The broader claim is not limited to private-company valuation. The surface inventory shows recurring state-price structures across crypto, macroeconomic releases, weather, public equity indices, and policy variables. Prediction markets are becoming a general substrate for contingent claims over the world. The paper&#x27;s operator is a way to convert those claims into indices.</p>
