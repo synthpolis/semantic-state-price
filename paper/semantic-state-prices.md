@@ -137,8 +137,6 @@ I_{\text{IPO}} &= \sum_{k>0}\frac{\widehat q_k}{1-\widehat q_0}x_k.
 \end{aligned}
 ```
 
-![Figure 1. Semantic state-price operator.](../figures/figure_1_semantic_operator.png)
-
 ## 4. Market Selection and Semantic Weights
 
 Prediction-market data is not a clean option chain. It contains stale markets, ambiguous rules, overlapping outcomes, wide spreads, idiosyncratic settlement details, and proxy markets that are directionally relevant but not direct claims on the target state. The weighting function therefore matters as much as the payoff parser.
@@ -287,7 +285,7 @@ For the direct close-threshold subset, the script fetches Polymarket CLOB `batch
 
 The empirical point is structural. Resolved binary event markets form a dense, month-scale calibration set, direct threshold claims improve monotonically as settlement approaches, and lower-specificity proxy markets can be added to a broader entity-level index without being treated as direct claims.
 
-![Figure 2. Polymarket BTC/ETH entity pool and threshold calibration.](../figures/figure_2_polymarket_crypto.png)
+![Figure 1. Polymarket BTC/ETH entity pool and threshold calibration.](../figures/figure_2_polymarket_crypto.png)
 
 ## 8. Empirical Results: Kalshi Multi-Month Temperature Panel
 
@@ -321,7 +319,7 @@ Each hourly snapshot is normalized into a distribution over temperature buckets 
 
 The monotone improvement across horizons is important. At 48 hours, the market-implied distribution is wider and less concentrated on the realized bucket. At 24 hours, the expected value improves and modal accuracy rises. Near close, the distribution typically collapses around the realized outcome. This is the expected behavior of a market-implied state distribution.
 
-![Figure 3. Kalshi multi-month temperature validation.](../figures/figure_3_kalshi_panel.png)
+![Figure 2. Kalshi multi-month temperature validation.](../figures/figure_3_kalshi_panel.png)
 
 The city-level results are heterogeneous. Miami is easiest in the current sample, with final modal accuracy of 100%. New York also performs strongly, with final modal accuracy of 96.9%. Chicago is weaker, with final modal accuracy of 61.5%, producing most of the panel's final error. This matters for the general framework: source-market quality varies by market family, venue, and underlying. A production oracle should learn reliability by family rather than assume all event markets are equal.
 
@@ -387,7 +385,7 @@ The OpenAI comparison is especially useful:
 
 The Hyperliquid mark is close to, but below, the unconditional Polymarket state-price values, while the conditional-IPO value is higher. That relationship is consistent with the interpretation that prediction-market binaries infer state-contingent distributions, while the perp mark reflects a tradeable synthetic exposure with funding, liquidity, and risk premia.
 
-![Figure 4. OpenAI state-price and perp bridge.](../figures/figure_4_openai_bridge.png)
+![Figure 3. OpenAI state-price and perp bridge.](../figures/figure_4_openai_bridge.png)
 
 ## 11. Manipulation and Oracle Safety
 
@@ -512,7 +510,6 @@ All generated files are in this public repository. Key outputs:
 - `data/hyperliquid_vntl_private_perps.md`
 - `data/openai_20271231_oracle_stress.md`
 - `data/prediction_market_surface_inventory.md`
-- `figures/figure_1_semantic_operator.png`
 - `figures/figure_2_polymarket_crypto.png`
 - `figures/figure_3_kalshi_panel.png`
 - `figures/figure_4_openai_bridge.png`
