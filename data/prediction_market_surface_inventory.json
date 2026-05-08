@@ -1,0 +1,1021 @@
+{
+  "generated_at": "2026-05-08T03:54:40Z",
+  "polymarket": [
+    {
+      "venue": "polymarket",
+      "family": "crypto_terminal_ladders",
+      "target": "BTC / ETH terminal prices",
+      "relevance": "Direct threshold / range markets over public crypto prices.",
+      "matched_markets": 365,
+      "share_of_venue": 0.005649542619220828,
+      "sample": [
+        {
+          "title": "Will the price of Bitcoin be above $76,000 on April 10?",
+          "provider_market_id": "1846094",
+          "price": 0.001,
+          "bid": 0.0005,
+          "ask": 0.001,
+          "volume": 835082.1742380009,
+          "status": "active",
+          "resolution_ts": "2026-04-10T16:00:00+00:00",
+          "has_yes_token": true,
+          "quote_count": 29
+        },
+        {
+          "title": "Will Bitcoin ($BTC) be above $55k on April 1, 2021?",
+          "provider_market_id": "101786",
+          "price": 0.9999999091184348,
+          "bid": 0.9999999091184348,
+          "ask": 0.9999999091184348,
+          "volume": 787378.95026,
+          "status": "closed",
+          "resolution_ts": "2021-04-01T07:00:00+00:00",
+          "has_yes_token": false,
+          "quote_count": 1
+        },
+        {
+          "title": "Will the price of Bitcoin be above $74,000 on April 10?",
+          "provider_market_id": "1846092",
+          "price": 0.001,
+          "bid": 0.0005,
+          "ask": 0.001,
+          "volume": 736778.283698,
+          "status": "active",
+          "resolution_ts": "2026-04-10T16:00:00+00:00",
+          "has_yes_token": true,
+          "quote_count": 29
+        },
+        {
+          "title": "Will the price of Bitcoin be above $68,000 on April 10?",
+          "provider_market_id": "1846084",
+          "price": 0.999,
+          "bid": 0.999,
+          "ask": 1.0,
+          "volume": 707473.211919,
+          "status": "active",
+          "resolution_ts": "2026-04-10T16:00:00+00:00",
+          "has_yes_token": true,
+          "quote_count": 30
+        },
+        {
+          "title": "Will the price of Bitcoin be above $70,000 on April 10?",
+          "provider_market_id": "1846087",
+          "price": 0.999,
+          "bid": 0.999,
+          "ask": 1.0,
+          "volume": 592411.2865179997,
+          "status": "active",
+          "resolution_ts": "2026-04-10T16:00:00+00:00",
+          "has_yes_token": true,
+          "quote_count": 30
+        }
+      ]
+    },
+    {
+      "venue": "polymarket",
+      "family": "private_company_valuation",
+      "target": "OpenAI / Anthropic / SpaceX / Anduril valuations",
+      "relevance": "Direct and indirect private-company state prices.",
+      "matched_markets": 135,
+      "share_of_venue": 0.002089556859163868,
+      "sample": [
+        {
+          "title": "Will SpaceX's public ticker be $SEX?",
+          "provider_market_id": "929494",
+          "price": 0.01,
+          "bid": 0.005,
+          "ask": 0.008,
+          "volume": 1304210.3626350258,
+          "status": "active",
+          "resolution_ts": "2027-12-31T00:00:00+00:00",
+          "has_yes_token": true,
+          "quote_count": 38
+        },
+        {
+          "title": "OpenAI IPO closing market cap above $1T?",
+          "provider_market_id": "1298649",
+          "price": 0.46,
+          "bid": 0.46,
+          "ask": 0.48,
+          "volume": 1038346.1501819999,
+          "status": "active",
+          "resolution_ts": "2027-12-31T00:00:00+00:00",
+          "has_yes_token": true,
+          "quote_count": 467
+        },
+        {
+          "title": "Will SpaceX's market cap be between $2.5T and $3.0T at market close on IPO day?",
+          "provider_market_id": "1720656",
+          "price": 0.111,
+          "bid": 0.101,
+          "ask": 0.111,
+          "volume": 797210.3031980004,
+          "status": "active",
+          "resolution_ts": null,
+          "has_yes_token": true,
+          "quote_count": 37
+        },
+        {
+          "title": "Will SpaceX's public ticker be $STAR?",
+          "provider_market_id": "929497",
+          "price": 0.003,
+          "bid": 0.003,
+          "ask": 0.004,
+          "volume": 785496.9880540005,
+          "status": "active",
+          "resolution_ts": "2027-12-31T00:00:00+00:00",
+          "has_yes_token": true,
+          "quote_count": 38
+        },
+        {
+          "title": "Will SpaceX's public ticker be $SPACE?",
+          "provider_market_id": "929498",
+          "price": 0.009,
+          "bid": 0.009,
+          "ask": 0.011,
+          "volume": 553696.0577790005,
+          "status": "active",
+          "resolution_ts": "2027-12-31T00:00:00+00:00",
+          "has_yes_token": true,
+          "quote_count": 38
+        }
+      ]
+    },
+    {
+      "venue": "polymarket",
+      "family": "ai_capability_semantics",
+      "target": "AI model leadership / adoption",
+      "relevance": "Semantic proxy markets whose outcomes should load on AI-company value or AI dominance indices.",
+      "matched_markets": 414,
+      "share_of_venue": 0.006407974368102528,
+      "sample": [
+        {
+          "title": "Will Perplexity AI be acquired before 2027?",
+          "provider_market_id": "700396",
+          "price": 0.29,
+          "bid": 0.27,
+          "ask": 0.31,
+          "volume": 2370073.7178089838,
+          "status": "active",
+          "resolution_ts": "2026-12-31T00:00:00+00:00",
+          "has_yes_token": true,
+          "quote_count": 38
+        },
+        {
+          "title": "AI Industry Downturn by December 31, 2026?",
+          "provider_market_id": "691340",
+          "price": 0.167,
+          "bid": 0.159,
+          "ask": 0.177,
+          "volume": 1962115.7842819053,
+          "status": "active",
+          "resolution_ts": "2026-12-31T00:00:00+00:00",
+          "has_yes_token": true,
+          "quote_count": 38
+        },
+        {
+          "title": "Will DeepSeek have the best AI model at the end of April 2026?",
+          "provider_market_id": "1664048",
+          "price": 0.012,
+          "bid": 0.011,
+          "ask": 0.012,
+          "volume": 1933740.1883620014,
+          "status": "active",
+          "resolution_ts": "2026-04-30T00:00:00+00:00",
+          "has_yes_token": true,
+          "quote_count": 38
+        },
+        {
+          "title": "USD.AI FDV above $300M one day after launch?",
+          "provider_market_id": "690622",
+          "price": 0.341,
+          "bid": 0.342,
+          "ask": 0.358,
+          "volume": 1284626.4879579972,
+          "status": "active",
+          "resolution_ts": "2027-01-01T05:00:00+00:00",
+          "has_yes_token": true,
+          "quote_count": 38
+        },
+        {
+          "title": "Will xAI have the best AI model at the end of June 2026?",
+          "provider_market_id": "631144",
+          "price": 0.03,
+          "bid": 0.03,
+          "ask": 0.033,
+          "volume": 881585.7877289992,
+          "status": "active",
+          "resolution_ts": "2026-06-30T00:00:00+00:00",
+          "has_yes_token": true,
+          "quote_count": 38
+        }
+      ]
+    },
+    {
+      "venue": "polymarket",
+      "family": "macro_policy",
+      "target": "rates, inflation, macro prints",
+      "relevance": "Macro state variables with natural threshold and ladder representations.",
+      "matched_markets": 610,
+      "share_of_venue": 0.009441701363629328,
+      "sample": [
+        {
+          "title": "Will the Fed decrease interest rates by 50+ bps after the April 2026 meeting?",
+          "provider_market_id": "669660",
+          "price": 0.005,
+          "bid": 0.004,
+          "ask": 0.005,
+          "volume": 24958388.51183276,
+          "status": "active",
+          "resolution_ts": "2026-04-29T00:00:00+00:00",
+          "has_yes_token": true,
+          "quote_count": 38
+        },
+        {
+          "title": "Will the Fed increase interest rates by 25+ bps after the April 2026 meeting?",
+          "provider_market_id": "669663",
+          "price": 0.007,
+          "bid": 0.007,
+          "ask": 0.008,
+          "volume": 15545533.665994097,
+          "status": "active",
+          "resolution_ts": "2026-04-29T00:00:00+00:00",
+          "has_yes_token": true,
+          "quote_count": 38
+        },
+        {
+          "title": "Will the Fed decrease interest rates by 25 bps after the April 2026 meeting?",
+          "provider_market_id": "669661",
+          "price": 0.01,
+          "bid": 0.009,
+          "ask": 0.01,
+          "volume": 15498789.723073,
+          "status": "active",
+          "resolution_ts": "2026-04-29T00:00:00+00:00",
+          "has_yes_token": true,
+          "quote_count": 38
+        },
+        {
+          "title": "Will there be no change in Fed interest rates after the April 2026 meeting?",
+          "provider_market_id": "669662",
+          "price": 0.979,
+          "bid": 0.978,
+          "ask": 0.979,
+          "volume": 15071499.317945834,
+          "status": "active",
+          "resolution_ts": "2026-04-29T00:00:00+00:00",
+          "has_yes_token": true,
+          "quote_count": 38
+        },
+        {
+          "title": "Will Judy Shelton be confirmed as Fed Chair?",
+          "provider_market_id": "1500755",
+          "price": 0.019,
+          "bid": 0.017,
+          "ask": 0.019,
+          "volume": 12220351.727154978,
+          "status": "active",
+          "resolution_ts": "2026-10-31T00:00:00+00:00",
+          "has_yes_token": true,
+          "quote_count": 38
+        }
+      ]
+    },
+    {
+      "venue": "polymarket",
+      "family": "public_equity_index",
+      "target": "equities and equity indices",
+      "relevance": "Known-underlying validation candidates and public-market oracle surfaces.",
+      "matched_markets": 298,
+      "share_of_venue": 0.004612503289117278,
+      "sample": [
+        {
+          "title": "Will Tesla announce a Bitcoin purchase before March 1, 2021?",
+          "provider_market_id": "11987",
+          "price": 0.999998953167256,
+          "bid": 0.999998953167256,
+          "ask": 0.999998953167256,
+          "volume": 1278837.735124,
+          "status": "closed",
+          "resolution_ts": "2021-03-01T08:00:00+00:00",
+          "has_yes_token": false,
+          "quote_count": 1
+        },
+        {
+          "title": "Will Tesla be the largest company in the world by market cap on April 30?",
+          "provider_market_id": "1487059",
+          "price": 0.002,
+          "bid": 0.002,
+          "ask": 0.003,
+          "volume": 893655.7064819988,
+          "status": "active",
+          "resolution_ts": "2026-04-30T00:00:00+00:00",
+          "has_yes_token": true,
+          "quote_count": 38
+        },
+        {
+          "title": "Will NVIDIA be the largest company in the world by market cap on April 30?",
+          "provider_market_id": "1487054",
+          "price": 0.983,
+          "bid": 0.982,
+          "ask": 0.983,
+          "volume": 809352.0066670063,
+          "status": "active",
+          "resolution_ts": "2026-04-30T00:00:00+00:00",
+          "has_yes_token": true,
+          "quote_count": 38
+        },
+        {
+          "title": "Will NVIDIA be the largest company in the world by market cap on June 30?",
+          "provider_market_id": "631181",
+          "price": 0.87,
+          "bid": 0.86,
+          "ask": 0.87,
+          "volume": 739165.4780769988,
+          "status": "active",
+          "resolution_ts": "2026-06-30T00:00:00+00:00",
+          "has_yes_token": true,
+          "quote_count": 38
+        },
+        {
+          "title": "Will NVIDIA be the second-largest company in the world by market cap on April 30?",
+          "provider_market_id": "1663416",
+          "price": 0.015,
+          "bid": 0.015,
+          "ask": 0.016,
+          "volume": 700731.3056830015,
+          "status": "active",
+          "resolution_ts": "2026-04-30T00:00:00+00:00",
+          "has_yes_token": true,
+          "quote_count": 38
+        }
+      ]
+    },
+    {
+      "venue": "polymarket",
+      "family": "weather_climate",
+      "target": "weather / climate states",
+      "relevance": "Physical-state markets with official settlement sources.",
+      "matched_markets": 2174,
+      "share_of_venue": 0.03364960453201665,
+      "sample": [
+        {
+          "title": "Named storm forms before hurricane season?",
+          "provider_market_id": "823568",
+          "price": 0.42,
+          "bid": 0.43,
+          "ask": 0.44,
+          "volume": 330369.81276900007,
+          "status": "active",
+          "resolution_ts": "2026-05-31T00:00:00+00:00",
+          "has_yes_token": true,
+          "quote_count": 38
+        },
+        {
+          "title": "Will any Category 4 hurricane make landfall in the US in before 2027?",
+          "provider_market_id": "1058988",
+          "price": 0.34,
+          "bid": 0.36,
+          "ask": 0.37,
+          "volume": 316848.9872790001,
+          "status": "active",
+          "resolution_ts": "2026-12-31T00:00:00+00:00",
+          "has_yes_token": true,
+          "quote_count": 38
+        },
+        {
+          "title": "Will a hurricane make landfall in the US lower 48 states before September 1?",
+          "provider_market_id": "234234",
+          "price": 0.9999998502363894,
+          "bid": 0.9999998502363894,
+          "ask": 0.9999998502363894,
+          "volume": 194672.96538,
+          "status": "closed",
+          "resolution_ts": "2021-08-31T07:00:00+00:00",
+          "has_yes_token": false,
+          "quote_count": 1
+        },
+        {
+          "title": "Will any Category 5 hurricane make landfall in the US in before 2027?",
+          "provider_market_id": "1074058",
+          "price": 0.13,
+          "bid": 0.12,
+          "ask": 0.14,
+          "volume": 125714.68752800005,
+          "status": "active",
+          "resolution_ts": "2026-12-31T00:00:00+00:00",
+          "has_yes_token": true,
+          "quote_count": 38
+        },
+        {
+          "title": "Will the highest temperature in London be 17\u00b0C on April 10?",
+          "provider_market_id": "1886251",
+          "price": 0.001,
+          "bid": 0.0005,
+          "ask": 0.001,
+          "volume": 95749.69044399995,
+          "status": "active",
+          "resolution_ts": "2026-04-10T12:00:00+00:00",
+          "has_yes_token": true,
+          "quote_count": 38
+        }
+      ]
+    }
+  ],
+  "kalshi": [
+    {
+      "venue": "kalshi",
+      "family": "crypto_terminal_ladders",
+      "series": "KXBTC",
+      "target": "Bitcoin hourly range",
+      "matched_markets": 1000,
+      "active_markets": 238,
+      "has_more_pages": true,
+      "sample": [
+        {
+          "ticker": "KXBTC-26MAY0900-T90299.99",
+          "title": "Bitcoin price range  on May 9, 2026?",
+          "status": "initialized",
+          "last_price": "0.0000",
+          "yes_bid": "0.0000",
+          "yes_ask": "0.0000",
+          "volume": "0.00",
+          "open_interest": "0.00",
+          "close_time": "2026-05-09T04:00:00Z"
+        },
+        {
+          "ticker": "KXBTC-26MAY0900-T71700",
+          "title": "Bitcoin price range  on May 9, 2026?",
+          "status": "initialized",
+          "last_price": "0.0000",
+          "yes_bid": "0.0000",
+          "yes_ask": "0.0000",
+          "volume": "0.00",
+          "open_interest": "0.00",
+          "close_time": "2026-05-09T04:00:00Z"
+        },
+        {
+          "ticker": "KXBTC-26MAY0900-B90250",
+          "title": "Bitcoin price range  on May 9, 2026?",
+          "status": "initialized",
+          "last_price": "0.0000",
+          "yes_bid": "0.0000",
+          "yes_ask": "0.0000",
+          "volume": "0.00",
+          "open_interest": "0.00",
+          "close_time": "2026-05-09T04:00:00Z"
+        },
+        {
+          "ticker": "KXBTC-26MAY0900-B90150",
+          "title": "Bitcoin price range  on May 9, 2026?",
+          "status": "initialized",
+          "last_price": "0.0000",
+          "yes_bid": "0.0000",
+          "yes_ask": "0.0000",
+          "volume": "0.00",
+          "open_interest": "0.00",
+          "close_time": "2026-05-09T04:00:00Z"
+        },
+        {
+          "ticker": "KXBTC-26MAY0900-B90050",
+          "title": "Bitcoin price range  on May 9, 2026?",
+          "status": "initialized",
+          "last_price": "0.0000",
+          "yes_bid": "0.0000",
+          "yes_ask": "0.0000",
+          "volume": "0.00",
+          "open_interest": "0.00",
+          "close_time": "2026-05-09T04:00:00Z"
+        }
+      ]
+    },
+    {
+      "venue": "kalshi",
+      "family": "crypto_terminal_ladders",
+      "series": "KXETH",
+      "target": "Ethereum hourly range",
+      "matched_markets": 1000,
+      "active_markets": 125,
+      "has_more_pages": true,
+      "sample": [
+        {
+          "ticker": "KXETH-26MAY0900-T3039.99",
+          "title": "Ethereum price at May 9, 2026 at 12am EDT?",
+          "status": "initialized",
+          "last_price": "0.0000",
+          "yes_bid": "0.0000",
+          "yes_ask": "0.0000",
+          "volume": "0.00",
+          "open_interest": "0.00",
+          "close_time": "2026-05-09T04:00:00Z"
+        },
+        {
+          "ticker": "KXETH-26MAY0900-T1580",
+          "title": "Ethereum price at May 9, 2026 at 12am EDT?",
+          "status": "initialized",
+          "last_price": "0.0000",
+          "yes_bid": "0.0000",
+          "yes_ask": "0.0000",
+          "volume": "0.00",
+          "open_interest": "0.00",
+          "close_time": "2026-05-09T04:00:00Z"
+        },
+        {
+          "ticker": "KXETH-26MAY0900-B3030",
+          "title": "Ethereum price at May 9, 2026 at 12am EDT?",
+          "status": "initialized",
+          "last_price": "0.0000",
+          "yes_bid": "0.0000",
+          "yes_ask": "0.0000",
+          "volume": "0.00",
+          "open_interest": "0.00",
+          "close_time": "2026-05-09T04:00:00Z"
+        },
+        {
+          "ticker": "KXETH-26MAY0900-B3010",
+          "title": "Ethereum price at May 9, 2026 at 12am EDT?",
+          "status": "initialized",
+          "last_price": "0.0000",
+          "yes_bid": "0.0000",
+          "yes_ask": "0.0000",
+          "volume": "0.00",
+          "open_interest": "0.00",
+          "close_time": "2026-05-09T04:00:00Z"
+        },
+        {
+          "ticker": "KXETH-26MAY0900-B2990",
+          "title": "Ethereum price at May 9, 2026 at 12am EDT?",
+          "status": "initialized",
+          "last_price": "0.0000",
+          "yes_bid": "0.0000",
+          "yes_ask": "0.0000",
+          "volume": "0.00",
+          "open_interest": "0.00",
+          "close_time": "2026-05-09T04:00:00Z"
+        }
+      ]
+    },
+    {
+      "venue": "kalshi",
+      "family": "public_equity_index",
+      "series": "KXNASDAQ100",
+      "target": "Nasdaq-100 daily close",
+      "matched_markets": 1000,
+      "active_markets": 30,
+      "has_more_pages": true,
+      "sample": [
+        {
+          "ticker": "KXNASDAQ100-26MAY07H1600-B28550",
+          "title": "Will the Nasdaq-100 be between 28500 and 28599.9900 at the end of May 7, 2026 at 4pm EDT?",
+          "status": "finalized",
+          "last_price": "0.9900",
+          "yes_bid": "0.0000",
+          "yes_ask": "1.0000",
+          "volume": "13851.13",
+          "open_interest": "1113.00",
+          "close_time": "2026-05-07T20:00:00Z"
+        },
+        {
+          "ticker": "KXNASDAQ100-26APR07H1600-B23950",
+          "title": "Will the Nasdaq-100 be between 23900 and 23999.9900 at the end of Apr 7, 2026 at 4pm EDT?",
+          "status": "finalized",
+          "last_price": "0.1700",
+          "yes_bid": "0.0000",
+          "yes_ask": "1.0000",
+          "volume": "13535.00",
+          "open_interest": "818.00",
+          "close_time": "2026-04-07T20:00:00Z"
+        },
+        {
+          "ticker": "KXNASDAQ100-26APR29H1600-B27150",
+          "title": "Will the Nasdaq-100 be between 27100 and 27199.9900 at the end of Apr 29, 2026 at 4pm EDT?",
+          "status": "finalized",
+          "last_price": "0.9800",
+          "yes_bid": "0.0000",
+          "yes_ask": "1.0000",
+          "volume": "10830.05",
+          "open_interest": "10537.05",
+          "close_time": "2026-04-29T20:00:00Z"
+        },
+        {
+          "ticker": "KXNASDAQ100-26APR10H1600-B25150",
+          "title": "Will the Nasdaq-100 be between 25100 and 25199.9900 at the end of Apr 10, 2026 at 4pm EDT?",
+          "status": "finalized",
+          "last_price": "0.8700",
+          "yes_bid": "0.0000",
+          "yes_ask": "1.0000",
+          "volume": "10518.72",
+          "open_interest": "1634.66",
+          "close_time": "2026-04-10T20:00:00Z"
+        },
+        {
+          "ticker": "KXNASDAQ100-26APR20H1600-T24900",
+          "title": "Will the Nasdaq-100 be below 24900 at the end of Apr 20, 2026 at 4pm EDT?",
+          "status": "finalized",
+          "last_price": "0.0100",
+          "yes_bid": "0.0000",
+          "yes_ask": "1.0000",
+          "volume": "9601.79",
+          "open_interest": "5586.96",
+          "close_time": "2026-04-20T20:00:00Z"
+        }
+      ]
+    },
+    {
+      "venue": "kalshi",
+      "family": "macro_policy",
+      "series": "KXCPI",
+      "target": "CPI monthly change",
+      "matched_markets": 89,
+      "active_markets": 68,
+      "has_more_pages": false,
+      "sample": [
+        {
+          "ticker": "KXCPI-26MAR-T0.7",
+          "title": "Will CPI rise more than 0.7% in March 2026?",
+          "status": "finalized",
+          "last_price": "0.9500",
+          "yes_bid": "0.0000",
+          "yes_ask": "1.0000",
+          "volume": "252796.55",
+          "open_interest": "101607.45",
+          "close_time": "2026-04-10T12:25:00Z"
+        },
+        {
+          "ticker": "KXCPI-26FEB-T0.1",
+          "title": "Will CPI rise more than 0.1% in February 2026?",
+          "status": "finalized",
+          "last_price": "0.9400",
+          "yes_bid": "0.0000",
+          "yes_ask": "1.0000",
+          "volume": "221361.00",
+          "open_interest": "122954.00",
+          "close_time": "2026-03-11T12:29:00Z"
+        },
+        {
+          "ticker": "KXCPI-26MAR-T0.8",
+          "title": "Will CPI rise more than 0.8% in March 2026?",
+          "status": "finalized",
+          "last_price": "0.7300",
+          "yes_bid": "0.0000",
+          "yes_ask": "1.0000",
+          "volume": "221152.04",
+          "open_interest": "71292.39",
+          "close_time": "2026-04-10T12:25:00Z"
+        },
+        {
+          "ticker": "KXCPI-26MAR-T1.0",
+          "title": "Will CPI rise more than 1.0% in March 2026?",
+          "status": "finalized",
+          "last_price": "0.0600",
+          "yes_bid": "0.0000",
+          "yes_ask": "1.0000",
+          "volume": "177666.62",
+          "open_interest": "76399.54",
+          "close_time": "2026-04-10T12:25:00Z"
+        },
+        {
+          "ticker": "KXCPI-26FEB-T0.2",
+          "title": "Will CPI rise more than 0.2% in February 2026?",
+          "status": "finalized",
+          "last_price": "0.5300",
+          "yes_bid": "0.0000",
+          "yes_ask": "1.0000",
+          "volume": "173822.00",
+          "open_interest": "52045.00",
+          "close_time": "2026-03-11T12:29:00Z"
+        }
+      ]
+    },
+    {
+      "venue": "kalshi",
+      "family": "macro_policy",
+      "series": "KXCPICORE",
+      "target": "Core CPI monthly change",
+      "matched_markets": 52,
+      "active_markets": 38,
+      "has_more_pages": false,
+      "sample": [
+        {
+          "ticker": "KXCPICORE-26MAR-T0.1",
+          "title": "Will CPI Core rise more than 0.1% in March?",
+          "status": "finalized",
+          "last_price": "0.9300",
+          "yes_bid": "0.0000",
+          "yes_ask": "1.0000",
+          "volume": "63675.39",
+          "open_interest": "52629.49",
+          "close_time": "2026-04-10T12:25:00Z"
+        },
+        {
+          "ticker": "KXCPICORE-26APR-T0.3",
+          "title": "Will CPI Core rise more than 0.3% in April?",
+          "status": "active",
+          "last_price": "0.5800",
+          "yes_bid": "0.5200",
+          "yes_ask": "0.5500",
+          "volume": "56815.75",
+          "open_interest": "33925.06",
+          "close_time": "2026-05-12T12:25:00Z"
+        },
+        {
+          "ticker": "KXCPICORE-26MAR-T0.2",
+          "title": "Will CPI Core rise more than 0.2% in March?",
+          "status": "finalized",
+          "last_price": "0.5000",
+          "yes_bid": "0.0000",
+          "yes_ask": "1.0000",
+          "volume": "35268.55",
+          "open_interest": "16985.22",
+          "close_time": "2026-04-10T12:25:00Z"
+        },
+        {
+          "ticker": "KXCPICORE-26MAR-T0.3",
+          "title": "Will CPI Core rise more than 0.3% in March?",
+          "status": "finalized",
+          "last_price": "0.1700",
+          "yes_bid": "0.0000",
+          "yes_ask": "1.0000",
+          "volume": "31378.98",
+          "open_interest": "19724.98",
+          "close_time": "2026-04-10T12:25:00Z"
+        },
+        {
+          "ticker": "KXCPICORE-26APR-T0.4",
+          "title": "Will CPI Core rise more than 0.4% in April?",
+          "status": "active",
+          "last_price": "0.1600",
+          "yes_bid": "0.1200",
+          "yes_ask": "0.1500",
+          "volume": "28686.47",
+          "open_interest": "21984.22",
+          "close_time": "2026-05-12T12:25:00Z"
+        }
+      ]
+    },
+    {
+      "venue": "kalshi",
+      "family": "macro_policy",
+      "series": "KXFED",
+      "target": "Fed funds upper bound",
+      "matched_markets": 131,
+      "active_markets": 109,
+      "has_more_pages": false,
+      "sample": [
+        {
+          "ticker": "KXFED-26APR-T3.75",
+          "title": "Will the upper bound of the federal funds rate be above 3.75% following the Fed's Apr 29, 2026 meeting?",
+          "status": "finalized",
+          "last_price": "0.0100",
+          "yes_bid": "0.0000",
+          "yes_ask": "1.0000",
+          "volume": "3055286.80",
+          "open_interest": "2792614.06",
+          "close_time": "2026-04-29T17:55:00Z"
+        },
+        {
+          "ticker": "KXFED-26MAR-T3.75",
+          "title": "Will the upper bound of the federal funds rate be above 3.75% following the Fed's Mar 18, 2026 meeting?",
+          "status": "finalized",
+          "last_price": "0.0100",
+          "yes_bid": "0.0000",
+          "yes_ask": "1.0000",
+          "volume": "930486.00",
+          "open_interest": "921153.00",
+          "close_time": "2026-03-18T17:55:00Z"
+        },
+        {
+          "ticker": "KXFED-26APR-T4.00",
+          "title": "Will the upper bound of the federal funds rate be above 4.00% following the Fed's Apr 29, 2026 meeting?",
+          "status": "finalized",
+          "last_price": "0.0100",
+          "yes_bid": "0.0000",
+          "yes_ask": "1.0000",
+          "volume": "923510.63",
+          "open_interest": "920574.34",
+          "close_time": "2026-04-29T17:55:00Z"
+        },
+        {
+          "ticker": "KXFED-26APR-T3.00",
+          "title": "Will the upper bound of the federal funds rate be above 3.00% following the Fed's Apr 29, 2026 meeting?",
+          "status": "finalized",
+          "last_price": "0.9900",
+          "yes_bid": "0.0000",
+          "yes_ask": "1.0000",
+          "volume": "369024.19",
+          "open_interest": "337018.19",
+          "close_time": "2026-04-29T17:55:00Z"
+        },
+        {
+          "ticker": "KXFED-26APR-T3.25",
+          "title": "Will the upper bound of the federal funds rate be above 3.25% following the Fed's Apr 29, 2026 meeting?",
+          "status": "finalized",
+          "last_price": "0.9900",
+          "yes_bid": "0.0000",
+          "yes_ask": "1.0000",
+          "volume": "227314.31",
+          "open_interest": "161773.31",
+          "close_time": "2026-04-29T17:55:00Z"
+        }
+      ]
+    },
+    {
+      "venue": "kalshi",
+      "family": "weather_climate",
+      "series": "KXHIGHNY",
+      "target": "NYC high temperature",
+      "matched_markets": 414,
+      "active_markets": 12,
+      "has_more_pages": false,
+      "sample": [
+        {
+          "ticker": "KXHIGHNY-26MAR27-T62",
+          "title": "Will the **high temp in NYC** be <62\u00b0 on Mar 27, 2026?",
+          "status": "finalized",
+          "last_price": "0.0100",
+          "yes_bid": "0.0000",
+          "yes_ask": "1.0000",
+          "volume": "262392.00",
+          "open_interest": "226553.00",
+          "close_time": "2026-03-28T04:59:00Z"
+        },
+        {
+          "ticker": "KXHIGHNY-26MAR11-B66.5",
+          "title": "Will the **high temp in NYC** be 66-67\u00b0 on Mar 11, 2026?",
+          "status": "finalized",
+          "last_price": "0.0100",
+          "yes_bid": "0.0000",
+          "yes_ask": "1.0000",
+          "volume": "257850.00",
+          "open_interest": "253213.00",
+          "close_time": "2026-03-12T03:59:00Z"
+        },
+        {
+          "ticker": "KXHIGHNY-26MAY05-B79.5",
+          "title": "Will the **high temp in NYC** be 79-80\u00b0 on May 5, 2026?",
+          "status": "finalized",
+          "last_price": "0.0100",
+          "yes_bid": "0.0000",
+          "yes_ask": "1.0000",
+          "volume": "213875.78",
+          "open_interest": "131694.41",
+          "close_time": "2026-05-06T04:59:00Z"
+        },
+        {
+          "ticker": "KXHIGHNY-26APR17-B79.5",
+          "title": "Will the **high temp in NYC** be 79-80\u00b0 on Apr 17, 2026?",
+          "status": "finalized",
+          "last_price": "0.0100",
+          "yes_bid": "0.0000",
+          "yes_ask": "1.0000",
+          "volume": "179331.02",
+          "open_interest": "155678.74",
+          "close_time": "2026-04-18T04:59:00Z"
+        },
+        {
+          "ticker": "KXHIGHNY-26MAR01-B40.5",
+          "title": "Will the **high temp in NYC** be 40-41\u00b0 on Mar 1, 2026?",
+          "status": "finalized",
+          "last_price": "0.0100",
+          "yes_bid": "0.0000",
+          "yes_ask": "1.0000",
+          "volume": "175718.00",
+          "open_interest": "167686.00",
+          "close_time": "2026-03-02T04:59:00Z"
+        }
+      ]
+    },
+    {
+      "venue": "kalshi",
+      "family": "weather_climate",
+      "series": "KXHIGHCHI",
+      "target": "Chicago high temperature",
+      "matched_markets": 414,
+      "active_markets": 12,
+      "has_more_pages": false,
+      "sample": [
+        {
+          "ticker": "KXHIGHCHI-26MAR03-B41.5",
+          "title": "Will the high temp in Chicago be 41-42\u00b0 on Mar 3, 2026?",
+          "status": "finalized",
+          "last_price": "0.0100",
+          "yes_bid": "0.0000",
+          "yes_ask": "1.0000",
+          "volume": "1171789.00",
+          "open_interest": "1063006.00",
+          "close_time": "2026-03-04T05:59:00Z"
+        },
+        {
+          "ticker": "KXHIGHCHI-26MAR10-B63.5",
+          "title": "Will the high temp in Chicago be 63-64\u00b0 on Mar 10, 2026?",
+          "status": "finalized",
+          "last_price": "0.9900",
+          "yes_bid": "0.0000",
+          "yes_ask": "1.0000",
+          "volume": "832478.00",
+          "open_interest": "66574.00",
+          "close_time": "2026-03-11T04:59:00Z"
+        },
+        {
+          "ticker": "KXHIGHCHI-26MAR11-T46",
+          "title": "Will the high temp in Chicago be <46\u00b0 on Mar 11, 2026?",
+          "status": "finalized",
+          "last_price": "0.9900",
+          "yes_bid": "0.0000",
+          "yes_ask": "1.0000",
+          "volume": "477390.00",
+          "open_interest": "324234.00",
+          "close_time": "2026-03-12T04:59:00Z"
+        },
+        {
+          "ticker": "KXHIGHCHI-26MAR22-T65",
+          "title": "Will the high temp in Chicago be >65\u00b0 on Mar 22, 2026?",
+          "status": "finalized",
+          "last_price": "0.9900",
+          "yes_bid": "0.0000",
+          "yes_ask": "1.0000",
+          "volume": "329157.00",
+          "open_interest": "315290.00",
+          "close_time": "2026-03-23T05:59:00Z"
+        },
+        {
+          "ticker": "KXHIGHCHI-26MAR10-T57",
+          "title": "Will the high temp in Chicago be <57\u00b0 on Mar 10, 2026?",
+          "status": "finalized",
+          "last_price": "0.0100",
+          "yes_bid": "0.0000",
+          "yes_ask": "1.0000",
+          "volume": "328381.00",
+          "open_interest": "320895.00",
+          "close_time": "2026-03-11T04:59:00Z"
+        }
+      ]
+    },
+    {
+      "venue": "kalshi",
+      "family": "weather_climate",
+      "series": "KXHIGHMIA",
+      "target": "Miami high temperature",
+      "matched_markets": 414,
+      "active_markets": 12,
+      "has_more_pages": false,
+      "sample": [
+        {
+          "ticker": "KXHIGHMIA-26APR08-B80.5",
+          "title": "Will the **high temp in Miami** be 80-81\u00b0 on Apr 8, 2026?",
+          "status": "finalized",
+          "last_price": "0.0800",
+          "yes_bid": "0.0000",
+          "yes_ask": "1.0000",
+          "volume": "224302.00",
+          "open_interest": "105736.00",
+          "close_time": "2026-04-09T04:59:00Z"
+        },
+        {
+          "ticker": "KXHIGHMIA-26MAR01-B76.5",
+          "title": "Will the **high temp in Miami** be 76-77\u00b0 on Mar 1, 2026?",
+          "status": "finalized",
+          "last_price": "0.0100",
+          "yes_bid": "0.0000",
+          "yes_ask": "1.0000",
+          "volume": "214269.00",
+          "open_interest": "210338.00",
+          "close_time": "2026-03-02T04:59:00Z"
+        },
+        {
+          "ticker": "KXHIGHMIA-26MAR27-T77",
+          "title": "Will the **high temp in Miami** be <77\u00b0 on Mar 27, 2026?",
+          "status": "finalized",
+          "last_price": "0.0100",
+          "yes_bid": "0.0000",
+          "yes_ask": "1.0000",
+          "volume": "199426.00",
+          "open_interest": "194661.00",
+          "close_time": "2026-03-28T04:59:00Z"
+        },
+        {
+          "ticker": "KXHIGHMIA-26APR30-B85.5",
+          "title": "Will the **high temp in Miami** be 85-86\u00b0 on Apr 30, 2026?",
+          "status": "finalized",
+          "last_price": "0.0100",
+          "yes_bid": "0.0000",
+          "yes_ask": "1.0000",
+          "volume": "180285.98",
+          "open_interest": "160218.84",
+          "close_time": "2026-05-01T04:59:00Z"
+        },
+        {
+          "ticker": "KXHIGHMIA-26MAR20-B76.5",
+          "title": "Will the **high temp in Miami** be 76-77\u00b0 on Mar 20, 2026?",
+          "status": "finalized",
+          "last_price": "0.0100",
+          "yes_bid": "0.0000",
+          "yes_ask": "1.0000",
+          "volume": "168483.00",
+          "open_interest": "149785.00",
+          "close_time": "2026-03-21T04:59:00Z"
+        }
+      ]
+    }
+  ]
+}

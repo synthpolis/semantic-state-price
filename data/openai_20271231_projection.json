@@ -1,0 +1,182 @@
+{
+  "generated_at": "2026-05-08T03:05:28Z",
+  "entity": "OpenAI",
+  "horizon": "2027-12-31",
+  "loss": 0.13124842784257335,
+  "no_ipo_probability": 0.29846785613003207,
+  "ipo_probability": 0.701532143869968,
+  "expected_unconditional_b": 931.749126311814,
+  "expected_conditional_b": 1328.1631275964996,
+  "buckets": [
+    {
+      "bucket": "$0B-$500B",
+      "probability": 1.5031134679489752e-17,
+      "conditional_probability": 2.1426152473315375e-17,
+      "representative_value_b": 250.0
+    },
+    {
+      "bucket": "$500B-$750B",
+      "probability": 0.013651744900189253,
+      "conditional_probability": 0.019459899335303534,
+      "representative_value_b": 625.0
+    },
+    {
+      "bucket": "$750B-$800B",
+      "probability": 0.006593001814832967,
+      "conditional_probability": 0.009398003886839729,
+      "representative_value_b": 775.0
+    },
+    {
+      "bucket": "$800B-$1000B",
+      "probability": 0.21119940784043814,
+      "conditional_probability": 0.30105449862263883,
+      "representative_value_b": 900.0
+    },
+    {
+      "bucket": "$1000B-$1200B",
+      "probability": 0.023489940152594573,
+      "conditional_probability": 0.033483768859133754,
+      "representative_value_b": 1100.0
+    },
+    {
+      "bucket": "$1200B-$1250B",
+      "probability": 0.12338490787503893,
+      "conditional_probability": 0.17587919378061864,
+      "representative_value_b": 1225.0
+    },
+    {
+      "bucket": "$1250B-$1400B",
+      "probability": 0.011602394177180076,
+      "conditional_probability": 0.01653864940981326,
+      "representative_value_b": 1325.0
+    },
+    {
+      "bucket": "$1400B-$1500B",
+      "probability": 0.11664902530106681,
+      "conditional_probability": 0.16627752031087006,
+      "representative_value_b": 1450.0
+    },
+    {
+      "bucket": "$1500B-$1600B",
+      "probability": 1.820416796808042e-16,
+      "conditional_probability": 2.5949157322511287e-16,
+      "representative_value_b": 1550.0
+    },
+    {
+      "bucket": ">$1600B",
+      "probability": 0.19496172180862686,
+      "conditional_probability": 0.2779084657947817,
+      "representative_value_b": 1880.0
+    }
+  ],
+  "observations": [
+    {
+      "label": "Will OpenAI\u2019s market cap be between $500B and $750B at market close on IPO day by December 31, 2027?",
+      "observed": 0.265,
+      "fitted": 0.013651744900189253,
+      "residual": -0.25134825509981074,
+      "weight": 1.0,
+      "volume": 0.0,
+      "quote_count": 38
+    },
+    {
+      "label": "Will OpenAI\u2019s market cap be between $750B and $1T at market close on IPO day by December 31, 2027?",
+      "observed": 0.275,
+      "fitted": 0.2177924096552711,
+      "residual": -0.057207590344728915,
+      "weight": 4.012744915369757,
+      "volume": 54.298452,
+      "quote_count": 38
+    },
+    {
+      "label": "OpenAI IPO closing market cap above $800B?",
+      "observed": 0.685,
+      "fitted": 0.6812873971549456,
+      "residual": -0.00371260284505448,
+      "weight": 11.421965807679141,
+      "volume": 91304.45452500023,
+      "quote_count": 38
+    },
+    {
+      "label": "Will OpenAI\u2019s market cap be between $1T and $1.25T at market close on IPO day by December 31, 2027?",
+      "observed": 0.17,
+      "fitted": 0.1468748480276335,
+      "residual": -0.023125151972366503,
+      "weight": 7.954762351988734,
+      "volume": 2848.1111629999996,
+      "quote_count": 38
+    },
+    {
+      "label": "OpenAI IPO closing market cap above $1T?",
+      "observed": 0.47,
+      "fitted": 0.47008798931450746,
+      "residual": 8.798931450748615e-05,
+      "weight": 41.55942218461016,
+      "volume": 1038346.1501819999,
+      "quote_count": 467
+    },
+    {
+      "label": "OpenAI IPO closing market cap above $1.2T?",
+      "observed": 0.45,
+      "fitted": 0.44659804916191287,
+      "residual": -0.003401950838087142,
+      "weight": 12.386822214970021,
+      "volume": 239622.01941699997,
+      "quote_count": 38
+    },
+    {
+      "label": "Will OpenAI\u2019s market cap be between $1.25T and $1.5T at market close on IPO day by December 31, 2027?",
+      "observed": 0.16,
+      "fitted": 0.1282514194782469,
+      "residual": -0.03174858052175311,
+      "weight": 4.663439094112067,
+      "volume": 105.0,
+      "quote_count": 38
+    },
+    {
+      "label": "OpenAI IPO closing market cap above $1.4T?",
+      "observed": 0.315,
+      "fitted": 0.3116107471096939,
+      "residual": -0.003389252890306116,
+      "weight": 10.850928228909444,
+      "volume": 51581.00905299999,
+      "quote_count": 38
+    },
+    {
+      "label": "Will OpenAI\u2019s market cap be $1.5T or greater at market close on IPO day by December 31, 2027?",
+      "observed": 0.17,
+      "fitted": 0.19496172180862706,
+      "residual": 0.024961721808627046,
+      "weight": 1.0,
+      "volume": 0.0,
+      "quote_count": 38
+    },
+    {
+      "label": "OpenAI IPO closing market cap above $1.6T?",
+      "observed": 0.21,
+      "fitted": 0.19496172180862686,
+      "residual": -0.015038278191373128,
+      "weight": 10.627257895889375,
+      "volume": 41242.875000000015,
+      "quote_count": 38
+    },
+    {
+      "label": "Will OpenAI\u2019s market cap be less than $500B at market close on IPO day by December 31, 2027?",
+      "observed": 0.16,
+      "fitted": 1.5031134679489752e-17,
+      "residual": -0.15999999999999998,
+      "weight": 1.0,
+      "volume": 0.0,
+      "quote_count": 38
+    },
+    {
+      "label": "Will OpenAI not IPO by December 31, 2027?",
+      "observed": 0.325,
+      "fitted": 0.29846785613003207,
+      "residual": -0.02653214386996794,
+      "weight": 9.282563110715012,
+      "volume": 10747.947381000002,
+      "quote_count": 38
+    }
+  ]
+}

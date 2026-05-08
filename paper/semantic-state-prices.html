@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Semantic State Prices</title>
+<style>
+  @page { size: letter; margin: 0.75in 0.78in 0.78in 0.78in; }
+  html, body { margin: 0; padding: 0; background: #fff; color: #111; }
+  body { font-family: "Times New Roman", Times, serif; font-size: 10.6pt; line-height: 1.42; }
+  main { max-width: 6.95in; margin: 0 auto; }
+  h1, h2, h3, h4 { color: #111; page-break-after: avoid; break-after: avoid; }
+  h1 { font-size: 19pt; line-height: 1.12; margin: 0 0 8pt; text-align: center; font-weight: 700; }
+  .author-block { text-align: center; font-size: 10.6pt; line-height: 1.25; margin: 0 0 18pt; }
+  h2 { font-size: 13pt; margin: 18pt 0 6pt; font-weight: 700; }
+  h3 { font-size: 11pt; margin: 13pt 0 4pt; font-style: italic; font-weight: 700; }
+  h4 { font-size: 10.6pt; margin: 10pt 0 4pt; font-weight: 700; }
+  p { margin: 0 0 7.2pt; color: #111; }
+  strong { font-weight: 700; }
+  code { font-family: "Courier New", Courier, monospace; font-size: 8.6pt; color: #111; background: transparent; padding: 0; }
+  pre { break-inside: avoid; margin: 8pt 0 10pt; padding: 7pt 9pt; border: 0.6pt solid #d8d8d8; background: #fff; white-space: pre-wrap; }
+  pre code { background: transparent; padding: 0; font-size: 8.15pt; line-height: 1.35; }
+  ul, ol { margin: 0 0 8pt 18pt; padding: 0; }
+  li { margin: 0 0 3.2pt; }
+  table { width: 100%; border-collapse: collapse; margin: 8pt 0 12pt; break-inside: avoid; font-size: 8.7pt; font-variant-numeric: tabular-nums; }
+  th { font-weight: 700; text-align: left; border-bottom: 0.8pt solid #333; padding: 0 5pt 4pt 0; }
+  td { border-bottom: 0.5pt solid #d7d7d7; padding: 4.5pt 5pt 4.5pt 0; vertical-align: top; }
+  figure { margin: 10pt 0 13pt; break-inside: avoid; page-break-inside: avoid; text-align: center; }
+  figure img { max-width: 100%; display: block; margin: 0 auto; border: 0; }
+  .operator-figure { margin: 11pt 0 14pt; }
+  .operator-figure img { width: 100%; }
+  .data-figure img { max-height: 3.35in; object-fit: contain; }
+  figcaption { font-size: 8.2pt; color: #333; margin-top: 4pt; text-align: left; }
+  a { color: #111; text-decoration: none; }
+  @media print { html, body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+</style>
+</head>
+<body><main><h1>Semantic State Prices: Inferring Latent Indices from Prediction-Market Event Securities</h1>
+<div class="author-block"><div>Ojas Shukla</div><div>Sybilian</div><div>ojas@sybilian.com</div><div>May 8, 2026</div></div>
+<h2>Abstract</h2>
+<p>Prediction markets trade thousands of binary contracts whose payoffs are tied to future states of the world. These contracts are usually interpreted one at a time: a probability that Bitcoin will exceed a threshold, that a city temperature will fall in a range, that the Federal Reserve will choose a rate, or that a private company will reach a valuation. This paper develops a framework for interpreting collections of related prediction-market contracts as noisy state-price surfaces over latent variables. The method maps natural-language event rules into payoff functions, projects observed prices onto the nearest coherent distribution over an underlying state, and reports the resulting expectation as a tradable index candidate. The same construction yields an oracle design for perpetual futures on states that do not have spot markets.</p>
+<p>The empirical section validates the method across two venues. On Polymarket, Bitcoin and Ethereum terminal threshold ladders over eight dates each are reconstructed from direct CLOB price history and compared with realized CoinGecko spot prices. On Kalshi, a larger panel of 195 city-date temperature ladders, comprising 7,496 hourly snapshots across New York, Chicago, and Miami from March 1 to May 4, 2026, is projected into daily high-temperature distributions and compared with NOAA/NCEI daily maximum temperatures. The Kalshi panel shows mean absolute error of 2.07F at 48 hours before close, 1.69F at 24 hours, and 1.02F at final pre-close, with final modal-bucket accuracy of 86.2%. The paper then demonstrates the method on a non-traded private-company state: OpenAI&#x27;s 2027 IPO valuation. Polymarket valuation contracts imply a 29.8% no-IPO probability, a $932B unconditional valuation index, and a $1.328T valuation conditional on IPO. Hyperliquid pre-IPO perps provide an external live benchmark: <code>vntl:OPENAI</code> marks near $1.112T in the same valuation units.</p>
+<p>The contribution is an inverse option-pricing operator for prediction markets. Standard derivative pricing begins with a traded underlying and prices contingent claims from it. Semantic state pricing begins with contingent claims written in natural language and infers the missing underlying.</p>
+<h2>1. Introduction</h2>
+<p>Modern prediction markets increasingly resemble an option market over reality. They do not merely ask who wins an election. They list thresholds, ranges, brackets, and conditional events over macroeconomic releases, crypto prices, public equities, weather, sports, geopolitics, technology adoption, and private-company outcomes. A single market says whether Bitcoin settles above a strike at a timestamp. A strip of such markets says much more: it traces a discrete survival curve over the terminal price. A market on OpenAI&#x27;s IPO valuation above $1T is not a spot price for OpenAI, but it is a state-contingent security over OpenAI&#x27;s future valuation. A collection of such securities can imply a distribution over an otherwise untraded variable.</p>
+<p>The paper formalizes that observation. Let <code>X_T</code> denote a latent future state: a price, valuation, weather outcome, policy setting, capability index, or local real-estate level. Each prediction-market contract is treated as a binary security whose payoff is a function of <code>X_T</code> and possibly auxiliary states. Natural-language market rules determine the payoff function. Observed market prices provide noisy estimates of state-contingent probabilities or risk-neutral prices. A constrained projection then recovers a coherent distribution over <code>X_T</code> from the noisy and sometimes inconsistent market observations.</p>
+<p>This is the reverse of the Black-Scholes direction. Black and Scholes price options from an observed underlying. Breeden and Litzenberger show how state prices can be recovered from option prices when the option surface is sufficiently complete. Prediction markets create a more irregular but broader object: an option surface over arbitrary real-world states, written in natural language and scattered across venues. The problem is not only financial interpolation. It is semantic extraction plus coherent projection.</p>
+<p>The practical motivation is straightforward. Most economically important variables lack continuous spot markets. Private-company valuations, city-level real estate, AI capability leadership, policy severity, regulatory risk, and geopolitical intensity are priced sporadically. Prediction markets can supply fragmented contingent claims over these variables. If these fragments can be composed into a coherent index, that index can serve as the oracle for perpetual futures or structured products.</p>
+<p>The paper makes four claims:</p>
+<ol><li>Collections of binary prediction markets can be modeled as noisy state-price observations over latent variables.</li><li>Natural-language market rules can be mapped into payoff functions over those variables.</li><li>Constrained projection can convert inconsistent event prices into coherent distributions.</li><li>The resulting distribution can support a rolling oracle, provided manipulation risk is explicitly controlled.</li></ol>
+<p>The empirical evidence is intentionally divided into public and private cases. Public cases have known realized outcomes and therefore validate the projection machinery. Private cases have no spot price and demonstrate the intended application.</p>
+<h2>2. Related Work</h2>
+<p>The paper sits at the intersection of option-implied state prices and prediction-market aggregation.</p>
+<p>Black and Scholes (1973) and Merton (1973) provide the canonical route from an underlying price process to option prices. Breeden and Litzenberger (1978) invert part of that relationship by recovering state-contingent claim prices from derivatives of call prices. The present paper keeps the inversion but changes the input: instead of a smooth exchange-traded option chain, the surface consists of binary event contracts with heterogeneous text, maturity, liquidity, and resolution rules.</p>
+<p>Prediction markets have long been studied as information aggregation mechanisms. Wolfers and Zitzewitz (2004) survey market design and accuracy. Arrow et al. (2008) argue for prediction markets as mechanisms for aggregating dispersed information. Manski (2006) and Wolfers and Zitzewitz (2006) clarify when prices can be interpreted as probabilities and when equilibrium prices differ from simple mean beliefs. Hanson (2003) develops market scoring rules that are foundational for automated market makers in prediction markets.</p>
+<p>This paper differs from that literature in its object of inference. It does not ask whether a single prediction-market price is a calibrated probability. It asks whether many related event prices can be composed into a distribution over a latent continuous or ordinal state. In this sense the paper treats prediction markets as an irregular semantic option surface. The main technical challenge is not merely extracting probabilities. It is recovering a coherent underlying state distribution from markets that were not designed as a formal option chain.</p>
+<h2>3. Semantic State-Price Model</h2>
+<p>Let:</p>
+<pre><code>X_T = latent state at horizon T</code></pre>
+<p><code>X_T</code> can be a traded public price, a private valuation, an official weather statistic, a policy setting, or a constructed index. Each prediction-market contract <code>i</code> has:</p>
+<pre><code>p_i      observed YES price
+e_i      event text and resolution rule
+A_i(x)   payoff probability if X_T = x
+w_i      confidence weight
+T_i      resolution time
+L_i      liquidity, depth, and spread features</code></pre>
+<p>For direct threshold markets:</p>
+<pre><code>&quot;Bitcoin above $76,000 on April 10?&quot;
+A_i(x) = 1{x &gt; 76000}</code></pre>
+<p>For direct range markets:</p>
+<pre><code>&quot;High temp in NYC is 64-65F on May 7?&quot;
+A_i(x) = 1{64 &lt;= x &lt;= 65}</code></pre>
+<p>For private-company valuation markets:</p>
+<pre><code>&quot;OpenAI IPO closing market cap above $1T by Dec. 31, 2027?&quot;
+A_i(x) = 1{x &gt;= 1000B and IPO occurs by T}</code></pre>
+<p>For semantic proxy markets:</p>
+<pre><code>&quot;Will Anthropic have the best AI model by year-end?&quot;
+A_i(x) = sigmoid(alpha_i + beta_i log(x) + gamma_i controls_i)</code></pre>
+<p>The semantic layer maps the text and rules into <code>A_i</code>. It does not set prices. Pricing comes from observed markets; coherence comes from projection.</p>
+<p>Represent the latent distribution on a grid:</p>
+<pre><code>q_k = P(X_T in bucket k)</code></pre>
+<p>Let <code>A</code> be the matrix whose <code>i,k</code> entry is the payoff of market <code>i</code> in state bucket <code>k</code>. The estimated distribution solves:</p>
+<pre><code>min_q  sum_i w_i (A_i q - p_i)^2 + lambda R(q)
+
+subject to:
+q_k &gt;= 0
+sum_k q_k = 1
+monotone threshold probabilities
+coherent mutually exclusive brackets</code></pre>
+<p><code>R(q)</code> is a smoothness or regularization penalty. It can be omitted for simple range partitions and increased when the state grid is dense.</p>
+<p>The index is:</p>
+<pre><code>I_T = E_q[X_T]</code></pre>
+<p>For valuation-like variables, log space may be more stable:</p>
+<pre><code>I_T = exp(E_q[log X_T])</code></pre>
+<p>For IPO markets, include a no-IPO atom:</p>
+<pre><code>q_0 = P(no IPO by T)
+I_unconditional = sum_{k&gt;0} q_k x_k
+I_conditional_IPO = sum_{k&gt;0} (q_k / (1 - q_0)) x_k</code></pre>
+<figure class="operator-figure"><img src="../figures/figure_1_semantic_operator.png" alt="Figure 1. Semantic state-price operator."><figcaption>Figure 1. Semantic state-price operator.</figcaption></figure>
+<h2>4. Market Selection and Semantic Weights</h2>
+<p>Prediction-market data is not a clean option chain. It contains stale markets, ambiguous rules, overlapping outcomes, wide spreads, and idiosyncratic settlement details. The weighting function therefore matters.</p>
+<p>A practical source weight is:</p>
+<pre><code>w_i =
+  liquidity_i^a
+  * relevance_i^b
+  * specificity_i^c
+  * exp(-eta * semantic_distance_i^2)
+  * exp(-nu * maturity_mismatch_i)
+  * 1 / noise_i^2</code></pre>
+<p>where:</p>
+<ul><li><code>liquidity_i</code> captures volume, open interest, order-book depth, and quote freshness.</li><li><code>relevance_i</code> measures how closely the event loads on the target state.</li><li><code>specificity_i</code> penalizes vague or multi-causal events.</li><li><code>maturity_mismatch_i</code> penalizes events resolving far from the target horizon.</li><li><code>noise_i</code> captures bid/ask width, rule ambiguity, and historical reliability.</li></ul>
+<p>Direct markets, such as temperature ranges or crypto thresholds, have payoff maps that are essentially deterministic. Semantic proxy markets require learned or hand-specified link functions. A model-ranking market may load positively on an AI-company valuation index, but with lower specificity and higher model risk than a direct valuation threshold.</p>
+<h2>5. Rolling Perpetual Oracle</h2>
+<p>A perpetual future cannot be anchored to a single fixed-expiration ladder. The oracle should maintain a constant maturity:</p>
+<pre><code>OPENAI-365 = market-implied OpenAI valuation 365 days forward</code></pre>
+<p>At each update:</p>
+<ol><li>New source markets enter if they pass semantic and liquidity filters.</li><li>Stale prices are excluded or downweighted.</li><li>Near-expiry markets decay in forward relevance.</li><li>Resolved markets become calibration observations.</li><li>The latent distribution is refit.</li><li>The index rolls back to constant maturity.</li></ol>
+<p>Funding can use the standard mark-versus-oracle form:</p>
+<pre><code>funding_rate = k(confidence) * log(perp_mark / oracle_index)</code></pre>
+<p>Confidence should determine leverage, open-interest caps, funding caps, and pause conditions. A minimal confidence function should include:</p>
+<pre><code>confidence = f(
+  projection_residual,
+  semantic_coverage,
+  source_market_depth,
+  bid_ask_spread,
+  constituent_concentration,
+  estimated_attack_cost / perp_open_interest
+)</code></pre>
+<p>This last term is essential. If a perp has large open interest and the source markets are thin, a trader can profit by manipulating the source markets that feed the oracle.</p>
+<h2>6. Data</h2>
+<p>The empirical artifact uses:</p>
+<ul><li>Polymarket CLOB price history and order-book endpoints.</li><li>Kalshi market and candlestick endpoints.</li><li>Normalized Polymarket/Kalshi market catalog snapshots for market discovery.</li><li>NOAA/NCEI daily weather summaries for realized temperature outcomes.</li><li>CoinGecko crypto spot data for realized BTC/ETH terminal prices.</li><li>Hyperliquid perpetual-market data for private-company perp benchmarks.</li></ul>
+<p>The market-surface inventory shows that the object is broader than one OpenAI ladder. Polymarket contains matched surfaces in crypto terminal prices, private-company valuation, AI capability semantics, macro policy, public equity/index events, and weather/climate. Kalshi has recurring series for BTC and ETH ranges, Nasdaq-100 ranges, CPI, Core CPI, Fed funds, and city high-temperature ranges.</p>
+<p>The empirical tests below use only the market families that can be cleanly mapped to realized outcomes or private valuation ladders in the current artifact.</p>
+<h2>7. Empirical Results: Polymarket Crypto Ladders</h2>
+<p>The Polymarket validation uses public assets with observed terminal prices. For each date, markets of the form:</p>
+<pre><code>Will the price of Bitcoin be above $K on DATE?</code></pre>
+<p>define a digital strip <code>P(S_T &gt; K)</code>. The projection converts the strip into a distribution over terminal price intervals.</p>
+<p>The current Polymarket panel covers eight BTC dates and eight ETH dates from April 10 to April 17, 2026, using direct CLOB <code>batch-prices-history</code>. It contains 120 hourly BTC snapshots and 141 hourly ETH snapshots.</p>
+<p><strong>Table 1. Polymarket crypto validation.</strong></p>
+<table><tr><th>Asset</th><th>Dates</th><th>Snapshots</th><th>Reference</th><th>Mean as-of error</th><th>Mean last error</th><th>Mean last realized-bucket probability</th></tr><tr><td>BTC</td><td>8</td><td>120</td><td>CoinGecko BTC-USD</td><td>$798</td><td>$451</td><td>0.732</td></tr><tr><td>ETH</td><td>8</td><td>141</td><td>CoinGecko ETH-USD</td><td>$26</td><td>$20</td><td>0.685</td></tr></table>
+<p>The result is not intended to prove that prediction markets forecast spot prices better than liquid crypto markets. The narrower claim is that binary event strips can be reconstructed mechanically into coherent distributions whose high-probability intervals often contain the realized terminal value.</p>
+<figure class="data-figure"><img src="../figures/figure_2_polymarket_crypto.png" alt="Figure 2. Polymarket crypto terminal ladders."><figcaption>Figure 2. Polymarket crypto terminal ladders.</figcaption></figure>
+<h2>8. Empirical Results: Kalshi Multi-Month Temperature Panel</h2>
+<p>The strongest current validation is the Kalshi weather panel. Weather has three advantages: the contracts are recurring, the state variable is continuous but discretized by ranges, and realized outcomes are available from official NOAA/NCEI daily summaries.</p>
+<p>The panel uses high-temperature range contracts for New York City, Chicago, and Miami from March 1 to May 4, 2026. Each city-date has a small mutually exclusive ladder such as:</p>
+<pre><code>&lt;64F, 64-65F, 66-67F, 68-69F, 70-71F, &gt;71F</code></pre>
+<p>Each hourly snapshot is normalized into a distribution over temperature buckets and converted into an expected high temperature. The reference value is NOAA/NCEI <code>TMAX</code>.</p>
+<p><strong>Table 2. Kalshi temperature panel coverage.</strong></p>
+<table><tr><th>Quantity</th><th>Value</th></tr><tr><td>Cities</td><td>3</td></tr><tr><td>Dates per city</td><td>65</td></tr><tr><td>Date-city panels</td><td>195</td></tr><tr><td>Hourly snapshots</td><td>7,496</td></tr><tr><td>Actual source</td><td>NOAA/NCEI daily summaries</td></tr></table>
+<p><strong>Table 3. Horizon robustness.</strong></p>
+<table><tr><th>Snapshot</th><th>N</th><th>Mean absolute error</th><th>Median absolute error</th><th>Mean actual-bucket probability</th><th>Modal accuracy</th></tr><tr><td>48h before close</td><td>195</td><td>2.07F</td><td>1.31F</td><td>0.281</td><td>0.369</td></tr><tr><td>24h before close</td><td>195</td><td>1.69F</td><td>1.24F</td><td>0.373</td><td>0.549</td></tr><tr><td>Final pre-close</td><td>195</td><td>1.02F</td><td>0.53F</td><td>0.843</td><td>0.862</td></tr></table>
+<p>The monotone improvement across horizons is important. At 48 hours, the market-implied distribution is wider and less concentrated on the realized bucket. At 24 hours, the expected value improves and modal accuracy rises. Near close, the distribution typically collapses around the realized outcome. This is the expected behavior of a market-implied state distribution.</p>
+<figure class="data-figure"><img src="../figures/figure_3_kalshi_panel.png" alt="Figure 3. Kalshi multi-month temperature validation."><figcaption>Figure 3. Kalshi multi-month temperature validation.</figcaption></figure>
+<p>The city-level results are heterogeneous. Miami is easiest in the current sample, with final modal accuracy of 100%. New York also performs strongly, with final modal accuracy of 96.9%. Chicago is weaker, with final modal accuracy of 61.5%, producing most of the panel&#x27;s final error. This matters for the general framework: source-market quality varies by market family, venue, and underlying. A production oracle should learn reliability by family rather than assume all event markets are equal.</p>
+<h2>9. Private-Company Demonstration: OpenAI 2027</h2>
+<p>The private-asset demonstration uses OpenAI 2027 IPO valuation markets on Polymarket. The relevant state has a no-IPO atom and valuation buckets conditional on an IPO.</p>
+<p>The raw ladder is not coherent. Some bracket probabilities sum above one and some threshold probabilities violate monotonicity. This is precisely why projection is necessary.</p>
+<p>The fitted distribution implies:</p>
+<p><strong>Table 4. OpenAI 2027 projected valuation distribution.</strong></p>
+<table><tr><th>Quantity</th><th>Value</th></tr><tr><td>No-IPO probability</td><td>0.298</td></tr><tr><td>IPO probability</td><td>0.702</td></tr><tr><td>Expected valuation, unconditional</td><td>$932B</td></tr><tr><td>Expected valuation, conditional on IPO</td><td>$1.328T</td></tr></table>
+<p>This is not an assertion that OpenAI is worth exactly $932B. It is a market-implied state index from a specific set of noisy prediction-market claims.</p>
+<h2>10. Live Perp Benchmark: Hyperliquid Pre-IPO Markets</h2>
+<p>Hyperliquid provides a useful external benchmark because builder-deployed <code>vntl</code> pre-IPO perps already trade OpenAI, Anthropic, and SpaceX in units of company valuation billions. If <code>OPENAI = 500</code>, the implied valuation is $500B.</p>
+<p><strong>Table 5. Hyperliquid private-company perp benchmark.</strong></p>
+<table><tr><th>Market</th><th>Mark</th><th>Oracle</th><th>Mark/oracle</th><th>Open interest</th><th>24h volume</th><th>Mean annualized funding</th></tr><tr><td>ANTHROPIC</td><td>$1.157T</td><td>$974B</td><td>18.71%</td><td>$6.89M</td><td>$0.94M</td><td>127.20%</td></tr><tr><td>SPACEX</td><td>$1.832T</td><td>$1.647T</td><td>11.19%</td><td>$3.39M</td><td>$1.19M</td><td>31.44%</td></tr><tr><td>OPENAI</td><td>$1.112T</td><td>$1.023T</td><td>8.61%</td><td>$3.35M</td><td>$0.52M</td><td>24.76%</td></tr></table>
+<p>The OpenAI comparison is especially useful:</p>
+<p><strong>Table 6. OpenAI state-price and perp comparison.</strong></p>
+<table><tr><th>Source</th><th>Value</th></tr><tr><td>Polymarket unconditional index</td><td>$932B</td></tr><tr><td>Hyperliquid <code>vntl:OPENAI</code> oracle</td><td>$1.023T</td></tr><tr><td>Hyperliquid <code>vntl:OPENAI</code> mark</td><td>$1.112T</td></tr><tr><td>Polymarket conditional-IPO valuation</td><td>$1.328T</td></tr></table>
+<p>The Hyperliquid mark lies between the unconditional and conditional Polymarket values. That relationship is consistent with the interpretation that prediction-market binaries infer state-contingent distributions, while the perp mark reflects a tradeable synthetic exposure with funding and risk premia.</p>
+<figure class="data-figure"><img src="../figures/figure_4_openai_bridge.png" alt="Figure 4. OpenAI state-price and perp bridge."><figcaption>Figure 4. OpenAI state-price and perp bridge.</figcaption></figure>
+<h2>11. Manipulation and Oracle Safety</h2>
+<p>An oracle built from prediction markets is exposed to source-market manipulation. The correct unit of risk is not only prediction error; it is index movement per dollar of source-market pressure.</p>
+<p>Define:</p>
+<pre><code>s_i(delta) = |I(p_i + delta) - I(p_i)|
+C_i(delta) = displayed source-market depth crossed to move p_i by delta
+V_i(delta) = s_i(delta) / C_i(delta)</code></pre>
+<p>For the OpenAI 2027 ladder, perturbing each source market by plus or minus five YES-probability points gives:</p>
+<p><strong>Table 7. OpenAI oracle stress.</strong></p>
+<table><tr><th>Quantity</th><th>Value</th></tr><tr><td>Baseline unconditional index</td><td>$932B</td></tr><tr><td>Max one-market index move</td><td>$31B</td></tr><tr><td>Median one-market index move</td><td>$8B</td></tr><tr><td>Stress confidence score</td><td>0.967</td></tr></table>
+<p>Joining the same sensitivity map to live Polymarket CLOB books gives a negative result:</p>
+<p><strong>Table 8. Source-market displayed-depth risk.</strong></p>
+<table><tr><th>Quantity</th><th>Value</th></tr><tr><td>Source markets with books</td><td>12</td></tr><tr><td>Median CLOB spread</td><td>72.9%</td></tr><tr><td>Stress directions inside spread</td><td>14</td></tr><tr><td>Finite crossed-depth cases</td><td>10</td></tr><tr><td>Median displayed notional per $1B oracle move</td><td>$13.04</td></tr></table>
+<p>The conclusion is not that the OpenAI oracle is ready for production. It is the opposite: a naive midpoint oracle over thin binary markets is fragile. A production system must use trade-weighted or depth-weighted TWAPs, spread penalties, source exclusion, maximum single-market influence, funding caps, and open-interest caps.</p>
+<h2>12. Discussion</h2>
+<p>The central empirical finding is that prediction-market event strips can be treated as noisy state-price surfaces. The Polymarket crypto panels validate the threshold-to-distribution mapping on public financial variables. The Kalshi weather panel validates the same mapping across a larger non-crypto sample with official settlement data. The OpenAI ladder demonstrates the private-asset use case, and Hyperliquid provides an external live perp benchmark in the same units.</p>
+<p>The broader claim is not limited to private-company valuation. The surface inventory shows recurring state-price structures across crypto, macroeconomic releases, weather, public equity indices, and policy variables. Prediction markets are becoming a general substrate for contingent claims over the world. The paper&#x27;s operator is a way to convert those claims into indices.</p>
+<p>This generality is also the main risk. Semantic proxy markets are not direct claims. A model-ranking market may be relevant to an AI-company valuation, but the loading is uncertain and time-varying. A weather range contract is nearly deterministic conditional on the realized temperature. A private-company IPO threshold is direct but conditional on a corporate event. A geopolitical event may be related to an index but only through a complex causal path. The framework should therefore report semantic coverage and residual uncertainty rather than hide them.</p>
+<h2>13. Limitations</h2>
+<p>The paper does not claim that all prediction-market prices are unbiased probabilities. It does not claim that a thin event market can safely anchor a large perp. It does not claim that a semantic proxy can be treated as equivalent to a direct threshold. The framework is a projection operator, not a proof that the input markets are perfect.</p>
+<p>Current limitations:</p>
+<ol><li>The Polymarket crypto sample is still short: eight BTC dates and eight ETH dates.</li><li>The Kalshi panel is robust but limited to weather; more macro and financial series should be added.</li><li>The private-company result is a demonstration, not a validated ground-truth forecast.</li><li>The manipulation-cost model uses displayed depth and fixed shocks, not a full TWAP adversary model.</li><li>Semantic proxy loadings are specified conceptually but not yet estimated at scale.</li></ol>
+<p>These limitations are not incidental. They define the next research program.</p>
+<h2>14. Conclusion</h2>
+<p>Prediction markets are no longer merely isolated yes/no wagers. They are beginning to form a semantic option surface over real-world states. That surface is irregular, sparse, and written in natural language, but it can be projected into coherent latent distributions when related markets are mapped into payoff functions over the same target variable.</p>
+<p>This paper proposes the semantic state-price operator:</p>
+<pre><code>SemanticStatePrice(target, horizon)
+  = Projection(
+      prices      = prediction_market_prices,
+      payoffs     = semantic_event_maps(target),
+      weights     = liquidity * relevance * specificity * maturity_fit / noise,
+      constraints = coherence + monotonicity + smoothness
+    )</code></pre>
+<p>The operator converts fragmented event securities into indices. Those indices can be validated on public variables, used to infer private variables, and potentially deployed as perpetual-futures oracles with appropriate safety constraints.</p>
+<p>The empirical evidence now spans two venues and multiple market families: Polymarket crypto ladders, a multi-month Kalshi weather panel, an OpenAI private-company projection, and Hyperliquid pre-IPO perp benchmarks. The evidence is strong enough to motivate the framework and weak enough to keep the implementation honest. The remaining work is to expand the validation universe, estimate semantic loadings, and build a manipulation-cost model suitable for production-scale perps.</p>
+<h2>Methods</h2>
+<h3>Polymarket crypto reconstruction</h3>
+<p>For each asset-date pair, the scripts identify Polymarket markets whose titles encode terminal thresholds of the form <code>asset above $K on date</code>. YES token IDs are pulled from a normalized market catalog snapshot. Historical prices are fetched directly from Polymarket CLOB <code>batch-prices-history</code>. For each hourly snapshot, the latest available YES prices define noisy survival probabilities over thresholds. A constrained least-squares projection recovers a distribution over adjacent price intervals. The expected terminal price, modal interval, and realized-bucket probability are compared with CoinGecko spot data near the resolution timestamp.</p>
+<h3>Kalshi temperature reconstruction</h3>
+<p>Kalshi high-temperature markets are grouped by city and date using series tickers <code>KXHIGHNY</code>, <code>KXHIGHCHI</code>, and <code>KXHIGHMIA</code>. Each city-date group contains range and tail contracts that partition the daily high temperature. Hourly candlesticks are fetched from Kalshi&#x27;s market candlestick endpoint. At each snapshot, bucket prices are normalized into a discrete distribution. The expected high temperature is compared with NOAA/NCEI <code>TMAX</code> from the daily summaries service for stations <code>USW00094728</code>, <code>USW00094846</code>, and <code>USW00012839</code>.</p>
+<h3>OpenAI valuation projection</h3>
+<p>OpenAI valuation contracts are parsed into no-IPO, less-than, between, and above-threshold payoff functions. A no-IPO atom is included. The projection solves a constrained weighted least-squares problem over valuation buckets. Weights depend primarily on volume and quote history. The output is an unconditional valuation index and a conditional-IPO valuation.</p>
+<h3>Oracle stress</h3>
+<p>For each OpenAI source market, the observed probability is perturbed up and down by five percentage points. The latent distribution is refit, and the index movement is recorded. For book-depth stress, Polymarket CLOB order books are fetched for the same YES tokens. The script estimates displayed notional crossed to move each source market by the same shock. Cases where the target lies inside the current spread are flagged as midpoint-fragile rather than treated as free manipulation.</p>
+<h2>Data and Code Availability</h2>
+<p>All generated files are in <code>artifact/semantic-state-prices/</code>. Key outputs:</p>
+<ul><li><code>data/btc_rolling_batch.md</code></li><li><code>data/eth_rolling_batch.md</code></li><li><code>data/kalshi_temperature_panel_20260301_20260504.md</code></li><li><code>data/openai_20271231_projection.md</code></li><li><code>data/hyperliquid_vntl_private_perps.md</code></li><li><code>data/openai_20271231_oracle_stress.md</code></li><li><code>data/openai_20271231_orderbook_cost.md</code></li><li><code>data/prediction_market_surface_inventory.md</code></li><li><code>figures/figure_1_semantic_operator.png</code></li><li><code>figures/figure_2_polymarket_crypto.png</code></li><li><code>figures/figure_3_kalshi_panel.png</code></li><li><code>figures/figure_4_openai_bridge.png</code></li></ul>
+<h2>References</h2>
+<ol><li>Black, F. and Scholes, M. (1973). The Pricing of Options and Corporate Liabilities. <em>Journal of Political Economy</em>. https://doi.org/10.1086/260062</li><li>Merton, R. C. (1973). Theory of Rational Option Pricing. <em>Bell Journal of Economics and Management Science</em>. https://doi.org/10.2307/3003143</li><li>Breeden, D. T. and Litzenberger, R. H. (1978). Prices of State-Contingent Claims Implicit in Option Prices. <em>Journal of Business</em>. https://doi.org/10.1086/296025</li><li>Wolfers, J. and Zitzewitz, E. (2004). Prediction Markets. <em>Journal of Economic Perspectives</em>. https://www.aeaweb.org/articles?id=10.1257/0895330041371321</li><li>Manski, C. F. (2006). Interpreting the Predictions of Prediction Markets. <em>Economics Letters</em>. https://doi.org/10.1016/j.econlet.2006.01.004</li><li>Wolfers, J. and Zitzewitz, E. (2006). Interpreting Prediction Market Prices as Probabilities. NBER Working Paper. https://www.nber.org/papers/w12200</li><li>Arrow, K. J. et al. (2008). The Promise of Prediction Markets. <em>Science</em>. https://digitalcommons.chapman.edu/esi_pubs/40/</li><li>Hanson, R. (2003). Logarithmic Market Scoring Rules for Modular Combinatorial Information Aggregation. https://hanson.gmu.edu/mktscore.pdf</li><li>Hayek, F. A. (1945). The Use of Knowledge in Society. <em>American Economic Review</em>. https://www.jstor.org/stable/1809376</li><li>Polymarket CLOB market data documentation. https://docs.polymarket.com/market-data/overview</li><li>Polymarket CLOB order book documentation. https://docs.polymarket.com/trading/orderbook</li><li>Kalshi market data documentation. https://docs.kalshi.com/getting_started/quick_start_market_data</li><li>NOAA/NCEI daily summaries data service. https://www.ncei.noaa.gov/access/services/data/v1</li><li>Hyperliquid perpetuals info endpoint documentation. https://hyperliquid.gitbook.io/hyperliquid-docs/for-developers/api/info-endpoint/perpetuals</li></ol></main></body>
+</html>

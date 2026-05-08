@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+title: "Semantic State Prices: Inferring Latent Indices from Prediction-Market Event Securities"
+message: "If you use this repository, please cite the manuscript."
+type: article
+authors:
+  - family-names: Shukla
+    given-names: Ojas
+    email: ojas@sybilian.com
+date-released: "2026-05-08"
+repository-code: "https://github.com/synthpolis/semantic-state-price"
+license: MIT
+abstract: "A framework for inferring latent indices from prediction-market event securities and using them as oracle inputs for perpetual futures on assets or ideas without native spot markets."

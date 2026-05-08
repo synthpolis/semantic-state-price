@@ -1,0 +1,282 @@
+{
+  "generated_at": "2026-05-08T03:24:44Z",
+  "source": "Hyperliquid info endpoint",
+  "dex": "vntl",
+  "lookback_days": 7,
+  "candle_interval": "1d",
+  "rows": [
+    {
+      "coin": "vntl:ANTHROPIC",
+      "asset": {
+        "szDecimals": 3,
+        "name": "vntl:ANTHROPIC",
+        "maxLeverage": 3,
+        "marginTableId": 3,
+        "onlyIsolated": true,
+        "marginMode": "strictIsolated"
+      },
+      "annotation": {
+        "category": "preipo",
+        "description": "ANTHROPIC tracks the total valuation of Anthropic, in billions. E.g. if 1 ANTHROPIC = $500, then the implied total valuation of the company is $500B.",
+        "keywords": [
+          "ai",
+          "claude"
+        ]
+      },
+      "context": {
+        "funding": "0.0000797867",
+        "openInterest": "5960.518",
+        "prevDayPx": "1120.5",
+        "dayNtlVlm": "942600.1028300001",
+        "premium": "0.1049567859",
+        "oraclePx": "974.22",
+        "markPx": "1156.5",
+        "midPx": "1076.45",
+        "impactPxs": [
+          "983.024",
+          "1169.918"
+        ],
+        "dayBaseVlm": "826.339"
+      },
+      "mark_px": 1156.5,
+      "oracle_px": 974.22,
+      "mid_px": 1076.45,
+      "premium": 0.1049567859,
+      "funding": 7.97867e-05,
+      "open_interest_base": 5960.518,
+      "open_interest_notional": 6893339.067,
+      "day_base_volume": 826.339,
+      "day_notional_volume": 942600.1028300001,
+      "mark_vs_oracle_pct": 0.18710352897702776,
+      "book": {
+        "book_time": "2026-05-08T03:24:42Z",
+        "best_bid": 983.1,
+        "best_ask": 1169.8,
+        "mid": 1076.45,
+        "spread": 186.69999999999993,
+        "spread_pct": 0.1734404756375121,
+        "bid_depth_1pct": {
+          "base": 0,
+          "notional": 0
+        },
+        "ask_depth_1pct": {
+          "base": 0,
+          "notional": 0
+        },
+        "bid_depth_5pct": {
+          "base": 0,
+          "notional": 0
+        },
+        "ask_depth_5pct": {
+          "base": 0,
+          "notional": 0
+        },
+        "raw_bid_levels": 20,
+        "raw_ask_levels": 20
+      },
+      "candles": {
+        "candles": 8,
+        "first_close": 1148.0,
+        "last_close": 1086.0,
+        "price_change_pct": -0.05400696864111498,
+        "daily_base_volume_mean": 260.707,
+        "daily_trades_mean": 961.25,
+        "daily_log_return_vol": 0.034034444099624014,
+        "annualized_log_return_vol": 0.6502271415337932
+      },
+      "funding_history": {
+        "observations": 168,
+        "mean_hourly_funding": 0.00014520732678571427,
+        "median_hourly_funding": 8.220525e-05,
+        "latest_hourly_funding": 7.9256e-05,
+        "annualized_mean_funding": 1.272016182642857,
+        "mean_premium": 0.16312159126011905,
+        "latest_time": "2026-05-08T03:00:00Z"
+      }
+    },
+    {
+      "coin": "vntl:SPACEX",
+      "asset": {
+        "szDecimals": 3,
+        "name": "vntl:SPACEX",
+        "maxLeverage": 3,
+        "marginTableId": 3,
+        "onlyIsolated": true,
+        "marginMode": "strictIsolated"
+      },
+      "annotation": {
+        "category": "preipo",
+        "description": "SPACEX tracks the total valuation of SpaceX, in billions. E.g. if 1 SPACEX = $500, then the implied total valuation of the company is $500B.",
+        "keywords": [
+          "elon",
+          "preipo"
+        ]
+      },
+      "context": {
+        "funding": "0.0000418704",
+        "openInterest": "1851.48",
+        "prevDayPx": "1639.0",
+        "dayNtlVlm": "1189466.9967999996",
+        "premium": "0.1119111219",
+        "oraclePx": "1647.2",
+        "markPx": "1831.6",
+        "midPx": "1828.05",
+        "impactPxs": [
+          "1801.662",
+          "1861.418"
+        ],
+        "dayBaseVlm": "640.851"
+      },
+      "mark_px": 1831.6,
+      "oracle_px": 1647.2,
+      "mid_px": 1828.05,
+      "premium": 0.1119111219,
+      "funding": 4.18704e-05,
+      "open_interest_base": 1851.48,
+      "open_interest_notional": 3391170.7679999997,
+      "day_base_volume": 640.851,
+      "day_notional_volume": 1189466.9967999996,
+      "mark_vs_oracle_pct": 0.11194754735308399,
+      "book": {
+        "book_time": "2026-05-08T03:24:40Z",
+        "best_bid": 1820.3,
+        "best_ask": 1835.8,
+        "mid": 1828.05,
+        "spread": 15.5,
+        "spread_pct": 0.008478980334235935,
+        "bid_depth_1pct": {
+          "base": 1.325,
+          "notional": 2410.3779
+        },
+        "ask_depth_1pct": {
+          "base": 0.34600000000000003,
+          "notional": 637.1769
+        },
+        "bid_depth_5pct": {
+          "base": 2.131,
+          "notional": 3862.5454999999997
+        },
+        "ask_depth_5pct": {
+          "base": 2.716,
+          "notional": 5044.323
+        },
+        "raw_bid_levels": 20,
+        "raw_ask_levels": 20
+      },
+      "candles": {
+        "candles": 8,
+        "first_close": 1726.2,
+        "last_close": 1820.3,
+        "price_change_pct": 0.054512802687985085,
+        "daily_base_volume_mean": 93.762,
+        "daily_trades_mean": 639,
+        "daily_log_return_vol": 0.054415984485949025,
+        "annualized_log_return_vol": 1.0396159238703933
+      },
+      "funding_history": {
+        "observations": 168,
+        "mean_hourly_funding": 3.588633630952381e-05,
+        "median_hourly_funding": 3.5067949999999993e-05,
+        "latest_hourly_funding": 3.88638e-05,
+        "annualized_mean_funding": 0.31436430607142857,
+        "mean_premium": 0.09491880156964286,
+        "latest_time": "2026-05-08T03:00:00Z"
+      }
+    },
+    {
+      "coin": "vntl:OPENAI",
+      "asset": {
+        "szDecimals": 3,
+        "name": "vntl:OPENAI",
+        "maxLeverage": 3,
+        "marginTableId": 3,
+        "onlyIsolated": true,
+        "marginMode": "strictIsolated"
+      },
+      "annotation": {
+        "category": "preipo",
+        "description": "OPENAI tracks the total valuation of OpenAI, in billions. E.g. if 1 OPENAI = $500, then the implied total valuation of the company is $500B.",
+        "keywords": [
+          "ai",
+          "chatgpt"
+        ]
+      },
+      "context": {
+        "funding": "0.0000316353",
+        "openInterest": "3012.454",
+        "prevDayPx": "1065.2",
+        "dayNtlVlm": "518372.1557000001",
+        "premium": "0.0861056283",
+        "oraclePx": "1023.4",
+        "markPx": "1111.5",
+        "midPx": "1109.3",
+        "impactPxs": [
+          "1077.66",
+          "1145.381"
+        ],
+        "dayBaseVlm": "459.536"
+      },
+      "mark_px": 1111.5,
+      "oracle_px": 1023.4,
+      "mid_px": 1109.3,
+      "premium": 0.0861056283,
+      "funding": 3.16353e-05,
+      "open_interest_base": 3012.454,
+      "open_interest_notional": 3348342.6210000003,
+      "day_base_volume": 459.536,
+      "day_notional_volume": 518372.1557000001,
+      "mark_vs_oracle_pct": 0.08608559702950958,
+      "book": {
+        "book_time": "2026-05-08T03:24:41Z",
+        "best_bid": 1103.7,
+        "best_ask": 1114.9,
+        "mid": 1109.3000000000002,
+        "spread": 11.200000000000045,
+        "spread_pct": 0.010096457225277241,
+        "bid_depth_1pct": {
+          "base": 1.5030000000000001,
+          "notional": 1656.2939000000001
+        },
+        "ask_depth_1pct": {
+          "base": 0.47100000000000003,
+          "notional": 526.4323
+        },
+        "bid_depth_5pct": {
+          "base": 103.008,
+          "notional": 109539.91260000001
+        },
+        "ask_depth_5pct": {
+          "base": 5.471,
+          "notional": 6268.0154
+        },
+        "raw_bid_levels": 20,
+        "raw_ask_levels": 20
+      },
+      "candles": {
+        "candles": 8,
+        "first_close": 1033.7,
+        "last_close": 1100.9,
+        "price_change_pct": 0.06500919028731755,
+        "daily_base_volume_mean": 94.47862500000001,
+        "daily_trades_mean": 791.75,
+        "daily_log_return_vol": 0.04375776962567124,
+        "annualized_log_return_vol": 0.8359910148762727
+      },
+      "funding_history": {
+        "observations": 168,
+        "mean_hourly_funding": 2.8263094642857143e-05,
+        "median_hourly_funding": 2.74206e-05,
+        "latest_hourly_funding": 3.05416e-05,
+        "annualized_mean_funding": 0.24758470907142857,
+        "mean_premium": 0.07540980863571428,
+        "latest_time": "2026-05-08T03:00:00Z"
+      }
+    }
+  ],
+  "summary": {
+    "markets": 3,
+    "total_open_interest_notional": 13632852.456,
+    "total_24h_notional_volume": 2650439.25533,
+    "largest_open_interest_coin": "vntl:ANTHROPIC"
+  }
+}
